@@ -64,10 +64,10 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
-	'password' => '',
-	'database' => 'bookshare',
+	'hostname' => '120.26.118.14',
+	'username' => 'dingbook',
+	'password' => 'dingbook_rw',
+	'database' => 'dingbook',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
