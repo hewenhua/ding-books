@@ -5,7 +5,9 @@ class Api extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		echo "success";exit;
+		echoSucc('success!');
+		//$this->load->view('welcome_message');
 	}
 
 	public function userRegister()

@@ -281,7 +281,7 @@ $config['error_views_path'] = '';
 | application/cache/ directory.  Use a full server path with trailing slash.
 |
 */
-$config['cache_path'] = 'application/cache';
+$config['cache_path'] = 'application/cache/';
 
 /*
 |--------------------------------------------------------------------------
@@ -358,7 +358,7 @@ $config['encryption_key'] = 'duang';
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'ci_session';
 $config['sess_expiration'] = 7200;
-$config['sess_save_path'] = 'application/cache';
+$config['sess_save_path'] = '/home/admin/web/htdocs/ding-books/application/cache/';
 $config['sess_match_ip'] = FALSE;
 $config['sess_time_to_update'] = 300;
 $config['sess_regenerate_destroy'] = FALSE;
