@@ -2,13 +2,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Book Share</title>
+    <title>闲书</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <script src="/public/js/jquery.min.js"></script>
     <link href="/public/css/bootstrap.min.css" rel="stylesheet">
     <script src="/public/js/bootstrap.min.js"></script>
     <script src="/public/js/api.js"></script>
+    <script type="text/javascript" src="./openapi/public/javascripts/zepto.min.js"></script>
+    <script type="text/javascript" src="https://g.alicdn.com/ilw/ding/0.9.2/scripts/dingtalk.js"></script>
 
     <style type="text/css">
       body {
@@ -53,25 +55,11 @@
     <div class="container-narrow">
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
-          
-          <li <?php if($this->uri->segment(1) == '') echo "class='active'";?> ><a href="<?php echo site_url();?>">Home</a></li>
-          <li <?php if($this->uri->segment(1) == 'share') echo "class='active'";?> ><a href="<?php echo site_url('share/book');?>">Books</a></li>
+          <li <?php if($this->uri->segment(1) == '') echo "class='active'";?> ><a href="<?php echo site_url();?>">书架</a></li>
           <li><a href="">|</a></li>
-          <li <?php if($this->uri->segment(1) == 'space') echo "class='active'";?> ><a href="<?php echo site_url('space');?>">My Space</a></li>
-
-          <?php if (isLogin()){ ?>
-            <?php if ($this->uri->segment(2) != 'logout'){ ?>
-             <li><a href="<?php echo site_url('user/processLogout');?>">Logout</a></li>
-            <?php }?>
-          <?php }else{ ?>
-            <?php if ($this->uri->segment(2) == 'login'){ ?>
-             <li><a href="<?php echo site_url('user/register');?>">Register</a></li>
-            <?php }else{ ?>
-             <li><a href="<?php echo site_url('user/login');?>">Login</a></li>
-            <?php } ?>
-          <?php }?>
+          <li <?php if($this->uri->segment(1) == 'space') echo "class='active'";?> ><a href="<?php echo site_url('space');?>">我的</a></li>
         </ul>
-        <h3 class="muted"><a href="<?php echo site_url();?>">Ding Book</a></h3>
+        <h3 class="muted"><a href="<?php echo site_url();?>"> </a></h3>
       </div>
 
       <hr>

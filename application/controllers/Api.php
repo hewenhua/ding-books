@@ -9,6 +9,41 @@ class Api extends CI_Controller {
 		echoSucc('success!');
 		//$this->load->view('welcome_message');
 	}
+	
+	public function userUpdate()
+	{
+		$userid = $this->input->get_post('userId'); 
+		$user_name = $this->input->get_post('userName');
+		$corp_id = $this->input->get_post('corpId');
+		$input = array(
+						'cellphone' => $userid,
+						'username' => $user_name,
+						'password' => $userid,
+						'userid' => $userid,
+						'corpid' => $corp_id,
+					  );
+
+		$query = $this->db->query("SELECT * FROM user WHERE username = '$user_name' AND userid = '$userid' AND corpid = '$corp_id' ");
+
+		$this->load->model('user_model');
+        if($query->num_rows() == 0){
+			list($result , $msg) = $this->user_model->create($input);
+	        if($result == FALSE){
+	            echoFail($msg);
+	            return FALSE;
+	        }
+	
+		}else{
+			$row = $query->first_row();
+			$id = $row->id;	
+			unset($input['password']);
+			$this->user_model->updateProfile($input,$id);
+		}
+
+		$this->user_model->processLogin($input['cellphone']);
+		echoSucc('register succ');
+        return TRUE;
+	}
 
 	public function userRegister()
 	{
@@ -89,6 +124,51 @@ class Api extends CI_Controller {
 	public function userLogout(){
 		$this->session->sess_destroy();
 		echoSucc();
+	}
+
+	public function spaceShare(){
+		$info = $this->input->get_post('info');
+		$userid = $this->input->get_post('userId');
+		$username = $this->input->get_post('userName');
+        $info = json_decode($info,true);
+		$isbn = $info['text'];
+		
+		$book_id = 0;
+		if(!empty($isbn)){
+            $isbn = trim($isbn);
+			$this->load->model('books_model');
+            $data = $this->books_model->getBookInfoByISBN($isbn);
+            if($data == FALSE)
+                $data['msg'] = 2;
+            else
+                $data['msg'] = 1;
+
+            $data['isbn'] = $isbn;
+			$book_id = isset($data['id']) ? $data['id'] : 0;
+        }
+		
+		if(isLogin() == FALSE){
+            echoFail('Have not logined yet ');
+            return FALSE;
+        }
+        $user_id = $this->session->userdata('user_id');
+
+        $this->load->model('share_model');
+		$description = isset($data['title']) ? $data['title'] : "";
+        if($item_id = $this->share_model->isDuplicateItem($book_id , $user_id)){
+        }else{
+        	$item_id = $this->share_model->createItem( $book_id , $user_id , $description );
+		}
+
+        $output = array(
+            'errcode' => 0,
+			'result' => 1,
+            'book_id' => $book_id,
+			'item_id' => $item_id,
+			'description' => $description
+            );
+        echo json_encode(json_encode($output));
+        return TRUE;
 	}
 
 	public function shareBook()

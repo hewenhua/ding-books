@@ -1,6 +1,19 @@
 /**
  * Created by liqiao on 8/10/15.
  */
+var getMethod = function(method, ns) {
+    var arr = method.split('.');
+    var namespace = ns || dd;
+    for (var i = 0, k = arr.length; i < k; i++) {
+        if (i === k - 1) {
+            return namespace[arr[i]];
+        }
+        if (typeof namespace[arr[i]] == 'undefined') {
+            namespace[arr[i]] = {};
+        }
+        namespace = namespace[arr[i]];
+    }
+};
 
 logger.i('Here we go...');
 
@@ -28,6 +41,7 @@ dd.config({
         'biz.contact.choose',
         'biz.telephone.call',
         'biz.util.uploadImage',
+		'biz.util.qrcode',
         'biz.ding.post']
 });
 dd.userid=0;
@@ -48,16 +62,40 @@ dd.ready(function() {
         onSuccess: function (info) {
             logger.i('authcode: ' + info.code);
             $.ajax({
-                url: '/sendMsg.php',
+                url: '/openapi/sendMsg.php',
                 type:"POST",
                 data: {"event":"get_userinfo","code":info.code,"corpId":_config.corpId},
                 dataType:'json',
                 timeout: 900,
                 success: function (data, status, xhr) {
+					logger.i('data: ' + data);
                     var info = JSON.parse(data);
                     if (info.errcode === 0) {
                         logger.i('user id: ' + info.userid);
+                        logger.i('user name: ' + info.name);
                         dd.userid = info.userid;
+						dd.username = info.name;
+	
+						$.ajax({
+                                url: '/api/userUpdate',
+                                type:"POST",
+                                data: {"userId":dd.userid,"userName":dd.username,"corpId":_config.corpId},
+                                dataType:'json',
+                                timeout: 900,
+                                success: function (data, status, xhr) {
+                                        logger.i('data: ' + data);
+                                    var user = JSON.parse(data);
+                                        logger.i('datasss: ' + user);
+                                    if(user.errcode === 0) {
+                                        dd.username = user.name;
+                                    }
+
+                                },
+                                error: function (xhr, errorType, error) {
+                                        logger.i('data: ' + data);
+                                    logger.e(errorType + ', ' + error);
+                                }
+                        });
                     }
                     else {
                         logger.e('auth error: ' + data);
@@ -93,7 +131,7 @@ dd.ready(function() {
                             }
 
                             $.ajax({
-                                url: '/sendMsg.php',
+                                url: '/openapi/sendMsg.php',
                                 type:"POST",
                                 data: {"event":"send_to_conversation","cid":chatinfo.cid,"sender":dd.userid,"content":text,"corpId":_config.corpId},
                                 dataType:'json',
@@ -161,6 +199,68 @@ dd.ready(function() {
         },
         onFail : function(err) {}
     });
+    });
+
+	$('.J_method_btn').on('click', function() {
+        var $this = $(this);
+        var method = $this.data('method');
+        var action = $this.data('action');
+        var param = $this.data('param') || {};
+        if (typeof param === 'string') {
+            param = JSON.parse(param);
+        }    
+		if (param.corpId) {
+            param.corpId = _config.corpId;
+            if (param.id) {
+                param.id = _config.users[0];
+            }
+            if (param.users) {
+                param.users = _config.users;
+            }
+        }
+        if (param.params && param.params.corpId) {
+            param.params.corpId = _config.corpId;
+            if (param.params.id) {
+                param.params.id = _config.users[0];
+            }
+            if (param.params.users) {
+                param.params.users = _config.users;
+            }
+        }
+		param.onSuccess = function(result) {
+            if (action === 'alert') {
+                dd.device.notification.alert({
+                    title: method,
+                    message: '传参：' + JSON.stringify(param, null, 4) + '\n' + '响应：' + JSON.stringify(result, null, 4)
+                });
+            } else if(action === 'share'){
+				info = JSON.stringify(result);
+				$.ajax({
+					url: '/api/spaceShare',
+					type:"POST",
+					data: {"event":"space_share","userId":dd.userid,"corpId":_config.corpId,"info":info},
+					dataType:'json',
+					timeout: 900,
+					success: function (data, status, xhr) {
+						logger.i('data: ' + data);
+						var info = JSON.parse(data);
+						if(info.errcode === 0) {
+							logger.i('book_id: ' + info.book_id);
+							logger.i('item_id: ' + info.item_id);
+							window.location.href = "http://120.26.118.14/index.php/share/detail/" + info.item_id;
+						}
+						
+					},
+					error: function (xhr, errorType, error) {
+						logger.e(errorType + ', ' + error);
+					}
+				});
+			}
+        };
+        param.onFail = function(result) {
+            console.log(method, '调用失败，fail', result)
+        };
+        getMethod(method)(param);
     });
 });
 

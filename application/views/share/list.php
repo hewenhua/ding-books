@@ -1,3 +1,9 @@
+<?php
+$corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 0;
+if(!empty($corpId)):
+?>
+<script type="text/javascript">var _config = <?php echo Auth::isvConfig($corpId);?></script>
+<?php endif;?>
 <div class="row">
 
 
@@ -21,7 +27,7 @@
    </div>
    <div class="span6">
     <ul class="nav nav-pills">
-      <li><a href="<?php echo site_url($link_time);?>"><?php if($search_data['order_time']){echo 'Oldest';}else{echo 'Newest';}?></a></li>
+      <li><a href="<?php echo site_url($link_time);?>"><?php if($search_data['order_time']){echo '时间升序';}else{echo '时间倒序';}?></a></li>
       <li><a href="<?php echo site_url($link_name);?>"><?php if($search_data['order_name']){echo 'Z-A';}else{echo 'A-Z';}?></a></li>
     </ul>
    </div>
@@ -33,11 +39,12 @@
       <?php if($page != 'book'){?>
       <input class="hide" name="<?php echo $page.'_id';?>" value="<?php echo $search_data[$page.'_id'];?>">
       <?php }?>
-      <button class="btn" name="submit" type="submit" >Search</button>
+      <button class="btn" name="submit" type="submit" >搜索</button>
       </form>
     </div>
    </div>
 
+	  <button class="btn btn-block btn-default J_method_btn" data-method="biz.util.qrcode" data-param='{}' data-action="share">扫码分享</button>
   <hr>
 
   <div class="span9">

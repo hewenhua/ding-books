@@ -282,6 +282,9 @@ switch (ENVIRONMENT)
 
 	define('VIEWPATH', $view_folder);
 
+require_once(__DIR__ . "/openapi/config.php");
+require_once(__DIR__ . "/openapi/util/Http.php");
+require_once(__DIR__ . "/openapi/api/Auth.php");
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE

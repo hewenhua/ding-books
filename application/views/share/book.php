@@ -1,3 +1,7 @@
+<?php
+$corpId =  $_GET['corpId'];
+?>
+<script type="text/javascript">var _config = <?php echo Auth::isvConfig($corpId);?></script>
 <div class="row">
    <div class="span6">
     <ul class="nav nav-pills">
@@ -11,9 +15,11 @@
       <form>
       <input class="span2" type="text" name="keyword" value="<?php echo $search_data['keyword'];?>">
       <button class="btn" name="submit" type="submit" >Search</button>
+	  <button class="btn btn-block btn-default J_method_btn" data-method="biz.util.qrcode" data-param='{}' data-action="share">扫码</button>
       </form>
     </div>
    </div>
+
 
   <div class="span9">
   	<ul class="thumbnails">

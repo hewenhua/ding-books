@@ -39,4 +39,28 @@ switch($event){
         Log::i("[userinfo]".json_encode($userInfo));
         echo json_encode($userInfo);
         break;
+
+    case 'user_get':
+	$corpId = $_POST['corpId'];
+        $corpInfo = ISVClass::getCorpInfo($corpId);
+        $accessToken = $corpInfo['corpAccessToken'];
+	$userId = $_POST['userId'];
+	$userInfo = User::get($accessToken,$userId);
+	echo json_encode($userInfo);
+	break;
+    case 'user_update':
+	$corpId = $_POST['corpId'];
+        $corpInfo = ISVClass::getCorpInfo($corpId);
+        $accessToken = $corpInfo['corpAccessToken'];
+        $userId = $_POST['userId'];
+	$userName = $_POST['userName'];
+	$userInfo = User::update($accessToken,$userId);
+	break;
+    case 'space_share':
+	$corpId = $_POST['corpId'];
+	$userId = $_POST['userId'];
+	$info = $_POST['info'];
+	$info = json_decode($info,true);
+	Log::i("[userinfo]".var_export($info,true));
+	break;
 }

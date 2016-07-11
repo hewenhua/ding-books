@@ -88,10 +88,12 @@ class Share_model extends CI_Model{
 
 	function isDuplicateItem($book_id , $user_id){
 		$query = $this->db->query("SELECT * FROM item WHERE book_id = $book_id AND user_id = $user_id ");
-		if($query->num_rows() == 0)
+		if($query->num_rows() == 0){
 			return FALSE;
-		else
-			return TRUE;
+		}else{
+			$row = $query->first_row();
+			return $row->id;
+		}
 	}
 
 	function createTrade($user_id , $item_id){
