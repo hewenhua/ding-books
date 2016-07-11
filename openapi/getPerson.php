@@ -11,6 +11,8 @@ $code = $_GET['code'];
 $corpId = $_GET['corpid'];
 $corpInfo = ISVClass::getCorpInfo($corpId);
 $accessToken = $corpInfo['corpAccessToken'];
+$user = User::getUserInfo($accessToken,$code);
+var_dump($user);
 $res = Auth::getPerson($accessToken,$code);
 echo $res;
 exit;

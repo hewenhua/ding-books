@@ -122,7 +122,6 @@ class Space extends CI_Controller {
 		);
 
 		list( $data['total'] , $data['items']) = $this->query_model->queryItem( $data['search_data'] , $limit , $offset );
-var_dump($data);
 
 		foreach ($data["items"] as $key => $item) {
 			$book_id = $item['book_id'];

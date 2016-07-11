@@ -9,6 +9,7 @@ class ISVClass{
 
     public static function getSuiteAccessToken(){
         $suiteTicket = Cache::getSuiteTicket();
+
         if(!$suiteTicket){
             Log::e("ERROR: suiteTicket not cached,please check the callback url");
             return false;

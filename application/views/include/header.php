@@ -71,7 +71,7 @@
             <?php } ?>
           <?php }?>
         </ul>
-        <h3 class="muted"><a href="<?php echo site_url();?>">Book Share</a></h3>
+        <h3 class="muted"><a href="<?php echo site_url();?>">Ding Book</a></h3>
       </div>
 
       <hr>

@@ -53,7 +53,8 @@ class Books_model extends CI_Model{
 	}
 
 	private function saveBookInfoToDB($book_info){
-		$publisher_id = $this->createPublisher($book_info["publisher"]);
+		$publisher = isset($book_info["publisher"]) ? $book_info["publisher"] : "";
+		$publisher_id = $this->createPublisher($publisher);
 		$book = array(
 			'isbn10' => $book_info['isbn10'] ,
 			'isbn13' => $book_info['isbn13'] ,
@@ -146,7 +147,7 @@ class Books_model extends CI_Model{
 			$book_info['image'] = strtr($book_info['image'] , array('spic' => 'lpic') );
 			$book_info["rate"]["average"] = (float)$book_info["rate"]["average"];
 			$book_info["rate"]["numRaters"] = (int)$book_info["rate"]["numRaters"];
-			$book_info["pages"] = (int)$book_info["pages"];
+			$book_info["pages"] = isset($book_info["pages"]) ? (int)$book_info["pages"] : null;
 			return $book_info;
 		}
 		else
