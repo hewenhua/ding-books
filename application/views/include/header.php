@@ -9,8 +9,9 @@
     <link href="/public/css/bootstrap.min.css" rel="stylesheet">
     <script src="/public/js/bootstrap.min.js"></script>
     <script src="/public/js/api.js"></script>
-    <script type="text/javascript" src="./openapi/public/javascripts/zepto.min.js"></script>
+    <script type="text/javascript" src="/openapi/public/javascripts/zepto.min.js"></script>
     <script type="text/javascript" src="https://g.alicdn.com/ilw/ding/0.9.2/scripts/dingtalk.js"></script>
+    <script type="text/javascript">var _config = {}</script>
 
     <style type="text/css">
       body {
@@ -55,9 +56,11 @@
     <div class="container-narrow">
       <div class="masthead">
         <ul class="nav nav-pills pull-right">
-          <li <?php if($this->uri->segment(1) == '') echo "class='active'";?> ><a href="<?php echo site_url();?>">书架</a></li>
+          <li <?php if($this->uri->segment(1) == '') echo "class='active'";?> ><a href="<?php echo site_url();?>">发现</a></li>
           <li><a href="">|</a></li>
-          <li <?php if($this->uri->segment(1) == 'space') echo "class='active'";?> ><a href="<?php echo site_url('space');?>">我的</a></li>
+          <li><a href="#">放漂</a></li>
+          <li><a href="">|</a></li>
+          <li <?php if($this->uri->segment(1) == 'space') echo "class='active'";?> ><a href="<?php echo site_url('space/items');?>">我的</a></li>
         </ul>
         <h3 class="muted"><a href="<?php echo site_url();?>"> </a></h3>
       </div>

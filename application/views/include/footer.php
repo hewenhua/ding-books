@@ -5,8 +5,8 @@
     </div> <!-- /container -->
     <script src="//g.alicdn.com/ilw/cdnjs/jquery/2.1.4/jquery.min.js"></script>
     <script src="//g.alicdn.com/ilw/ding/0.6.2/scripts/dingtalk.js"></script>
-	<script type="text/javascript" src="./openapi/public/javascripts/logger.js"></script>
-	<script type="text/javascript" src="./openapi/public/javascripts/demo.js"></script>
+    <script type="text/javascript" src="/openapi/public/javascripts/logger.js"></script>
+    <script type="text/javascript" src="/openapi/public/javascripts/demo.js"></script>
     <script type="text/javascript">
 	
     </script>

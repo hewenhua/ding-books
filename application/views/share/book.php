@@ -1,7 +1,3 @@
-<?php
-$corpId =  $_GET['corpId'];
-?>
-<script type="text/javascript">var _config = <?php echo Auth::isvConfig($corpId);?></script>
 <div class="row">
    <div class="span6">
     <ul class="nav nav-pills">

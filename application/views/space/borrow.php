@@ -2,7 +2,7 @@
   <div class="span9">
     <div class="alert alert-error hide" id="msg-box"></div>
     <?php if(empty($trades)){ ?>
-    <div class="alert alert-info" id="msg-box">You have not borrowed others' books yet .</div>
+    <div class="alert alert-info" id="msg-box">你还没有受漂</div>
     <?php } ?>
     <ul class="thumbnails">
       <?php 

@@ -41,7 +41,8 @@ dd.config({
         'biz.contact.choose',
         'biz.telephone.call',
         'biz.util.uploadImage',
-		'biz.util.qrcode',
+	'biz.util.qrcode',
+	'biz.util.barcode',
         'biz.ding.post']
 });
 dd.userid=0;

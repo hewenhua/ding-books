@@ -81,6 +81,30 @@ class Space extends CI_Controller {
 		$this->load->view('include/footer');
 	}
 
+	public function ask()
+        {
+                $isbn = $this->input->get("isbn");
+                $this->load->model("books_model");
+                $data['msg'] = 0;
+                if(!empty($isbn)){
+                        $isbn = trim($isbn);
+                        $data = $this->books_model->getBookInfoByISBN($isbn);
+                        if($data == FALSE)
+                                $data['msg'] = 2;
+                        else
+                                $data['msg'] = 1;
+
+                        $data['isbn'] = $isbn;
+                }
+
+                $this->load->view('include/header' , $data);
+                if(!empty($isbn) AND $data['msg'] == 1)
+                        $this->load->view('space/share');
+                else
+                        $this->load->view('space/share_init');
+                $this->load->view('include/footer');
+        }
+
 	public function share()
 	{
 		$isbn = $this->input->get("isbn");

@@ -27,7 +27,7 @@ if(!empty($corpId)):
    </div>
    <div class="span6">
     <ul class="nav nav-pills">
-      <li><a href="<?php echo site_url($link_time);?>"><?php if($search_data['order_time']){echo '时间升序';}else{echo '时间倒序';}?></a></li>
+      <li><a href="<?php echo site_url($link_time);?>"><?php if($search_data['order_time']){echo '时间升序';}else{echo '时间降序';}?></a></li>
       <li><a href="<?php echo site_url($link_name);?>"><?php if($search_data['order_name']){echo 'Z-A';}else{echo 'A-Z';}?></a></li>
     </ul>
    </div>
@@ -41,13 +41,17 @@ if(!empty($corpId)):
       <?php }?>
       <button class="btn" name="submit" type="submit" >搜索</button>
       </form>
+	
     </div>
    </div>
 
-	  <button class="btn btn-block btn-default J_method_btn" data-method="biz.util.qrcode" data-param='{}' data-action="share">扫码分享</button>
   <hr>
 
+	  <button class="btn btn-block btn-default J_method_btn" data-method="biz.util.qrcode" data-param='{}' data-action="share">扫码分享</button>
   <div class="span9">
+	<div>
+	<a href="<?php echo site_url("space/share");?>">扫描遇到问题？</a>
+	</div>
   	<ul class="thumbnails">
       <?php 
       foreach ($items as $key => $item) { ?>
