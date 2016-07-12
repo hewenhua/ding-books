@@ -39,7 +39,7 @@ if(!empty($corpId)):
       <?php if($page != 'book'){?>
       <input class="hide" name="<?php echo $page.'_id';?>" value="<?php echo $search_data[$page.'_id'];?>">
       <?php }?>
-      <button class="btn" name="submit" type="submit" >搜索</button>
+      <button class="btn" name="submit" type="submit" >搜索一下</button>
       </form>
 	
     </div>
