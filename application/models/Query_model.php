@@ -24,6 +24,10 @@ class Query_model extends CI_Model{
 
 		$start_time = isset($search_data['start_time'])?$search_data['start_time']:NULL;
 		$end_time = isset($search_data['end_time'])?$search_data['end_time']:NULL;
+		$corpid = $this->session->userdata('corpid');
+		if(empty($corpid)){
+			$corpid = isset($_GET['corpId']) && !empty($_GET['corpId']) ? intval($_GET['corpId']) : 0;
+		}
 
 		$sql = "SELECT * FROM item_view 
 			WHERE 1 ";
@@ -36,6 +40,10 @@ class Query_model extends CI_Model{
 
 		if($book_ids != NULL){
 			$sql .= "AND item_view.book_id IN (" . implode(',', $book_ids) . ") ";
+		}
+
+		if($corpid != NULL){
+			$sql .= "AND item_view.corpid = '$corpid' ";
 		}
 
 		if($keyword != NULL)

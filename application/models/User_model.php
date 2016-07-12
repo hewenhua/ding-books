@@ -45,6 +45,7 @@ class User_model extends CI_Model{
 		$user_info = array(
 			'user_id' => $row->id ,
 			'name' => $row->username ,
+			'corpid' => $row->corpid ,
 			'cellphone' => $row->cellphone 
 			);
 		$this->session->set_userdata($user_info);
