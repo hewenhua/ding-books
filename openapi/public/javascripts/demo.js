@@ -42,7 +42,7 @@ dd.config({
         'biz.telephone.call',
         'biz.util.uploadImage',
 	'biz.util.qrcode',
-	'biz.util.barcode',
+	'biz.util.scan',
         'biz.ding.post']
 });
 dd.userid=0;
@@ -169,46 +169,14 @@ dd.ready(function() {
         });
     });
 
-    $('.phonecall').on('click', function() {
-        dd.biz.contact.choose({
-            startWithDepartmentId: 0, //-1表示打开的通讯录从自己所在部门开始展示, 0表示从企业最上层开始，(其他数字表示从该部门开始:暂时不支持)
-            multiple: false, //是否多选： true多选 false单选； 默认true
-            users: [], //默认选中的用户列表，userid；成功回调中应包含该信息
-            corpId: _config.corpId, //企业id
-            max: 10, //人数限制，当multiple为true才生效，可选范围1-1500
-            onSuccess: function(data) {
-                if(data&&data.length>0){
-                    var selectUserId = data[0].emplId;
-                    if(selectUserId>0){
-                        dd.biz.telephone.call({
-                            users: [selectUserId], //用户列表，工号
-                            corpId: _config.corpId, //企业id
-                            onSuccess : function(info) {
-                                logger.i('biz.telephone.call: info' + JSON.stringify(info));
-
-                            },
-                            onFail : function(err) {
-                                logger.e('biz.telephone.call: error' + JSON.stringify(err));
-                            }
-                        })
-                    }else{
-                        return false;
-                    }
-                }else{
-                    return false;
-                }
-        },
-        onFail : function(err) {}
-    });
-    });
-
-	$('.J_method_btn').on('click', function() {
+    $('.J_method_btn').on('click', function() {
         var $this = $(this);
         var method = $this.data('method');
         var action = $this.data('action');
         var param = $this.data('param') || {};
         if (typeof param === 'string') {
             param = JSON.parse(param);
+						logger.i('scan: ' + param);
         }    
 		if (param.corpId) {
             param.corpId = _config.corpId;
@@ -259,6 +227,7 @@ dd.ready(function() {
 			}
         };
         param.onFail = function(result) {
+						logger.i('scan: ' + result);
             console.log(method, '调用失败，fail', result)
         };
         getMethod(method)(param);

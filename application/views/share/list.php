@@ -47,7 +47,7 @@ if(!empty($corpId)):
 
   <hr>
 
-	  <button class="btn btn-block btn-default J_method_btn" data-method="biz.util.qrcode" data-param='{}' data-action="share">扫码分享</button>
+	  <button class="btn btn-block btn-default J_method_btn" data-method="biz.util.scan" data-param='{"type":"barCode"}' data-action="share">扫码分享</button>
   <div class="span9">
 	<div>
 	<a href="<?php echo site_url("space/share");?>">扫描遇到问题？</a>
