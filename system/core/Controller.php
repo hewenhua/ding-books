@@ -58,6 +58,8 @@ class CI_Controller {
 	 */
 	private static $instance;
 
+	public $corpId;
+
 	/**
 	 * Class constructor
 	 *
@@ -77,6 +79,11 @@ class CI_Controller {
 
 		$this->load =& load_class('Loader', 'core');
 		$this->load->initialize();
+		$corpid = $this->session->userdata('corpid');
+		if(empty($corpid)){
+				$corpid = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : null;
+		}
+		$this->corpId = $corpid;
 		log_message('info', 'Controller Class Initialized');
 	}
 

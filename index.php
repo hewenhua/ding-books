@@ -285,6 +285,8 @@ switch (ENVIRONMENT)
 require_once(__DIR__ . "/openapi/config.php");
 require_once(__DIR__ . "/openapi/util/Http.php");
 require_once(__DIR__ . "/openapi/api/Auth.php");
+require_once(__DIR__ . "/openapi/api/ISVClass.php");
+require_once(__DIR__ . "/openapi/api/Message.php");
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE

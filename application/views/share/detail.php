@@ -90,7 +90,7 @@
 </div>
 
 <script type="text/javascript">
-  var post_url = "<?php echo site_url('api/requestBorrow');?>";
+  var post_url = "<?php echo site_url('api/requestBorrow?corpId='.$corpId);?>";
   requestBorrow(post_url);
 </script>
 

@@ -94,6 +94,7 @@ class Share extends CI_Controller {
 		$book_id = $data['item']['book_id'];
 		$data['item']['authors'] = $this->query_model->queryBookAuthors($book_id);
 		$data['item']['translators'] = $this->query_model->queryBookTranslators($book_id);
+		$data['corpId'] = $this->corpId;
 
 		$this->load->view('include/header' , $data);
 		$this->load->view('share/detail');

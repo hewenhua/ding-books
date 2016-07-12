@@ -1,4 +1,7 @@
 <!DOCTYPE html>
+<?php
+$corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 0;
+?>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -11,7 +14,11 @@
     <script src="/public/js/api.js"></script>
     <script type="text/javascript" src="/openapi/public/javascripts/zepto.min.js"></script>
     <script type="text/javascript" src="https://g.alicdn.com/ilw/ding/0.9.2/scripts/dingtalk.js"></script>
+	<?php if(!empty($corpId)):?>
+	<script type="text/javascript">var _config = <?php echo Auth::isvConfig($corpId);?></script>
+	<?php else:?>
     <script type="text/javascript">var _config = {}</script>
+	<?php endif;?>
 
     <style type="text/css">
       body {

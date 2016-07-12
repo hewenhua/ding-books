@@ -30,7 +30,7 @@ class Service
 
     public static function getCorpInfoByCorId($corpId){
         $corpList = json_decode(Cache::getCorpInfo(),true);
-        if(!is_array($corpList)){
+        if(!is_array($corpList)||empty($corpId)){
             return false;
         }
 

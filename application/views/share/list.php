@@ -1,9 +1,3 @@
-<?php
-$corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 0;
-if(!empty($corpId)):
-?>
-<script type="text/javascript">var _config = <?php echo Auth::isvConfig($corpId);?></script>
-<?php endif;?>
 <div class="row">
 
 

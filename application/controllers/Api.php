@@ -34,10 +34,10 @@ class Api extends CI_Controller {
 	        }
 	
 		}else{
-			$row = $query->first_row();
+			/*$row = $query->first_row();
 			$id = $row->id;	
 			unset($input['password']);
-			$this->user_model->updateProfile($input,$id);
+			$this->user_model->updateProfile($input,$id);*/
 		}
 
 		$this->user_model->processLogin($input['cellphone']);
@@ -306,6 +306,26 @@ class Api extends CI_Controller {
 		return TRUE;
 	}
 
+	protected function sendOAMessage($userid,$oa=array()){
+		if(empty($this->corpId)){return false;}
+		$corpInfo = ISVClass::getCorpInfo($this->corpId);
+		$suiteTicket = Cache::getSuiteTicket();
+		$suiteAccessToken = Service::getSuiteAccessToken($suiteTicket);
+		$authInfo = Service::getAuthInfo($suiteAccessToken, $corpInfo['corp_id'], $corpInfo['permanent_code']);
+		$agentid = isset($authInfo->agent[0]->agentid) && !empty($authInfo->agent[0]->agentid) ? $authInfo->agent[0]->agentid : 0;
+		$accessToken = $corpInfo['corpAccessToken'];
+
+		$opt = array(
+						"touser" => $userid,
+						"agentid" => $agentid,
+						"msgtype" => "oa",
+						"oa" => $oa
+					);
+
+		$flag = Message::send($accessToken,$opt);
+		return $flag;
+	}
+
 	public function requestBorrow(){
 		$input = array(
 			'item_id' => $this->input->get_post('item_id') ,
@@ -320,6 +340,7 @@ class Api extends CI_Controller {
 
 		$this->load->model('user_model');
 		$user_id = $this->session->userdata('user_id');
+		$user_name = $this->session->userdata('name');
 
 		//only sharing item can be borrowed
 		$item_id = $input['item_id'];
@@ -340,6 +361,36 @@ class Api extends CI_Controller {
 		$insert_id = $this->share_model->createTrade($user_id , $item_id);
 
 		echoSucc('request succ');
+		if(!empty($insert_id)){
+			$user_query = $this->db->query("SELECT * FROM user WHERE id = '$row->user_id' ");
+			if($user_query->num_rows() != 1){
+				return FALSE;
+			}
+			$user_row = $user_query->first_row();
+
+			$book_query = $this->db->query("SELECT * FROM book WHERE id = $row->book_id ");
+			if($book_query->num_rows() != 1){
+				return FALSE;
+			}
+			$book_row = $book_query->first_row();
+
+			$oa = array(
+				'message_url' => "http://120.26.118.14/index.php/space/shared?corpId=".$this->corpId,
+				'head' => array(
+					"bgcolor" => "38adff",
+					"text" => "图书漂流"
+				),
+				'body' => array(
+					"title" => "《".$book_row->title."》",
+					"content" => "",
+					"image" => $book_row->image_url,
+					"author" => $user_name."向你求漂 "
+				)
+			);
+
+
+			$this->sendOAMessage($user_row->userid,$oa);
+		}
 		return TRUE;
 
 	}
