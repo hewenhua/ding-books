@@ -27,7 +27,6 @@ $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 
         //padding-top: 20px;
         //padding-bottom: 40px;
         width: 10rem;
-        overflow: hidden;
       }
 
       /* Custom container */

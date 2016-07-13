@@ -18,24 +18,23 @@
       </div>
       <?php } ?>
     
-   </div>
-   <div style='width: 100%; background-color: #9999'>
-    <div style='width: 100%; height: 0.8rem; background-color: white; padding: 0.2rem 0; border-bottom: 1px solid #999' class="nav_bk nav-pills_bk">
-      <a style='display: inline-block; width: 4.985rem; border-right: 1px solid #999; line-height: 0.8rem; font-size: 0.32rem; text-align:center; color: #333' href="<?php echo site_url($link_time);?>"><?php if($search_data['order_time']){echo '时间升序';}else{echo '时间降序';}?></a>
-      <a style='display: inline-block; width: 4.985rem; line-height: 0.8rem; font-size: 0.32rem; text-align:center; color: #333' href="<?php echo site_url($link_name);?>"><?php if($search_data['order_name']){echo 'Z-A';}else{echo 'A-Z';}?></a>
-    </div>
+   <div style='width: 100%; background-color: #E0E0E0'>
+       <div class="">
+         <form style='margin: 0 0; height: 0.8rem;' action="<?php echo site_url('share/' . $page  );?>" method="get" >
+         <input style='outline: none;border: none;border-radius: 0.6rem;height: 0.6rem;width: 8.5rem;margin: 0.1rem 0.3rem 0 0;' class="span2" type="text" name="keyword" value="<?php echo $search_data['keyword'];?>">
+         <?php if($page != 'book'){?>
+         <input class="hide" name="<?php echo $page.'_id';?>" value="<?php echo $search_data[$page.'_id'];?>">
+         <?php }?>
+         <button class="btn" name="submit" type="submit" >搜索</button>
+         </form>
+       </div>
    </div>
 
-   <div style='width: 100%'>
-    <div class="">
-      <form style='margin: 0 0;' action="<?php echo site_url('share/' . $page  );?>" method="get" >
-      <input class="span2" type="text" name="keyword" value="<?php echo $search_data['keyword'];?>">
-      <?php if($page != 'book'){?>
-      <input class="hide" name="<?php echo $page.'_id';?>" value="<?php echo $search_data[$page.'_id'];?>">
-      <?php }?>
-      <button class="btn" name="submit" type="submit" >搜索</button>
-      </form>
-	
+   </div>
+   <div style='width: 100%; background-color: #F8F8F8'>
+    <div style='width: 100%; height: 0.8rem; background-color: white; padding: 0.2rem 0; border-bottom: 1px solid #999' class="nav_bk nav-pills_bk">
+      <a style='float: lfet; display: inline-block; width: 4.965rem; border-right: 1px solid #999; line-height: 0.8rem; font-size: 0.32rem; text-align:center; color: #333' href="<?php echo site_url($link_time);?>"><?php if($search_data['order_time']){echo '时间升序';}else{echo '时间降序';}?></a>
+      <a style='float: left; display: inline-block; width: 4.965rem; line-height: 0.8rem; font-size: 0.32rem; text-align:center; color: #333' href="<?php echo site_url($link_name);?>"><?php if($search_data['order_name']){echo 'Z-A';}else{echo 'A-Z';}?></a>
     </div>
    </div>
 
