@@ -7,7 +7,8 @@ $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 
     <meta charset="utf-8">
     <title>闲书</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <script src="//g.alicdn.com/kg/m-base/2.0.3/index.js"></script>
+    <link href="//g.alicdn.com/kg/m-base/2.0.3/reset.css" rel="styleSheet" type="text/css"/>
     <script src="/public/js/jquery.min.js"></script>
     <link href="/public/css/bootstrap.min.css" rel="stylesheet">
     <script src="/public/js/bootstrap.min.js"></script>
@@ -23,8 +24,8 @@ $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 
 
     <style type="text/css">
       body {
-        padding-top: 20px;
-        padding-bottom: 40px;
+        //padding-top: 20px;
+        //padding-bottom: 40px;
       }
 
       /* Custom container */
@@ -57,20 +58,33 @@ $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 
       .marketing p + h4 {
         margin-top: 28px;
       }
+      .head-nav {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 10rem;
+        height: 60 / 75 rem;
+      }
+      .head-nav div{
+        display: inline-block;
+        height: 60 / 75 rem;
+        width: 250 / 75 * rem;
+        background-color: #aaaaaa;
+        color: white;
+      }
+      .head-nav .active{
+        background-color: #666666;
+      }
     </style>
   </head>
 
   <body>
     <div class="container-narrow">
       <div class="masthead">
-        <ul class="nav nav-pills pull-right">
-          <li <?php if($this->uri->segment(1) == '') echo "class='active'";?> ><a href="<?php echo site_url();?>">发现</a></li>
-          <li><a href="">|</a></li>
-          <li><a href="#">放漂</a></li>
-          <li><a href="">|</a></li>
-          <li <?php if($this->uri->segment(1) == 'space') echo "class='active'";?> ><a href="<?php echo site_url('space/items');?>">我的</a></li>
-        </ul>
-        <h3 class="muted"><a href="<?php echo site_url();?>"> </a></h3>
+        <div class="head-nav">
+          <div <?php if($this->uri->segment(1) == '') echo "class='active'";?> ><a href="<?php echo site_url();?>">发现</a></div>
+          <div><a href="#">放漂</a></div>
+          <div <?php if($this->uri->segment(1) == 'space') echo "class='active'";?> ><a href="<?php echo site_url('space/items');?>">我的</a></div>
+        </div>
+        <h3 class="muted" style='display:none'><a href="<?php echo site_url();?>"> </a></h3>
       </div>
-
-      <hr>
