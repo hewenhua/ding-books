@@ -26,6 +26,8 @@ $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 
       body {
         //padding-top: 20px;
         //padding-bottom: 40px;
+        width: 10rem;
+        overflow: hidden;
       }
 
       /* Custom container */
@@ -85,7 +87,7 @@ $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 
     <div class="container-narrow">
       <div class="masthead">
         <div class="head-nav">
-          <div <?php if($this->uri->segment(1) == 'share') echo "class='active'";?> ><a href="<?php echo site_url();?>">发现</a></div>
+          <div <?php if($this->uri->segment(1) == '') echo "class='active'";?> ><a href="<?php echo site_url();?>">发现</a></div>
           <div><a href="#">放漂</a></div>
           <div <?php if($this->uri->segment(1) == 'space') echo "class='active'";?> ><a href="<?php echo site_url('space/items');?>">我的</a></div>
         </div>
