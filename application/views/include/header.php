@@ -10,8 +10,8 @@ $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 
     <script src="//g.alicdn.com/kg/m-base/2.0.3/index.js"></script>
     <link href="//g.alicdn.com/kg/m-base/2.0.3/reset.css" rel="styleSheet" type="text/css"/>
     <script src="/public/js/jquery.min.js"></script>
-    <link href="/public/css/bootstrap.min.css" rel="stylesheet">
-    <script src="/public/js/bootstrap.min.js"></script>
+    <link href="/public/css/bootstrap.min_bk.css" rel="stylesheet">
+    <script src="/public/js/bootstrap.min_bk.js"></script>
     <script src="/public/js/api.js"></script>
     <script type="text/javascript" src="/openapi/public/javascripts/zepto.min.js"></script>
     <script type="text/javascript" src="https://g.alicdn.com/ilw/ding/0.9.2/scripts/dingtalk.js"></script>

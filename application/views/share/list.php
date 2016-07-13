@@ -19,21 +19,21 @@
       <?php } ?>
     
    </div>
-   <div style='width: 100%'>
+   <div style='width: 100%; background-color: #9999'>
     <div style='width: 100%; height: 0.8rem; background-color: white; padding: 0.2rem 0; border-bottom: 1px solid #999' class="nav_bk nav-pills_bk">
-      <a style='display: inline-block; width: 4.9333rem; border-right: 1px solid #999; line-height: 0.8rem; font-size: 0.32rem; text-align:center; color: #333' href="<?php echo site_url($link_time);?>"><?php if($search_data['order_time']){echo '时间升序';}else{echo '时间降序';}?></a>
-      <a style='display: inline-block; width: 4.9333rem; line-height: 0.8rem; font-size: 0.32rem; text-align:center; color: #333' href="<?php echo site_url($link_name);?>"><?php if($search_data['order_name']){echo 'Z-A';}else{echo 'A-Z';}?></a>
+      <a style='display: inline-block; width: 4.985rem; border-right: 1px solid #999; line-height: 0.8rem; font-size: 0.32rem; text-align:center; color: #333' href="<?php echo site_url($link_time);?>"><?php if($search_data['order_time']){echo '时间升序';}else{echo '时间降序';}?></a>
+      <a style='display: inline-block; width: 4.985rem; line-height: 0.8rem; font-size: 0.32rem; text-align:center; color: #333' href="<?php echo site_url($link_name);?>"><?php if($search_data['order_name']){echo 'Z-A';}else{echo 'A-Z';}?></a>
     </div>
    </div>
 
    <div style='width: 100%'>
     <div class="">
-      <form action="<?php echo site_url('share/' . $page  );?>" method="get" >
+      <form style='margin: 0 0;' action="<?php echo site_url('share/' . $page  );?>" method="get" >
       <input class="span2" type="text" name="keyword" value="<?php echo $search_data['keyword'];?>">
       <?php if($page != 'book'){?>
       <input class="hide" name="<?php echo $page.'_id';?>" value="<?php echo $search_data[$page.'_id'];?>">
       <?php }?>
-      <button class="btn" name="submit" type="submit" >搜索一下下</button>
+      <button class="btn" name="submit" type="submit" >搜索</button>
       </form>
 	
     </div>
