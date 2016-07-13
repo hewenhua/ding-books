@@ -169,6 +169,14 @@ class Share_model extends CI_Model{
 		return $row->status;
 	}
 
+ 	function getTrade($trade_id){
+		$query = $this->db->query("SELECT * FROM trade WHERE id = $trade_id ");
+		if($query->num_rows() != 1)
+			return 0;
+		$row = $query->first_row();
+		return $row;
+	}   
+
 	function updateTrade($trade_id , $trade_op){
 		//the validity of operation is checked in api , error message is returned in json format
 		$target_transfer = array(

@@ -368,32 +368,48 @@ class Api extends CI_Controller {
 			}
 			$user_row = $user_query->first_row();
 
-			$book_query = $this->db->query("SELECT * FROM book WHERE id = $row->book_id ");
-			if($book_query->num_rows() != 1){
-				return FALSE;
-			}
-			$book_row = $book_query->first_row();
-
-			$oa = array(
-				'message_url' => "http://120.26.118.14/index.php/space/shared?corpId=".$this->corpId,
-				'head' => array(
-					"bgcolor" => "38adff",
-					"text" => "图书漂流"
-				),
-				'body' => array(
-					"title" => "《".$book_row->title."》",
-					"content" => "",
-					"image" => $book_row->image_url,
-					"author" => $user_name."向你求漂 "
-				)
-			);
-
-
+            $oa = getOA($row->book_id,"ask");
 			$this->sendOAMessage($user_row->userid,$oa);
 		}
 		return TRUE;
 
 	}
+
+    protected function getOA($book_id,$op='ask'){
+        $op_text = array(
+            'ask' => '向你求漂',
+            'accept' => '接受了你的求漂',
+            'deny' => '拒绝了你的求漂',
+        );
+        if(!in_array($op,array_keys($op_text))){
+            return false;
+        }
+        $user_name = $this->session->userdata('name');
+        $book_query = $this->db->query("SELECT * FROM book WHERE id = $book_id ");
+        if($book_query->num_rows() != 1){
+            return FALSE;
+        }
+        $book_row = $book_query->first_row();
+        $book_title = $book_row->title;
+
+        if($oa == "ask"){
+            $oa['message_url'] = "http://120.26.118.14/space/shared?corpId=".$this->corpId;
+        }else{
+            $oa['message_url']  = "http://120.26.118.14/space/borrow?corpId=".$this->corpId;
+        }
+        $oa['head'] = array(
+                        "bgcolor" => "38adff",
+                        "text" => "闲书漂流"
+                        );
+        $oa['body'] = array(
+                        "title" => "《".$book_row->title."》",
+                        "content" => "",
+                        "image" => $book_row->image_url,
+                        );
+        $oa['body']['author'] = $user_name.$op_text[$op];
+
+        return $oa;
+    }
 
 
 	public function updateTrade(){
@@ -415,11 +431,13 @@ class Api extends CI_Controller {
 		$this->load->model('user_model');
 		$user_id = $this->session->userdata('user_id');
 		$this->load->model("share_model");
-		$current_status = $this->share_model->getTradeStatus($input['trade_id']);
+        $trade_row = $this->share_model->getTrade($input['trade_id']);
+		$current_status = $trade_row->status;
 		if($current_status == 0){
 			echoFail('Trade is does not correct');
 			return FALSE;
 		}
+                
 		switch ($input['trade_op']) {
 			case 'accept':
 				if($current_status != 1){
@@ -457,10 +475,22 @@ class Api extends CI_Controller {
 		if($insert_id == FALSE){
 			echoFail('Unknown error');
 			return FALSE;
-		}else{
-			echoSucc('request succ');
-			return TRUE;
 		}
+
+        $item_id = $trade_row->item_id;
+        $trade_user_id = $trade_row->user_id;
+        $trade_user_info = $this->user_model->getUserInfo($trade_user_id);
+        $trade_userid = $trade_user_info['userid'];
+        $query = $this->db->query("SELECT * FROM item WHERE id = $item_id ");
+		if($query->num_rows() != 1){
+			return FALSE;
+		}
+		$row = $query->first_row();
+        $oa = $this->getOA($row->book_id,$input['trade_op']);
+        $this->sendOAMessage($trade_userid,$oa);
+
+        echoSucc('request succ');
+        return TRUE;
 
 	}
 
