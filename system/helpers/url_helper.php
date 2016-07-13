@@ -531,10 +531,17 @@ if ( ! function_exists('redirect'))
 	 */
 	function redirect($uri = '', $method = 'auto', $code = NULL)
 	{
+        $corpId = isset($_SESSION['corpid']) && !empty($_SESSION['corpid']) ? $_SESSION['corpid'] : null;
+        if(empty($corpId)){
+            $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : null;
+        }
 		if ( ! preg_match('#^(\w+:)?//#i', $uri))
 		{
 			$uri = site_url($uri);
 		}
+        if(!empty($corpId)){
+            $uri = $uri."?corpId=".$corpId;
+        }
 
 		// IIS environment likely? Use 'refresh' for better compatibility
 		if ($method === 'auto' && isset($_SERVER['SERVER_SOFTWARE']) && strpos($_SERVER['SERVER_SOFTWARE'], 'Microsoft-IIS') !== FALSE)

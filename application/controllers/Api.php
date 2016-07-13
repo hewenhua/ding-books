@@ -40,8 +40,12 @@ class Api extends CI_Controller {
 			$this->user_model->updateProfile($input,$id);*/
 		}
 
-		$this->user_model->processLogin($input['cellphone']);
-		echoSucc('register succ');
+        $login_user_id = $this->session->userdata('user_id');
+        $process_login= false;
+        if(empty($login_user_id)){
+		    $process_login = $this->user_model->processLogin($input['cellphone']);
+        }
+        echo json_encode(json_encode(array('process_login'=>$process_login)));
         return TRUE;
 	}
 
@@ -307,7 +311,7 @@ class Api extends CI_Controller {
 	}
 
 	protected function sendOAMessage($userid,$oa=array()){
-		if(empty($this->corpId)){return false;}
+		if(empty($this->corpId)||empty($oa)){return false;}
 		$corpInfo = ISVClass::getCorpInfo($this->corpId);
 		$suiteTicket = Cache::getSuiteTicket();
 		$suiteAccessToken = Service::getSuiteAccessToken($suiteTicket);
@@ -368,7 +372,7 @@ class Api extends CI_Controller {
 			}
 			$user_row = $user_query->first_row();
 
-            $oa = getOA($row->book_id,"ask");
+            $oa = $this->getOA($row->book_id,"ask");
 			$this->sendOAMessage($user_row->userid,$oa);
 		}
 		return TRUE;
@@ -377,7 +381,7 @@ class Api extends CI_Controller {
 
     protected function getOA($book_id,$op='ask'){
         $op_text = array(
-            'ask' => '向你求漂',
+            'ask' => '向你发起了求漂',
             'accept' => '接受了你的求漂',
             'deny' => '拒绝了你的求漂',
         );
@@ -392,7 +396,7 @@ class Api extends CI_Controller {
         $book_row = $book_query->first_row();
         $book_title = $book_row->title;
 
-        if($oa == "ask"){
+        if($op == "ask"){
             $oa['message_url'] = "http://120.26.118.14/space/shared?corpId=".$this->corpId;
         }else{
             $oa['message_url']  = "http://120.26.118.14/space/borrow?corpId=".$this->corpId;
@@ -402,11 +406,11 @@ class Api extends CI_Controller {
                         "text" => "闲书漂流"
                         );
         $oa['body'] = array(
-                        "title" => "《".$book_row->title."》",
-                        "content" => "",
+                        "title" => $user_name.$op_text[$op],
+                        "content" => "《".$book_row->title."》",
                         "image" => $book_row->image_url,
                         );
-        $oa['body']['author'] = $user_name.$op_text[$op];
+        $oa['body']['author'] = "闲书漂流";//$user_name.$op_text[$op];
 
         return $oa;
     }

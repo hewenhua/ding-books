@@ -41,6 +41,9 @@ class User_model extends CI_Model{
 
 	public function processLogin($cellphone){
 		$query = $this->db->query("SELECT * FROM user WHERE cellphone = '$cellphone'");
+        if($query->num_rows() == 0){
+            return false;
+        }
 		$row = $query->first_row();
 		$user_info = array(
 			'user_id' => $row->id ,
@@ -49,6 +52,7 @@ class User_model extends CI_Model{
 			'cellphone' => $row->cellphone 
 			);
 		$this->session->set_userdata($user_info);
+        return true;
 	}
 
 	public function create($input){

@@ -69,7 +69,7 @@ dd.ready(function() {
                 dataType:'json',
                 timeout: 900,
                 success: function (data, status, xhr) {
-					logger.i('data: ' + data);
+					logger.i('data_sendMsg: ' + data);
                     var info = JSON.parse(data);
                     if (info.errcode === 0) {
                         logger.i('user id: ' + info.userid);
@@ -84,16 +84,13 @@ dd.ready(function() {
                                 dataType:'json',
                                 timeout: 900,
                                 success: function (data, status, xhr) {
-                                        logger.i('data: ' + data);
-                                    var user = JSON.parse(data);
-                                        logger.i('datasss: ' + user);
-                                    if(user.errcode === 0) {
-                                        dd.username = user.name;
+                                logger.i('user data: ' + data);
+                                    var res = JSON.parse(data);
+                                    if (res.process_login=== true){
+                                        window.location.href = "/";
                                     }
-
                                 },
                                 error: function (xhr, errorType, error) {
-                                        logger.i('data: ' + data);
                                     logger.e(errorType + ', ' + error);
                                 }
                         });
@@ -216,7 +213,7 @@ dd.ready(function() {
 						if(info.errcode === 0) {
 							logger.i('book_id: ' + info.book_id);
 							logger.i('item_id: ' + info.item_id);
-							window.location.href = "http://120.26.118.14/index.php/share/detail/" + info.item_id;
+							window.location.href = "/share/detail/" + info.item_id;
 						}
 						
 					},

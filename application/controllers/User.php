@@ -22,9 +22,9 @@ class User extends CI_Controller {
 
 	public function login()
 	{
-		$result = $this->session->userdata('corpid');
+		$result = $this->session->userdata('user_id');
 		if(!empty($result)){
-			redirect('share/book?corpId='.$result);
+			redirect('share/book');
 		}
 
 		$this->load->view('include/header');
