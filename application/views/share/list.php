@@ -19,10 +19,10 @@
       <?php } ?>
     
    </div>
-   <div class="span6">
-    <div style='width: 100%; height: 1.2rem; background-color: white; padding: 0.2rem 0; border-bottom: 1px solid #999' class="nav_bk nav-pills_bk">
-      <a style='width: 49%; border-right: 1px solid #999; line-height: 0.8rem; font-size: 0.32rem; text-align:center; color: #333' href="<?php echo site_url($link_time);?>"><?php if($search_data['order_time']){echo '时间升序';}else{echo '时间降序';}?></a>
-      <a style='width: 50%; line-height: 0.8rem; font-size: 0.32rem; text-align:center; color: #333' href="<?php echo site_url($link_name);?>"><?php if($search_data['order_name']){echo 'Z-A';}else{echo 'A-Z';}?></a>
+   <div style='width: 100%'>
+    <div style='width: 100%; height: 0.8rem; background-color: white; padding: 0.2rem 0; border-bottom: 1px solid #999' class="nav_bk nav-pills_bk">
+      <a style='display: inline-block; width: 49%; border-right: 1px solid #999; line-height: 0.8rem; font-size: 0.32rem; text-align:center; color: #333' href="<?php echo site_url($link_time);?>"><?php if($search_data['order_time']){echo '时间升序';}else{echo '时间降序';}?></a>
+      <a style='display: inline-block; width: 50%; line-height: 0.8rem; font-size: 0.32rem; text-align:center; color: #333' href="<?php echo site_url($link_name);?>"><?php if($search_data['order_name']){echo 'Z-A';}else{echo 'A-Z';}?></a>
     </div>
    </div>
 
