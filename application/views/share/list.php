@@ -17,6 +17,7 @@
         The books in this page are published by <b><?php echo anchor('share/publisher?publisher_id=' . $publisher['id'] , $publisher['name']);?></b> 
       </div>
       <?php } ?>
+   </div>
     
    <div style='width: 100%; background-color: #E0E0E0'>
        <div class="">
@@ -30,7 +31,6 @@
        </div>
    </div>
 
-   </div>
    <div style='width: 100%; background-color: #F8F8F8'>
     <div style='width: 100%; height: 0.8rem; background-color: white; padding: 0.2rem 0; border-bottom: 1px solid #999' class="nav_bk nav-pills_bk">
       <a style='float: lfet; display: inline-block; width: 4.965rem; border-right: 1px solid #999; line-height: 0.8rem; font-size: 0.32rem; text-align:center; color: #333' href="<?php echo site_url($link_time);?>"><?php if($search_data['order_time']){echo '时间升序';}else{echo '时间降序';}?></a>
