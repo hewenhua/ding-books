@@ -31,8 +31,8 @@
 
    <div style='width: 100%;'>
     <div style='width: 100%; height: 0.8rem; border-bottom: 1px solid #999' class="nav_bk nav-pills_bk">
-      <a style='float: left; display: inline-block; width: 4.965rem; border-right: 1px solid #999; line-height: 0.8rem; font-size: 0.32rem; text-align:center; color: #333' href="<?php echo site_url($link_time);?>"><?php if($search_data['order_time']){echo '时间升序';}else{echo '时间降序';}?></a>
-      <a style='float: left; display: inline-block; width: 4.965rem; line-height: 0.8rem; font-size: 0.32rem; text-align:center; color: #333' href="<?php echo site_url($link_name);?>"><?php if($search_data['order_name']){echo 'Z-A';}else{echo 'A-Z';}?></a>
+      <a style='float: left; display: inline-block; width: 4.965rem; border-right: 1px solid #999; line-height: 0.8rem; font-size: 0.32rem; text-align:center; color: #38adff' href="<?php echo site_url($link_time);?>"><?php if($search_data['order_time']){echo '时间升序';}else{echo '时间降序';}?></a>
+      <a style='float: left; display: inline-block; width: 4.965rem; line-height: 0.8rem; font-size: 0.32rem; text-align:center; color: #38adff' href="<?php echo site_url($link_name);?>"><?php if($search_data['order_name']){echo 'Z-A';}else{echo 'A-Z';}?></a>
     </div>
    </div>
    <button class="btn btn-block btn-default J_method_btn" data-method="biz.util.scan" data-param='{"type":"barCode"}' data-action="share">扫码分享</button>
@@ -41,6 +41,7 @@
       <?php 
       foreach ($items as $key => $item) { ?>
         <div class="book-item">
+          <div class='book-intro'>
             <a href="<?php echo $item['douban_url']; ?>" class="book-img-link">
                 <img class="book-image" src="<?php echo $item['image_url'];?>" >
             </a>
@@ -85,7 +86,8 @@
               <!-- book owner infomation  -->
               <p class='book-owner'><span><?php echo $user_anchor;?></span></p>
             </div>
-            <div class='book-desc'><?php echo $item['description'];?></div>
+          </div>
+          <div class='book-desc'><?php echo $item['description'];?></div>
         </div>
       <?php }?>
     <div class="pagination">
