@@ -27,16 +27,23 @@
 }
 
 .book-image{
-  width: 2rem;
+  width: 2.3rem;
   height: 3rem;
 }
 
 .book-info{
   float: left;
-  width: 7rem;
+  width: 6.5rem;
 }
 
 .book-desc{
-  height: 2rem;
+  margin: 0.2rem 0;
+  line-height: 0.42667rem;
+  font-size: 0.34667rem;
+  height: 2.15rem;
+  /* 仅webkit支持 */
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
   overflow: hidden;
 }
