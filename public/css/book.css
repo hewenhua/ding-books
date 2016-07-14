@@ -23,9 +23,9 @@ body{width: 10rem;overflow: hidden;}
 .head-nav .active{
   color: #38adff;
 }
-.nav-tab-icon:{
-  line-height:0.48rem;
-  font-size:0.48rem;
+.nav-tab-icon{
+  line-height:0.52rem;
+  font-size:0.5rem;
 }
 .app{height: 1.2rem; width:100%; background: #38adff; line-height: 1.2rem; color: white;}
 .app-name{float:left;font-size:0.45rem;font-family:iconfont;margin-left:0.45rem;}

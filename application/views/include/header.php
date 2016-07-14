@@ -6,7 +6,13 @@ $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 
   <head>
     <meta charset="utf-8">
     <title>闲书漂流</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no,email=no"/>
+    <meta name="apple-touch-fullscreen" content="yes"/>
+    <meta name="x5-fullscreen" content="yes"/>
+    <meta name="full-screen" content="yes"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <script src="//g.alicdn.com/kg/m-base/2.0.3/index.js"></script>
     <link href="//g.alicdn.com/kg/m-base/2.0.3/reset.css" rel="styleSheet" type="text/css"/>
     <script src="/public/js/jquery.min.js"></script>
