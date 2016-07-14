@@ -98,14 +98,3 @@
     
   </div>
 </div>
-
-<style type="text/css">
-      .book_image {
-        margin-left: 5px;
-        margin-top: 5px;
-        margin-bottom: 5px;
-
-        width: 100px; 
-        height: 130px;
-      }
-</style>
