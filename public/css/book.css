@@ -10,15 +10,22 @@ body{width: 10rem;overflow: hidden;}
 
 .head-nav a, .head-nav-item{
   float: left;
-  height: 1.2rem;
+  height: 1rem;
   width: 3.333rem;
   text-align: center;
   background-color: #f1f1f1;
   color: #808080;
   font-family: iconfont;
+  line-height: 0.4rem;
+  font-size: 0.36rem;
+  padding-top: 0.2rem;
 }
 .head-nav .active{
   color: #38adff;
+}
+.nav-tab-icon:{
+  line-height:0.48rem;
+  font-size:0.48rem;
 }
 .app{height: 1.2rem; width:100%; background: #38adff; line-height: 1.2rem; color: white;}
 .app-name{float:left;font-size:0.45rem;font-family:iconfont;margin-left:0.45rem;}
