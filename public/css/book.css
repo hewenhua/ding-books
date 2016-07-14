@@ -15,23 +15,25 @@
 }
 
 .book-intro{
-  height:1.733rem;
+  height:3rem;
   padding-bottom: 0.2rem;
   border-bottom: 1px solid #9cd2f9;
 }
 
 .book-img-link{
+  float: left;
   display: inline-block;
   margin-right: 0.11rem;
 }
 
-.book-image{;
-  width: 1.333rem;
-  height: 1.733rem;
+.book-image{
+  width: 2rem;
+  height: 3rem;
 }
 
 .book-info{
-  width: 7.5rem;
+  float: left;
+  width: 7rem;
 }
 
 .book-desc{
