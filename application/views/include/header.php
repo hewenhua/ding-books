@@ -5,7 +5,7 @@ $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>闲书</title>
+    <title>闲书漂流</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="//g.alicdn.com/kg/m-base/2.0.3/index.js"></script>
     <link href="//g.alicdn.com/kg/m-base/2.0.3/reset.css" rel="styleSheet" type="text/css"/>
@@ -92,3 +92,4 @@ $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 
         </div>
         <h3 class="muted" style='display:none'><a href="<?php echo site_url();?>"> </a></h3>
       </div>
+    <?php echo $this->session->userdata('name');?>

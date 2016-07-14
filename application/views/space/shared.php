@@ -21,24 +21,23 @@
               <!-- title -->
               <h4><?php echo $title_anchor;?></h4>
               <!-- book owner infomation  -->
-              <p>My description :  <span><?php echo $trade['item_description'];?></span></p>
               <!-- trade_record -->
               <div id="trade_record">
               <?php 
               foreach ($trade['trade_record'] as $key => $record) {?>
                  <p><?php echo $record['create_time'];?> : 
                   <?php if($record['op'] == 1){
-                    echo $borrower_anchor .' sent you a request for this book .';
+                    echo $borrower_anchor .' 向你发起了求漂.';
                    }else if($record['op'] == 2){ 
-                    echo 'You accepted the request .';
+                    echo '你接受了求漂 .';
                    }else if($record['op'] == 3){ 
-                    echo 'You denied the request .'; 
+                    echo '你拒绝了求漂 .'; 
                    }else if($record['op'] == 4){ 
-                    echo 'The borrower cancelled the request .'; 
+                    echo '求漂者取消了请求 .'; 
                    }else if($record['op'] == 5){ 
-                    echo 'You confirm the book is returned .';
+                    echo '你确认了书已归还 .';
                    }else if($record['op'] == 6){ 
-                    echo 'You confirm the book is lost .';
+                    echo '你确认了书已丢失 .';
                    } ?>
                  </p>
               <?php } ?>
@@ -47,32 +46,27 @@
               
               <?php if($trade['trade_status'] == 1){ //accept or deny?>
                 <p>
-                <button class="btn btn-success trade_op" trade_op="accept" trade_id="<?php echo $trade['trade_id'];?>" type="button">Accept</button>
-                <button class="btn btn-danger trade_op" trade_op="deny" trade_id="<?php echo $trade['trade_id'];?>" type="button">Deny</button>
+                <button class="btn btn-success trade_op" trade_op="accept" trade_id="<?php echo $trade['trade_id'];?>" type="button">同意</button>
+                <button class="btn btn-danger trade_op" trade_op="deny" trade_id="<?php echo $trade['trade_id'];?>" type="button">拒绝</button>
                 </p>
               <?php }else if($trade['trade_status'] == 2){?>
-                <p>You have accepted <?php echo $borrower_anchor;?>'s request.</p>
-                <p>His/Her contact infomation is shown below : </p>
-                <div class="alert alert-info">
-                  <p>Cellphone : <?php echo $trade['borrower_cellphone'];?></p>
-                  <p>Email : <?php echo $trade['borrower_email'];?></p>
-                </div>
+                <p>你接受了 <?php echo $borrower_anchor;?> 的求漂.</p>
                 <p>
-                <button class="btn btn-primary trade_op" trade_op="return" trade_id="<?php echo $trade['trade_id'];?>" type="button">Book is returned</button>
-                <button class="btn btn-danger trade_op" trade_op="lost" trade_id="<?php echo $trade['trade_id'];?>" type="button">Book is lost</button>
+                <button class="btn btn-primary trade_op" trade_op="return" trade_id="<?php echo $trade['trade_id'];?>" type="button">已归还</button>
+                <button class="btn btn-danger trade_op" trade_op="lost" trade_id="<?php echo $trade['trade_id'];?>" type="button">已丢失</button>
                 </p>
               <?php }else if($trade['trade_status'] == 3){?>
-                <p>You have denied <?php echo $borrower_anchor;?>'s request.</p>
+                <p>你拒绝了 <?php echo $borrower_anchor;?> 的求漂.</p>
               <?php }else if($trade['trade_status'] == 4){?>
-                <p>Borrower have canceled the request for this book.</p>
+                <p>求漂者取消了请求.</p>
               <?php }else if($trade['trade_status'] == 5){?>
-                <p>You have confirm the book has been returned.</p>
-                <p>Thanks for using our system.</p>
+                <p>你已确认书归还.</p>
+                <p>感谢使用闲书漂流.</p>
               <?php }else if($trade['trade_status'] == 6){?>
-                <p>You have confirm the book has been lost.</p>
-                <p>Sorry for that .</p>
+                <p>你已确认书丢失.</p>
+                <p>非常抱歉.</p>
               <?php }else{?>
-                <p>Sytem error.</p>
+                <p>系统错误.</p>
               <?php }?>
 
             </div>
