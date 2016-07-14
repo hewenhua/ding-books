@@ -3,9 +3,20 @@
   src: url('//at.alicdn.com/t/font_1468502274_3527036.ttf') format('truetype');
 }
 
-body{
-  width: 10rem;
-  overflow: hidden;
+body{width: 10rem;overflow: hidden;}
+
+.head-nav {position: fixed;bottom: 0;left: 0; width: 10rem; height: 1.2rem;}
+
+.head-nav a, .head-nav-item{
+  float: left;
+  height: 1.2rem;
+  width: 3.333rem;
+  text-align: center;
+  background-color: #f1f1f1;
+  color: #808080;
+}
+.head-nav .active{
+  color: #38adff;
 }
 .app{height: 1.2rem; width:100%; background: #38adff; line-height: 1.2rem; color: white;}
 .app-name{float:left;font-size:0.45rem;font-family:iconfont;margin-left:0.45rem;}

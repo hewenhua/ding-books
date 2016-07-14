@@ -60,26 +60,6 @@ $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 
       .marketing p + h4 {
         margin-top: 28px;
       }
-      .head-nav {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 10rem;
-        height: 0.8rem;
-      }
-      .head-nav div a{
-        display: inline-block;
-        float: left;
-        height: 0.8rem;
-        line-height: 0.8rem;
-        width: 3.333333333rem;
-        text-align: center;
-        background-color: #aaaaaa;
-        color: white;
-      }
-      .head-nav .active{
-        background-color: #666666;
-      }
     </style>
   </head>
 
@@ -91,9 +71,9 @@ $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 
       </div>
       <div class="masthead">
         <div class="head-nav">
-          <div <?php if($this->uri->segment(1) == '') echo "class='active'";?> ><a href="<?php echo site_url();?>">发现</a></div>
-          <div><a href="#">放漂</a></div>
-          <div <?php if($this->uri->segment(1) == 'space') echo "class='active'";?> ><a href="<?php echo site_url('space/items');?>">我的</a></div>
+          <a href="<?php echo site_url();?>" <?php if($this->uri->segment(1) == '') echo "class='active'";?> ><span></span><span >发现</span></a>
+          <div class='head-nav-item'><span>放漂</span></span>
+          <a href="<?php echo site_url('space/items');?>" <?php if($this->uri->segment(1) == 'space') echo "class='active'";?> ><span></span><span>我的</span></a>
         </div>
         <h3 class="muted" style='display:none'><a href="<?php echo site_url();?>"> </a></h3>
       </div>
