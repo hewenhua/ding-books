@@ -3,6 +3,8 @@
   src: url('//at.alicdn.com/t/font_1468502274_3527036.ttf') format('truetype');
 }
 
-.app{height: 1rem; width:100%; background: #38adff; line-height: 1rem; color: white;}
-.app-name{float:left;font-size:0.45rem;font-family:iconfont;}
+.app{height: 1.2rem; width:100%; background: #38adff; line-height: 1.2rem; color: white;}
+.app-name{float:left;font-size:0.45rem;font-family:iconfont;margin-left:0.45rem;}
 .app-username{float:right;}
+.search-area{background:#9cd2f9;width:100%;}
+.search-input{height:0.85rem;width:0.9rem;padding:0 0.2rem;margin:0.2rem 0.3rem;outline:none;border:none;border-radius:0.1rem;}

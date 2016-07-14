@@ -18,17 +18,15 @@
       </div>
       <?php } ?>
    </div>
-    
-   <div style='width: 100%; background-color: #E0E0E0'>
-       <div class="">
-         <form style='margin: 0 0; height: 0.8rem;' action="<?php echo site_url('share/' . $page  );?>" method="get" >
-         <input style='outline: none;border: none;border-radius: 0.6rem;height: 0.6rem;width: 8.5rem;margin: 0.1rem 0.3rem 0 0;' class="span2" type="text" name="keyword" value="<?php echo $search_data['keyword'];?>">
-         <?php if($page != 'book'){?>
-         <input class="hide" name="<?php echo $page.'_id';?>" value="<?php echo $search_data[$page.'_id'];?>">
-         <?php }?>
-         <button class="btn" name="submit" type="submit" >搜索</button>
-         </form>
-       </div>
+
+   <div class="search-area">
+     <form action="<?php echo site_url('share/' . $page  );?>" method="get" >
+     <input placeholder='请输入书名查询' class="search-input" type="text" name="keyword" value="<?php echo $search_data['keyword'];?>">
+     <?php if($page != 'book'){?>
+     <input class="hide" name="<?php echo $page.'_id';?>" value="<?php echo $search_data[$page.'_id'];?>">
+     <?php }?>
+     <button style='display:none' id='searchButton' class="btn" name="submit" type="submit" >搜索</button>
+     </form>
    </div>
 
    <div style='width: 100%; background-color: #F8F8F8'>

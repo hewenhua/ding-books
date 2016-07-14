@@ -86,7 +86,7 @@ $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 
   <body>
     <div class="container-narrow">
       <div class="app">
-        <span class='app-name'>&#xe600;闲书</span>
+        <span class='app-name'>&#xe600; 闲书</span>
         <span class='app-username'><?php echo $this->session->userdata('name');?></span>
       </div>
       <div class="masthead">
