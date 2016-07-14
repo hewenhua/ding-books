@@ -29,30 +29,22 @@
      </form>
    </div>
 
-   <div style='width: 100%; background-color: #F8F8F8'>
-    <div style='width: 100%; height: 0.8rem; padding: 0.2rem 0; border-bottom: 1px solid #999' class="nav_bk nav-pills_bk">
+   <div style='width: 100%;'>
+    <div style='width: 100%; height: 0.8rem; border-bottom: 1px solid #999' class="nav_bk nav-pills_bk">
       <a style='float: left; display: inline-block; width: 4.965rem; border-right: 1px solid #999; line-height: 0.8rem; font-size: 0.32rem; text-align:center; color: #333' href="<?php echo site_url($link_time);?>"><?php if($search_data['order_time']){echo '时间升序';}else{echo '时间降序';}?></a>
       <a style='float: left; display: inline-block; width: 4.965rem; line-height: 0.8rem; font-size: 0.32rem; text-align:center; color: #333' href="<?php echo site_url($link_name);?>"><?php if($search_data['order_name']){echo 'Z-A';}else{echo 'A-Z';}?></a>
     </div>
    </div>
+   <button class="btn btn-block btn-default J_method_btn" data-method="biz.util.scan" data-param='{"type":"barCode"}' data-action="share">扫码分享</button>
 
-  <hr>
-
-	  <button class="btn btn-block btn-default J_method_btn" data-method="biz.util.scan" data-param='{"type":"barCode"}' data-action="share">扫码分享</button>
-  <div class="span9">
-	<div>
-	<a href="<?php echo site_url("space/share");?>">扫描遇到问题？</a>
-	</div>
-  	<ul class="thumbnails">
+  <div class="book-list">
       <?php 
       foreach ($items as $key => $item) { ?>
-      <li class="span9">
-        <div class="thumbnail">
-          <div class="row">
-            <a href="<?php echo $item['douban_url']; ?>" class="span2">
-            <img class="book_image" src="<?php echo $item['image_url'];?>" >
+        <div class="book-item">
+            <a href="<?php echo $item['douban_url']; ?>" class="book-img-link">
+                <img class="book-image" src="<?php echo $item['image_url'];?>" >
             </a>
-            <div class="span6">
+            <div class="book-info">
               <?php
               $title_anchor = anchor_popup(site_url('share/detail/'.$item['item_id']) , $item['title'] );
               $authors_anchor = array();
@@ -69,9 +61,9 @@
               $user_anchor = anchor_popup(site_url('share/user?user_id='.$item['user_id']) , $item['username'] );
               ?>
               <!-- title -->
-              <h4><?php echo $title_anchor;?></h4>
+              <h4 class='book-title'><?php echo $title_anchor;?></h4>
               <!-- author and translator -->
-              <p>
+              <p class='book-author'>
               <?php
               foreach ($authors_anchor as $key => $author_anchor) {
                 echo "<span>" . $author_anchor . "</span>";
@@ -89,15 +81,13 @@
               ?>
               </p>
               <!-- publihser -->
-              <p><span><?php echo $publisher_anchor;?></span>   <span><?php echo $item['pubdate'];?></span></p>
+              <p class='book-publisher'><span><?php echo $publisher_anchor;?></span>   <span><?php echo $item['pubdate'];?></span></p>
               <!-- book owner infomation  -->
-              <p><span><?php echo $user_anchor;?></span> : <span><?php echo $item['description'];?></span></p>
+              <p class='book-owner'><span><?php echo $user_anchor;?></span></p>
             </div>
-          </div>
+            <div class='book-desc'><?php echo $item['description'];?></div>
         </div>
-      </li>
       <?php }?>
-    </ul>
     <div class="pagination">
       <ul>
       <?php foreach ($link_array as $key => $value) {echo $value;}?>
@@ -107,11 +97,7 @@
   </div>
 </div>
 
-<script type="text/javascript">
-  
-</script>
-
- <style type="text/css">
+<style type="text/css">
       .book_image {
         margin-left: 5px;
         margin-top: 5px;
