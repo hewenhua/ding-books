@@ -10,7 +10,8 @@ $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 
     <script src="//g.alicdn.com/kg/m-base/2.0.3/index.js"></script>
     <link href="//g.alicdn.com/kg/m-base/2.0.3/reset.css" rel="styleSheet" type="text/css"/>
     <script src="/public/js/jquery.min.js"></script>
-    <link href="/public/css/bootstrap.min_bk.css" rel="stylesheet">
+    <link href="/public/css/bootstrap.min_bk.css" rel="stylesheet" />
+    <link href="/public/css/book.css" rel='stylesheet' />
     <script src="/public/js/bootstrap.min_bk.js"></script>
     <script src="/public/js/api.js"></script>
     <script type="text/javascript" src="/openapi/public/javascripts/zepto.min.js"></script>
@@ -84,6 +85,10 @@ $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 
 
   <body>
     <div class="container-narrow">
+      <div class="app">
+        <span class='app-name'>&#xe600;闲书</span>
+        <span class='app-username'><?php echo $this->session->userdata('name');?></span>
+      </div>
       <div class="masthead">
         <div class="head-nav">
           <div <?php if($this->uri->segment(1) == '') echo "class='active'";?> ><a href="<?php echo site_url();?>">发现</a></div>
@@ -92,4 +97,3 @@ $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 
         </div>
         <h3 class="muted" style='display:none'><a href="<?php echo site_url();?>"> </a></h3>
       </div>
-    <?php echo $this->session->userdata('name');?>

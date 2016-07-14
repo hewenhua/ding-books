@@ -1,0 +1,8 @@
+@font-face {
+  font-family: 'iconfont';
+  src: url('//at.alicdn.com/t/font_1468502274_3527036.ttf') format('truetype');
+}
+
+.app{height: 1rem; width:100%; background: #38adff; line-height: 1rem; color: white;}
+.app-name{float:left;font-size:0.45rem;font-family:iconfont;}
+.app-username{float:right;}
