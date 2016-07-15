@@ -48,7 +48,7 @@
             <div class="book-info">
               <h4 class='book-title'><?php echo $item['title'];?></h4>
               <div class='book-desc'><?php echo $item['description'];?></div>
-              <span class='book-author'><?php foreach($item['authors'] as $key => $item){ echo $item[name] . ' '; }?></span>
+              <span class='book-author'><?php foreach($item['authors'] as $key => $author){ echo $author['name'] . ' '; }?></span>
             </div>
           </div>
         </div>
