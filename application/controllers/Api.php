@@ -134,6 +134,10 @@ class Api extends CI_Controller {
 		$info = $this->input->get_post('info');
 		$userid = $this->input->get_post('userId');
 		$username = $this->input->get_post('userName');
+        $address = $this->input->get_post('address');
+        $latitude = $this->input->get_post('latitude');
+        $longitude = $this->input->get_post('longitude');
+
         $info = json_decode($info,true);
 		$isbn = $info['text'];
 		

@@ -18,20 +18,22 @@ class Share_model extends CI_Model{
 	// 5 - returned 
 	// 6 - lost
 
-	function createItem($book_id , $user_id , $description){
+	function createItem($book_id , $user_id , $description , $latitude = null , $longitude = null , $address = null ){
 		$insert_arr = array(
 			'book_id' => $book_id ,
 			'user_id' => $user_id ,
 			'description' => $description ,
+            'latitude' => $latitude,
+            'longitude' => $longitude,
 			'status' => 1
 			);
 		$this->db->insert('item' , $insert_arr);
 		$item_id = $this->db->insert_id();
-		$this->afterCreateItem($item_id);
+		$this->afterCreateItem($item_id,$address);
 		return $item_id;
 	}
 
-	function afterCreateItem($item_id){
+	function afterCreateItem($item_id , $address = null){
 		$item_view = array();
 		$item_query = $this->db->query("SELECT * FROM item WHERE id = $item_id ");
                 if($item_query->num_rows() != 1)
@@ -64,6 +66,7 @@ class Share_model extends CI_Model{
 
 		$item_view['create_time'] = date('Y-m-d H:i:s');
 		$item_view['corpid'] = $this->session->userdata('corpid');
+        $item_view['address'] = $address;
 
 		return $this->db->insert('item_view',$item_view);
 	}

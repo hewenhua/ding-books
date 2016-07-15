@@ -35,14 +35,15 @@ dd.config({
         'device.notification.confirm',
         'device.notification.alert',
         'device.notification.prompt',
+        'device.geolocation.get',
         'biz.chat.open',
         'biz.util.open',
         'biz.user.get',
         'biz.contact.choose',
         'biz.telephone.call',
         'biz.util.uploadImage',
-	'biz.util.qrcode',
-	'biz.util.scan',
+	    'biz.util.qrcode',
+	    'biz.util.scan',
         'biz.ding.post']
 });
 dd.userid=0;
@@ -200,11 +201,22 @@ dd.ready(function() {
                     message: '传参：' + JSON.stringify(param, null, 4) + '\n' + '响应：' + JSON.stringify(result, null, 4)
                 });
             } else if(action === 'share'){
-				        info = JSON.stringify(result);
+                dd.device.geolocation.get({
+                    onSuccess: function(location) {
+                        dd.address = location.address;
+                        dd.latitude = location.latitude;
+                        dd.longitude = location.longitude;
+                    },
+                    onFail: function(err) {
+                        logger.e('fail: ' + JSON.stringify(err));
+                    }
+                });
+
+                info = JSON.stringify(result);
                 $.ajax({
                   url: '/api/spaceShare',
                   type:"POST",
-                  data: {"event":"space_share","userId":dd.userid,"corpId":_config.corpId,"info":info},
+                  data: {"event":"space_share","userId":dd.userid,"corpId":_config.corpId,"info":info,"address":dd.address,"latitude":dd.latitude,"longitude":dd.longitude},
                   dataType:'json',
                   timeout: 900,
                   success: function (data, status, xhr) {

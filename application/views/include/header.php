@@ -16,9 +16,7 @@ $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 
     <script src="//g.alicdn.com/kg/m-base/2.0.3/index.js"></script>
     <link href="//g.alicdn.com/kg/m-base/2.0.3/reset.css" rel="styleSheet" type="text/css"/>
     <script src="/public/js/jquery.min.js"></script>
-    <link href="/public/css/bootstrap.min_bk.css" rel="stylesheet" />
     <link href="/public/css/book.css" rel='stylesheet' />
-    <script src="/public/js/bootstrap.min_bk.js"></script>
     <script src="/public/js/api.js"></script>
     <script type="text/javascript" src="/openapi/public/javascripts/zepto.min.js"></script>
     <script type="text/javascript" src="https://g.alicdn.com/ilw/ding/0.9.2/scripts/dingtalk.js"></script>
@@ -81,5 +79,4 @@ $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 
           <div <?php if($this->uri->segment(1) == 'space'){echo "class='active head-nav-item'";} else {echo "class='head-nav-item'";}?> id='J_Share_Button' data-method="biz.util.scan" data-param='{"type":"barCode"}' data-action="share"><span class='nav-tab-icon'>&#xe603;</span><br /><span>放漂</span></div>
           <a href="<?php echo site_url('space/items');?>" <?php if($this->uri->segment(1) == 'space') echo "class='active'";?> ><span class='nav-tab-icon'>&#xe602;</span><br /><span>我的</span></a>
         </div>
-        <h3 class="muted" style='display:none'><a href="<?php echo site_url();?>"> </a></h3>
       </div>
