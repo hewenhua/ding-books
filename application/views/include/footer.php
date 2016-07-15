@@ -6,7 +6,10 @@
     <script type="text/javascript" src="/openapi/public/javascripts/logger.js"></script>
     <script type="text/javascript" src="/openapi/public/javascripts/demo.js"></script>
     <script type="text/javascript">
-	
+	   $('#J_More').on('click', function(e){
+	    alert(1);
+	    getMore(e);
+	   });
     </script>
   </body>
 </html>

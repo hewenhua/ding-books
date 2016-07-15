@@ -56,6 +56,6 @@
       <?php }?>
 <?php if(empty($more)):?>
   </div>
-  <div onclick='javascript:getMore(e);' class='more' id='J_More' data-next-page='2'>加载更多</div>
+  <div class='more' id='J_More' data-next-page='2'>加载更多</div>
   </div>
 <?php endif;?>
