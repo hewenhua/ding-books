@@ -7,10 +7,10 @@
     <script type="text/javascript" src="/openapi/public/javascripts/demo.js"></script>
     <script type="text/javascript">
 	   $('#J_More').on('click', function(e){
-	      alert(1);
+	      //alert(1);
 	      var $elem = $(e.target);
-          var pageNum = $elem.attr('data-next-page');
-          alert(pageNum);
+          var pageNum = parseInt($elem.attr('data-next-page'));
+          //alert(pageNum);
           $.ajax({
             data: {
               more: 1,
@@ -20,11 +20,15 @@
               // Supposing this JSON payload was received:
               //   {"project": {"id": 42, "html": "<div>..." }}
               // append the HTML to context object.
-              $('#bookList').append(data);
-              $elem.attr('data-next-page', pageNum + 1 );
+              if(data == ''){
+                alert && alert('已加载到最后一页');
+              } else {
+                $('#bookList').append(data);
+                $elem.attr('data-next-page', pageNum + 1 );
+              }
             },
             error: function(xhr, type){
-              alert('Ajax error!');
+              //alert('Ajax error!');
             }
           });
 	   });
