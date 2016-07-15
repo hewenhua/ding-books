@@ -1,5 +1,5 @@
+<?php if(empty($more)):?>
 <div class="row">
-
 
    <div class="span9" style="display: none">
     
@@ -38,6 +38,7 @@
    <button style='display:none' class="btn btn-block btn-default J_method_btn" data-method="biz.util.scan" data-param='{"type":"barCode"}' data-action="share">扫码分享</button>
 
   <div class="book-list">
+    <?php endif;?>
       <?php 
       foreach ($items as $key => $item) { ?>
         <div class="book-item">
@@ -60,4 +61,6 @@
     </div>
     
   </div>
+<?php if(empty($more)):?>
 </div>
+<?php endif;?>

@@ -29,6 +29,7 @@ class Share extends CI_Controller {
 		);
 
 		$offset = $this->input->get_post('offset');
+        $more = $this->input->get_post('more');
 		$limit = $this->limit;
 
 		if($this->session->userdata('user_id')){
@@ -61,10 +62,15 @@ class Share extends CI_Controller {
 			array('name'=>'order_time','value'=>(1-$data['search_data']['order_time']) ));
 		$data['link_name'] = url_maker( $data['search_data'] , 'share/' . __FUNCTION__  , 
 			array('name'=>'order_name','value'=>(1-$data['search_data']['order_name']) ));
-
-		$this->load->view('include/header' , $data);
-		$this->load->view('share/list');
-		$this->load->view('include/footer');
+    
+        $data['more'] = $more;
+        if(empty($more)){
+		    $this->load->view('include/header' , $data);
+        }
+		$this->load->view('share/list',$data);
+        if(empty($more)){
+		    $this->load->view('include/footer');
+        }
 	}
 
 	public function detail($item_id){
