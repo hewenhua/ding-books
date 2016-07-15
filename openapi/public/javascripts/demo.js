@@ -58,6 +58,16 @@ dd.ready(function() {
             logger.e('fail: ' + JSON.stringify(err));
         }
     });
+    dd.device.geolocation.get({
+                        onSuccess: function(location) {
+                            dd.address = location.address;
+                            dd.latitude = location.latitude;
+                            dd.longitude = location.longitude;
+                        },
+                        onFail: function(err) {
+                            logger.e('fail: ' + JSON.stringify(err));
+                        }
+    });
 
     dd.runtime.permission.requestAuthCode({
         corpId: _config.corpId, //企业id
@@ -80,10 +90,11 @@ dd.ready(function() {
 						$.ajax({
                                 url: '/api/userUpdate',
                                 type:"POST",
-                                data: {"userId":dd.userid,"userName":dd.username,"corpId":_config.corpId,"department":dd.department},
+                                data: {"userId":dd.userid,"userName":dd.username,"corpId":_config.corpId,"department":dd.department,"latitude":dd.latitude,"longitude":dd.longitude},
                                 dataType:'json',
                                 timeout: 900,
                                 success: function (data, status, xhr) {
+                        
                                 logger.i('user data: ' + data);
                                     var res = JSON.parse(data);
                                     if (res.process_login=== true){
@@ -195,22 +206,22 @@ dd.ready(function() {
         }
 		    param.onSuccess = function(result) {
             if (action === 'alert') {
+                dd.device.geolocation.get({
+                        onSuccess: function(location) {
+                            dd.address = location.address;
+                            dd.latitude = location.latitude;
+                            dd.longitude = location.longitude;
                 dd.device.notification.alert({
                     title: method,
-                    message: '传参：' + JSON.stringify(param, null, 4) + '\n' + '响应：' + JSON.stringify(result, null, 4)
+                    message: fy(param, null, 4) + '\n' + '响应：' + JSON.stringify(result, null, 4)
                 });
-            } else if(action === 'share'){
-                dd.device.geolocation.get({
-                    onSuccess: function(location) {
-                        dd.address = location.address;
-                        dd.latitude = location.latitude;
-                        dd.longitude = location.longitude;
-                    },
-                    onFail: function(err) {
-                        logger.e('fail: ' + JSON.stringify(err));
-                    }
-                });
+                        },
+                        onFail: function(err) {
+                            logger.e('fail: ' + JSON.stringify(err));
+                        }
+                    });
 
+            } else if(action === 'share'){
                 info = JSON.stringify(result);
                 $.ajax({
                   url: '/api/spaceShare',

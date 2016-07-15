@@ -25,7 +25,7 @@ class Share_model extends CI_Model{
 			'description' => $description ,
             'latitude' => $latitude,
             'longitude' => $longitude,
-            'address' => $address,
+            'location' => $address,
 			'status' => 1
 			);
 		$this->db->insert('item' , $insert_arr);
@@ -68,7 +68,7 @@ class Share_model extends CI_Model{
 		$item_view['create_time'] = date('Y-m-d H:i:s');
         $item_view['corpid'] = $this->session->userdata('corpid');
 		$item_view['department'] = $this->session->userdata('department');
-        $item_view['address'] = $address;
+        $item_view['location'] = $address;
 
 		return $this->db->insert('item_view',$item_view);
 	}
@@ -88,6 +88,7 @@ class Share_model extends CI_Model{
                         return 0;
                 $item_row = $item_query->first_row();
 		$this->db->where('item_id',$item_id);
+        $item_view['create_time'] = date('Y-m-d H:i:s');
 		$item_view['item_status'] = $item_row->status;
 		return $this->db->update('item_view',$item_view);
 	}

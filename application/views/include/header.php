@@ -5,7 +5,7 @@ $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>闲书漂流</title>
+    <title>企业图书馆</title>
     <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no"/>
     <meta name="format-detection" content="telephone=no,email=no"/>
     <meta name="apple-touch-fullscreen" content="yes"/>

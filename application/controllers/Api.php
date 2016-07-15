@@ -16,13 +16,17 @@ class Api extends CI_Controller {
 		$user_name = $this->input->get_post('userName');
 		$corp_id = $this->input->get_post('corpId');
         $department = $this->input->get_post('department');
+        $latitude = $this->input->get_post('latitude');
+        $longitude = $this->input->get_post('longitude');
 		$input = array(
 						'cellphone' => $userid,
 						'username' => $user_name,
 						'password' => $userid,
 						'userid' => $userid,
 						'corpid' => $corp_id,
-                        'department' => $department,
+                        'latitude' => $latitude,
+                        'longitude' => $longitude,
+                        'department' => json_encode($department),
 					  );
 
 		$query = $this->db->query("SELECT * FROM user WHERE userid = '$userid' AND corpid = '$corp_id' ");
@@ -38,9 +42,9 @@ class Api extends CI_Controller {
 		}else{
 			$row = $query->first_row();
 			$id = $row->id;	
-            if($row->department != $department || $user_name != $row->username){
+            if($row->department != $department || $user_name != $row->username || $latitude != $row->latitude || $longitude != $row->longitude){
 			    unset($input['password']);
-			    $this->user_model->updateProfile($input,$id);
+			    $flag = $this->user_model->updateProfile($input,$id);
             }
 		}
 
@@ -168,9 +172,10 @@ class Api extends CI_Controller {
         $this->load->model('share_model');
 		$description = isset($data['title']) ? $data['title'] : "";
         if($item_id = $this->share_model->isDuplicateItem($book_id , $user_id)){
-            $this->share_model->updateItem($book_id,array('latitude'=>$latitude,'longitude'=>$longitude,'address'=>$address));
+            $data = array('latitude'=>$latitude,'longitude'=>$longitude,'location'=>$address,'status'=>1);
+            $this->share_model->updateItem($item_id,$data);
         }else{
-        	$item_id = $this->share_model->createItem( $book_id , $user_id , $description );
+        	$item_id = $this->share_model->createItem( $book_id , $user_id , $description , $latitude , $longitude , $address);
 		}
 
         $output = array(
