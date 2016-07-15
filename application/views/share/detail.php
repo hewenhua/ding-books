@@ -7,7 +7,6 @@
       <span ><?php foreach($item['authors'] as $key => $author){ echo $author['name'] . ' '; }?></span>
       <span><?php echo $item['publisher_name'];?></span>
       <span><?php echo $item['pubdate'];?></span>
-      <span><?php echo $item['username'];?></span>
       <span class="label label-success share_status detail-share-state">
         <?php if($item['item_status'] == 1){
           echo '在漂';
@@ -28,15 +27,15 @@
   </p>
   <p>
     <?php if($this->session->userdata('user_id') == FALSE){?>
-      <p>This book's owner is <?php echo $item['username'];?> .<br> You can request him/her for borrowing this book.</p>
-      <a class="btn btn-primary" href="<?php echo site_url('user/login');?>" type="button">Request for Borrowing </a>
+      <p>这本书的拥有者是 <?php echo $item['username'];?> .<br> 你可以向他/她借阅这本书.</p>
+      <a class="btn btn-primary" href="<?php echo site_url('user/login');?>" type="button">申请借阅</a>
     <?php }else if($item['user_id'] != $this->session->userdata('user_id') AND $item['item_status'] == 1){?>
-      <p>This book's owner is <?php echo $item['username'];?> .<br> You can request him/her for borrowing this book.</p>
-      <button class="btn btn-primary" id="request" type="button">Request for Borrowing </button>
+      <p>这本书的拥有者是 <?php echo $item['username'];?> .<br> 你可以向他/她借阅这本书.</p>
+      <button class="btn btn-primary" id="request" type="button">申请借阅 </button>
     <?php }else{ ?>
-      <p>This book is not available for you now . The reasons might be :</p>
-      <p> * You are the owner of the book .</p>
-      <p> * The status of the book is not sharing .</p>
+      <p>本书暂时不可借阅，可能因为 :</p>
+      <p> * 你是本书的拥有者；</p>
+      <p> * 本书暂时不可借阅；</p>
     <?php } ?>
   </p>
 </div>
