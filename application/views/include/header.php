@@ -78,7 +78,7 @@ $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 
       <div class="masthead">
         <div class="head-nav">
           <a href="<?php echo site_url();?>" <?php if($this->uri->segment(1) == '') echo "class='active'";?> ><span class='nav-tab-icon'>&#xe601;</span><br /><span >发现</span></a>
-          <div class='head-nav-item' onclick='$('#J_Share_Button').click();'><span class='nav-tab-icon'>&#xe603;</span><br /><span>放漂</span></div>
+          <div class='head-nav-item' id='J_Share_Button'><span class='nav-tab-icon'>&#xe603;</span><br /><span>放漂</span></div>
           <a href="<?php echo site_url('space/items');?>" <?php if($this->uri->segment(1) == 'space') echo "class='active'";?> ><span class='nav-tab-icon'>&#xe602;</span><br /><span>我的</span></a>
         </div>
         <h3 class="muted" style='display:none'><a href="<?php echo site_url();?>"> </a></h3>

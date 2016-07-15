@@ -16,6 +16,8 @@ var logger = {
 };
 
 function add(msg, level) {
+    // 关闭log
+    return false;
     var row = document.createElement('div');
     row.setAttribute('class', 'log-row log-' + level);
     row.innerHTML = msg;

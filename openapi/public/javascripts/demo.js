@@ -166,7 +166,7 @@ dd.ready(function() {
         });
     });
 
-    $('.J_method_btn').on('click', function() {
+    $('#J_Share_Button').on('click', function() {
         var $this = $(this);
         var method = $this.data('method');
         var action = $this.data('action');
@@ -175,7 +175,7 @@ dd.ready(function() {
             param = JSON.parse(param);
 						logger.i('scan: ' + param);
         }    
-		if (param.corpId) {
+		    if (param.corpId) {
             param.corpId = _config.corpId;
             if (param.id) {
                 param.id = _config.users[0];
@@ -193,35 +193,35 @@ dd.ready(function() {
                 param.params.users = _config.users;
             }
         }
-		param.onSuccess = function(result) {
+		    param.onSuccess = function(result) {
             if (action === 'alert') {
                 dd.device.notification.alert({
                     title: method,
                     message: '传参：' + JSON.stringify(param, null, 4) + '\n' + '响应：' + JSON.stringify(result, null, 4)
                 });
             } else if(action === 'share'){
-				info = JSON.stringify(result);
-				$.ajax({
-					url: '/api/spaceShare',
-					type:"POST",
-					data: {"event":"space_share","userId":dd.userid,"corpId":_config.corpId,"info":info},
-					dataType:'json',
-					timeout: 900,
-					success: function (data, status, xhr) {
-						logger.i('data: ' + data);
-						var info = JSON.parse(data);
-						if(info.errcode === 0) {
-							logger.i('book_id: ' + info.book_id);
-							logger.i('item_id: ' + info.item_id);
-							window.location.href = "/share/detail/" + info.item_id;
-						}
-						
-					},
-					error: function (xhr, errorType, error) {
-						logger.e(errorType + ', ' + error);
-					}
-				});
-			}
+				        info = JSON.stringify(result);
+                $.ajax({
+                  url: '/api/spaceShare',
+                  type:"POST",
+                  data: {"event":"space_share","userId":dd.userid,"corpId":_config.corpId,"info":info},
+                  dataType:'json',
+                  timeout: 900,
+                  success: function (data, status, xhr) {
+                    logger.i('data: ' + data);
+                    var info = JSON.parse(data);
+                    if(info.errcode === 0) {
+                      logger.i('book_id: ' + info.book_id);
+                      logger.i('item_id: ' + info.item_id);
+                      window.location.href = "/share/detail/" + info.item_id;
+                    }
+
+                  },
+                  error: function (xhr, errorType, error) {
+                    logger.e(errorType + ', ' + error);
+                  }
+                });
+			      }
         };
         param.onFail = function(result) {
 						logger.i('scan: ' + result);
