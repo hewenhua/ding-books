@@ -55,6 +55,7 @@ body{width: 10rem;padding-bottom: 1.2rem;}
 }
 
 .book-info{
+  display: inline-block;
   float: left;
   width: 6.5rem;
 }
@@ -86,4 +87,14 @@ body{width: 10rem;padding-bottom: 1.2rem;}
   line-height: 0.42667rem;
   font-size:0.34667rem;
   color: #666666;
+}
+
+.more{
+  margin: 0.2rem;
+  line-height: 1rem;
+  border: 1px solid #666666;
+  background: #999999;
+  color: #38adff;
+  text-align: center;
+  font-size: 0.4rem;
 }

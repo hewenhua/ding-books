@@ -37,7 +37,7 @@
    </div>
    <button style='display:none' class="btn btn-block btn-default J_method_btn" data-method="biz.util.scan" data-param='{"type":"barCode"}' data-action="share">扫码分享</button>
 
-  <div class="book-list">
+  <div class="book-list" id='bookList'>
       <?php 
       foreach ($items as $key => $item) { ?>
         <div class="book-item">
@@ -45,11 +45,11 @@
             <a href="<?php echo $item['douban_url']; ?>" class="book-img-link">
                 <img class="book-image" src="<?php echo $item['image_url'];?>" >
             </a>
-            <div class="book-info">
+            <a href="<?php echo site_url('share/detail/'. $item['id']); ?>" class="book-info">
               <h4 class='book-title'><?php echo $item['title'];?></h4>
               <div class='book-desc'><?php echo $item['description'];?></div>
               <span class='book-author'><?php foreach($item['authors'] as $key => $author){ echo $author['name'] . ' '; }?></span>
-            </div>
+            </a>
           </div>
         </div>
       <?php }?>
@@ -60,4 +60,5 @@
     </div>
     
   </div>
+  <div class='more' id='J_More'>加载下一页</div>
 </div>
