@@ -14,6 +14,7 @@ function echoFail($error_msg)
 		'result' => 0 ,
 		'msg' => $error_msg
 		);
+    error_log(json_encode($output));
 	echo json_encode($output);
 }
 

@@ -374,10 +374,12 @@ class Api extends CI_Controller {
 			return FALSE;
 		}
     
-        $item_query = $this->db->query("SELECT * FROM item WHERE user_id = $user_id ");
-        $trade_query = $this->db->query("SELECT * FROM trade WHERE user_id = $user_id ");
-        if($item_query->num_rows() < $trade_query->num_rows()){
-            echoFail('先放漂一本书再来求漂吧！');
+        $item_query = $this->db->query("SELECT * FROM item WHERE user_id = $user_id and status in (1,4)");
+        $item_num = $item_query->num_rows();
+        $trade_query = $this->db->query("SELECT * FROM trade WHERE user_id = $user_id and status in (1,2)");
+        $trade_num = $trade_query->num_rows();
+        if($item_num < ($trade_num+1)){
+            echoFail('放漂了'.$item_num.'本，求漂了'.$trade_num.'本，先放漂一本书再来求漂吧！');
             return FALSE;
         }
         
@@ -386,7 +388,7 @@ class Api extends CI_Controller {
 		$this->load->model("share_model");
 		$insert_id = $this->share_model->createTrade($user_id , $item_id);
 
-		echoSucc('request succ');
+		echoSucc('你放漂了'.$item_num.'本，求漂了'.$trade_num.'本');
 		if(!empty($insert_id)){
 			$user_query = $this->db->query("SELECT * FROM user WHERE id = '$row->user_id' ");
 			if($user_query->num_rows() != 1){

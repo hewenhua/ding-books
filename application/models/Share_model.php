@@ -67,7 +67,7 @@ class Share_model extends CI_Model{
 
 		$item_view['create_time'] = date('Y-m-d H:i:s');
         $item_view['corpid'] = $this->session->userdata('corpid');
-		$item_view['department'] = $this->session->userdata('department');
+		$item_view['department'] = $user_row->department;
         $item_view['location'] = $address;
 
 		return $this->db->insert('item_view',$item_view);
@@ -197,12 +197,18 @@ class Share_model extends CI_Model{
 			);
 		$this->db->where('id', $trade_id);
 		$this->db->update('trade', $data);
+        $create_time = date('Y-m-d H:i:s');
 		//some operation will change other table status , too.
 		if( in_array($trade_op, array('return','cancel','deny')) ){	
 			$item_query = $this->db->query("SELECT item_id FROM trade WHERE id = $trade_id");
 			$row = $item_query->first_row();
 			$item_id = $row->item_id;
 			$this->db->query("UPDATE item SET status = 1 WHERE id = $item_id");// 1 - sharing
+            if($trade_op == 'return'){
+			    $this->db->query("UPDATE item_view SET item_status = 1, create_time = '$create_time' WHERE item_id = $item_id");// 1 - sharing
+            }else{
+			    $this->db->query("UPDATE item_view SET item_status = 1 WHERE item_id = $item_id");// 1 - sharing
+            }
 		}
 
 		if( in_array($trade_op, array('lost')) ){	
@@ -210,6 +216,7 @@ class Share_model extends CI_Model{
 			$row = $item_query->first_row();
 			$item_id = $row->item_id;
 			$this->db->query("UPDATE item SET status = 3 WHERE id = $item_id");// 3 - delete
+			$this->db->query("UPDATE item_view SET item_status = 3  WHERE item_id = $item_id");// 3 - delete
 		}
 
 		//DO THE RECORD 

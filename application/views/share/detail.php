@@ -9,13 +9,13 @@
       <span class='book-info-item'>出版日期：<?php echo $item['pubdate'];?></span><br/>
       <span class="label label-success share_status detail-share-state book-info-item">书籍状态：
         <?php if($item['item_status'] == 1){
-          echo '在漂';
+          echo '在漂中';
         }else if($item['item_status'] == 2){
-          echo '收漂';
+          echo '已收漂';
         }else if($item['item_status'] == 3){
-          echo '删除';
+          echo '已丢失';
         }else if($item['item_status'] == 4){
-          echo '已转';
+          echo '求漂中';
         }
         ?>
       </span>
