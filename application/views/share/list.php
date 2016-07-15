@@ -46,7 +46,7 @@
             <a href="<?php echo $item['douban_url']; ?>" class="book-img-link">
                 <img class="book-image" src="<?php echo $item['image_url'];?>" >
             </a>
-            <a href="<?php echo site_url('share/detail/'. $item['id']); ?>" class="book-info">
+            <a href="<?php echo site_url('share/detail/'. $item['item_id']); ?>" class="book-info">
               <h4 class='book-title'><?php echo $item['title'];?></h4>
               <div class='book-desc'><?php echo $item['description'];?></div>
               <span class='book-author'><?php foreach($item['authors'] as $key => $author){ echo $author['name'] . ' '; }?></span>
@@ -54,14 +54,8 @@
           </div>
         </div>
       <?php }?>
-    <div class="pagination">
-      <ul>
-      <?php foreach ($link_array as $key => $value) {echo $value;}?>
-      </ul>
-    </div>
-    
-  </div>
-  <div class='more' id='J_More'>加载下一页</div>
 <?php if(empty($more)):?>
+  </div>
+  <div class='more' id='J_More'>加载更多</div>
   </div>
 <?php endif;?>

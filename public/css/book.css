@@ -92,9 +92,9 @@ body{width: 10rem;padding-bottom: 1.2rem;}
 .more{
   margin: 0.2rem;
   line-height: 1rem;
-  border: 1px solid #666666;
-  background: #999999;
-  color: #38adff;
+  border: 1px solid #ccc;
+  background: #ddd;
+  color: #666;
   text-align: center;
   font-size: 0.4rem;
 }
