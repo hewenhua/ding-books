@@ -62,8 +62,6 @@ dd.ready(function() {
     dd.runtime.permission.requestAuthCode({
         corpId: _config.corpId, //企业id
         onSuccess: function (info) {
-        
-    
             logger.i('authcode: ' + info.code);
             $.ajax({
                 url: '/openapi/sendMsg.php',
@@ -73,21 +71,16 @@ dd.ready(function() {
                 timeout: 900,
                 success: function (data, status, xhr) {
 					logger.i('data_sendMsg: ' + data);
-            dd.device.notification.alert({
-                    title: "dd.runtime.permission.requestAuthCode",
-                    message: '响应：' + data 
-                });
                     var info = JSON.parse(data);
                     if (info.errcode === 0) {
-                        logger.i('user id: ' + info.userid);
-                        logger.i('user name: ' + info.name);
                         dd.userid = info.userid;
 						dd.username = info.name;
+                        dd.department = info.department;
 	
 						$.ajax({
                                 url: '/api/userUpdate',
                                 type:"POST",
-                                data: {"userId":dd.userid,"userName":dd.username,"corpId":_config.corpId},
+                                data: {"userId":dd.userid,"userName":dd.username,"corpId":_config.corpId,"department":dd.department},
                                 dataType:'json',
                                 timeout: 900,
                                 success: function (data, status, xhr) {
