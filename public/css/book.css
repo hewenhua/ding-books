@@ -69,7 +69,7 @@ body{width: 10rem;padding-bottom: 1.2rem;}
 }
 
 .book-desc{
-  margin: 0.1rem 0;
+  margin: 0.2rem 0 0.2rem 0.15rem;
   line-height: 0.42667rem;
   font-size: 0.34667rem;
   max-height: 1.3rem;
@@ -82,7 +82,7 @@ body{width: 10rem;padding-bottom: 1.2rem;}
 }
 
 .book-author{
-  margin: 0.2rem 0 0 0;
+  margin: 0.2rem 0 0 0.15rem;
   line-height: 0.42667rem;
   font-size:0.34667rem;
   color: #666666;
