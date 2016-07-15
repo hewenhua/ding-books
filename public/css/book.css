@@ -4,7 +4,7 @@
 }
 
 
-body{width: 10rem;overflow: hidden;}
+body{width: 10rem;}
 
 .head-nav {position: fixed;bottom: 0;left: 0; width: 10rem; height: 1.2rem;}
 
@@ -59,6 +59,14 @@ body{width: 10rem;overflow: hidden;}
   width: 6.5rem;
 }
 
+.book-title{
+  height: 0.6rem;
+  line-height: 0.6rem;
+  font-size: 0.45rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
 .book-desc{
   margin: 0.2rem 0;
   line-height: 0.42667rem;
@@ -69,20 +77,4 @@ body{width: 10rem;overflow: hidden;}
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
-}
-
-.book-title{
-
-}
-
-.book-author{
-
-}
-
-.book-publisher{
-
-}
-
-.book-owner{
-
 }
