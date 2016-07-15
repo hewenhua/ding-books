@@ -17,11 +17,8 @@
               page: pageNum
             },
             success: function(data){
-              // Supposing this JSON payload was received:
-              //   {"project": {"id": 42, "html": "<div>..." }}
-              // append the HTML to context object.
-              alert(typeof data);
-              if(!data){
+              // alert(typeof data);
+              if(data == false || data == 'false'){
                 alert && alert('已加载到最后一页');
               } else {
                 $('#bookList').append(data);
