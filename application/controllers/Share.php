@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Share extends CI_Controller {
 
-	private $limit = 1;
+	private $limit = 10;
 
 	function __construct(){
 		parent::__construct();
@@ -32,6 +32,9 @@ class Share extends CI_Controller {
         $page = $this->input->get_post('page');
         $more = $this->input->get_post('more');
 		$limit = $this->limit;
+        if(empty($page)){
+            $page = 1;
+        }
         if($page>1){
             $offset = ($page-1)*$limit;
         }
@@ -42,6 +45,10 @@ class Share extends CI_Controller {
 		}
 		
 		list( $data['total'] , $data['items']) = $this->query_model->queryItem( $data['search_data'] , $limit , $offset );
+        if($data['total']<($page)*$limit && $page>1){
+            echo 'false';
+            return false;
+        }
 
 		foreach ($data["items"] as $key => $item) {
 			$book_id = $item['book_id'];
@@ -66,6 +73,7 @@ class Share extends CI_Controller {
 			array('name'=>'order_time','value'=>(1-$data['search_data']['order_time']) ));
 		$data['link_name'] = url_maker( $data['search_data'] , 'share/' . __FUNCTION__  , 
 			array('name'=>'order_name','value'=>(1-$data['search_data']['order_name']) ));
+        $data['department'] = $this->session->userdata('department');
     
         $data['more'] = $more;
         if(empty($more)){

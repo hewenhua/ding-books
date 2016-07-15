@@ -15,15 +15,17 @@ class Api extends CI_Controller {
 		$userid = $this->input->get_post('userId'); 
 		$user_name = $this->input->get_post('userName');
 		$corp_id = $this->input->get_post('corpId');
+        $department = $this->input->get_post('department');
 		$input = array(
 						'cellphone' => $userid,
 						'username' => $user_name,
 						'password' => $userid,
 						'userid' => $userid,
 						'corpid' => $corp_id,
+                        'department' => $department,
 					  );
 
-		$query = $this->db->query("SELECT * FROM user WHERE username = '$user_name' AND userid = '$userid' AND corpid = '$corp_id' ");
+		$query = $this->db->query("SELECT * FROM user WHERE userid = '$userid' AND corpid = '$corp_id' ");
 
 		$this->load->model('user_model');
         if($query->num_rows() == 0){
@@ -34,10 +36,12 @@ class Api extends CI_Controller {
 	        }
 	
 		}else{
-			/*$row = $query->first_row();
+			$row = $query->first_row();
 			$id = $row->id;	
-			unset($input['password']);
-			$this->user_model->updateProfile($input,$id);*/
+            if($row->department != $department || $user_name != $row->username){
+			    unset($input['password']);
+			    $this->user_model->updateProfile($input,$id);
+            }
 		}
 
         $login_user_id = $this->session->userdata('user_id');

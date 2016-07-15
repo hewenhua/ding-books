@@ -66,7 +66,8 @@ class Share_model extends CI_Model{
 		$item_view['publisher_name'] = $publisher_row->name;
 
 		$item_view['create_time'] = date('Y-m-d H:i:s');
-		$item_view['corpid'] = $this->session->userdata('corpid');
+        $item_view['corpid'] = $this->session->userdata('corpid');
+		$item_view['department'] = $this->session->userdata('department');
         $item_view['address'] = $address;
 
 		return $this->db->insert('item_view',$item_view);
