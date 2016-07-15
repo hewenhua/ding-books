@@ -62,19 +62,28 @@ body{width: 10rem;padding-bottom: 1.2rem;}
 .book-title{
   height: 0.6rem;
   line-height: 0.6rem;
+  margin: 0.15rem;
   font-size: 0.45rem;
   text-overflow: ellipsis;
   overflow: hidden;
 }
 
 .book-desc{
-  margin: 0.2rem 0;
+  margin: 0.1rem 0;
   line-height: 0.42667rem;
   font-size: 0.34667rem;
-  max-height: 2.15rem;
+  max-height: 1.3rem;
   /* 仅webkit支持 */
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+  color: #666666;
+}
+
+.book-author{
+  margin: 0.2rem 0 0 0;
+  line-height: 0.42667rem;
+  font-size:0.34667rem;
+  color: #666666;
 }
