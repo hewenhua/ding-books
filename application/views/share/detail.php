@@ -4,10 +4,10 @@
     <img class="detail-book-image" src="<?php echo $item['image_url'];?>" >
     <div class='detail-book-basicinfo'>
       <h3 class='book-title'><?php echo $item['title']; ?></h3>
-      <span class='book-info-item'><?php foreach($item['authors'] as $key => $author){ echo $author['name'] . ' '; }?></span><br/>
-      <span class='book-info-item'><?php echo $item['publisher_name'];?></span><br/>
-      <span casss='book-info-item'><?php echo $item['pubdate'];?></span><br/>
-      <span class="label label-success share_status detail-share-state book-info-item">
+      <span class='book-info-item'>作者：<?php foreach($item['authors'] as $key => $author){ echo $author['name'] . ' '; }?></span><br/>
+      <span class='book-info-item'>出版社：<?php echo $item['publisher_name'];?></span><br/>
+      <span casss='book-info-item'>出版日期：<?php echo $item['pubdate'];?></span><br/>
+      <span class="label label-success share_status detail-share-state book-info-item">书籍状态：
         <?php if($item['item_status'] == 1){
           echo '在漂';
         }else if($item['item_status'] == 2){
