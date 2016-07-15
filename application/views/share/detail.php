@@ -20,7 +20,7 @@
         }
         ?>
       </span>
-    <div>
+    </div>
     <span id="item_id" item_id="<?php echo $item['item_id'];?>"></span>
   </div>
   <p class="detail-book-desc">

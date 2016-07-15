@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0155ea2f-57e8-4e0f-93b1-d326fa953cc1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/book.css" afterPath="$PROJECT_DIR$/public/css/book.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/share/detail.php" afterPath="$PROJECT_DIR$/application/views/share/detail.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -29,7 +28,7 @@
         <entry file="file://$PROJECT_DIR$/application/views/share/list.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-15.259259">
-              <caret line="51" column="123" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="123" />
+              <caret line="55" column="16" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="123" />
               <folding />
             </state>
           </provider>
@@ -45,21 +44,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="book.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="book.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/css/book.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.198">
-              <caret line="128" column="24" selection-start-line="128" selection-start-column="24" selection-end-line="128" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="130" column="20" selection-start-line="130" selection-start-column="20" selection-end-line="130" selection-end-column="20" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="detail.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="detail.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/application/views/share/detail.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.4074073">
-              <caret line="25" column="28" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="28" />
+            <state vertical-scroll-proportion="0.6241135">
+              <caret line="22" column="10" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
               <folding />
             </state>
           </provider>
@@ -69,7 +68,7 @@
         <entry file="file://$PROJECT_DIR$/application/controllers/Share.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="3.425926">
-              <caret line="79" column="26" selection-start-line="79" selection-start-column="20" selection-end-line="79" selection-end-column="26" />
+              <caret line="87" column="26" selection-start-line="87" selection-start-column="20" selection-end-line="87" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -116,8 +115,8 @@
         <option value="$PROJECT_DIR$/application/views/share/list.php" />
         <option value="$PROJECT_DIR$/public/js/api.js" />
         <option value="$PROJECT_DIR$/application/views/include/footer.php" />
-        <option value="$PROJECT_DIR$/application/views/share/detail.php" />
         <option value="$PROJECT_DIR$/public/css/book.css" />
+        <option value="$PROJECT_DIR$/application/views/share/detail.php" />
       </list>
     </option>
   </component>
@@ -380,9 +379,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1389" height="877" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32909784" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -444,7 +443,7 @@
     <entry file="file://$PROJECT_DIR$/application/views/share/list.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-15.259259">
-          <caret line="51" column="123" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="123" />
+          <caret line="55" column="16" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="123" />
           <folding />
         </state>
       </provider>
@@ -452,23 +451,23 @@
     <entry file="file://$PROJECT_DIR$/application/controllers/Share.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="3.425926">
-          <caret line="79" column="26" selection-start-line="79" selection-start-column="20" selection-end-line="79" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/share/detail.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.4074073">
-          <caret line="25" column="28" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="28" />
+          <caret line="87" column="26" selection-start-line="87" selection-start-column="20" selection-end-line="87" selection-end-column="26" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/css/book.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.198">
-          <caret line="128" column="24" selection-start-line="128" selection-start-column="24" selection-end-line="128" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="130" column="20" selection-start-line="130" selection-start-column="20" selection-end-line="130" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/share/detail.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6241135">
+          <caret line="22" column="10" selection-start-line="22" selection-start-column="10" selection-end-line="22" selection-end-column="10" />
           <folding />
         </state>
       </provider>
