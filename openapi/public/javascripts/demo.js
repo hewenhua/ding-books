@@ -62,6 +62,8 @@ dd.ready(function() {
     dd.runtime.permission.requestAuthCode({
         corpId: _config.corpId, //企业id
         onSuccess: function (info) {
+        
+    
             logger.i('authcode: ' + info.code);
             $.ajax({
                 url: '/openapi/sendMsg.php',
@@ -71,6 +73,10 @@ dd.ready(function() {
                 timeout: 900,
                 success: function (data, status, xhr) {
 					logger.i('data_sendMsg: ' + data);
+            dd.device.notification.alert({
+                    title: "dd.runtime.permission.requestAuthCode",
+                    message: '响应：' + data 
+                });
                     var info = JSON.parse(data);
                     if (info.errcode === 0) {
                         logger.i('user id: ' + info.userid);

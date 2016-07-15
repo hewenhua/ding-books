@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Share extends CI_Controller {
 
-	private $limit = 4;
+	private $limit = 1;
 
 	function __construct(){
 		parent::__construct();
@@ -29,8 +29,12 @@ class Share extends CI_Controller {
 		);
 
 		$offset = $this->input->get_post('offset');
+        $page = $this->input->get_post('page');
         $more = $this->input->get_post('more');
 		$limit = $this->limit;
+        if($page>1){
+            $offset = ($page-1)*$limit;
+        }
 
 		if($this->session->userdata('user_id')){
 			$user_id = $this->session->userdata('user_id');
