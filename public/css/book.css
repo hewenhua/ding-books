@@ -101,3 +101,31 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: "Microsoft YaHei",微软�
   font-size: 0.4rem;
   border-radius: 0.1rem;
 }
+
+.detail{
+  background: #eeeeee;
+}
+
+.detail-book-info{
+  margin: 0.3rem 0.3rem;
+
+}
+
+.detail-book-image{
+  width: 2.3rem;
+  height: 3rem;
+  display: inline-block;
+  float: left;
+}
+
+.detail-book-basicinfo{
+  width: 6.5rem;
+  margin: 0.2rem 0 0.2rem 0.3rem;
+}
+
+.detail-book-desc{
+  margin: 0.2rem 0 0.2rem 0.15rem;
+  line-height: 0.42667rem;
+  font-size: 0.34667rem;
+  color: #666666;
+}

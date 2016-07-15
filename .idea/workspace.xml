@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0155ea2f-57e8-4e0f-93b1-d326fa953cc1" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/book.css" afterPath="$PROJECT_DIR$/public/css/book.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/share/detail.php" afterPath="$PROJECT_DIR$/application/views/share/detail.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
@@ -44,21 +45,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="book.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="book.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/css/book.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="77" selection-start-line="6" selection-start-column="77" selection-end-line="6" selection-end-column="77" />
+            <state vertical-scroll-proportion="0.7891963">
+              <caret line="128" column="24" selection-start-line="128" selection-start-column="24" selection-end-line="128" selection-end-column="24" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="detail.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="detail.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/share/detail.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6312057">
-              <caret line="42" column="6" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
+            <state vertical-scroll-proportion="-7.4074073">
+              <caret line="25" column="28" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Share.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/application/controllers/Share.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="3.425926">
+              <caret line="79" column="26" selection-start-line="79" selection-start-column="20" selection-end-line="79" selection-end-column="26" />
               <folding />
             </state>
           </provider>
@@ -104,9 +115,9 @@
       <list>
         <option value="$PROJECT_DIR$/application/views/share/list.php" />
         <option value="$PROJECT_DIR$/public/js/api.js" />
-        <option value="$PROJECT_DIR$/public/css/book.css" />
         <option value="$PROJECT_DIR$/application/views/include/footer.php" />
         <option value="$PROJECT_DIR$/application/views/share/detail.php" />
+        <option value="$PROJECT_DIR$/public/css/book.css" />
       </list>
     </option>
   </component>
@@ -290,6 +301,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ding-books" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="ding-books" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="application" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
@@ -412,14 +441,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/book.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="6" column="77" selection-start-line="6" selection-start-column="77" selection-end-line="6" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/share/list.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-15.259259">
@@ -428,10 +449,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/application/controllers/Share.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="3.425926">
+          <caret line="79" column="26" selection-start-line="79" selection-start-column="20" selection-end-line="79" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/share/detail.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6312057">
-          <caret line="42" column="6" selection-start-line="42" selection-start-column="6" selection-end-line="42" selection-end-column="6" />
+        <state vertical-scroll-proportion="-7.4074073">
+          <caret line="25" column="28" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/book.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7891963">
+          <caret line="128" column="24" selection-start-line="128" selection-start-column="24" selection-end-line="128" selection-end-column="24" />
           <folding />
         </state>
       </provider>
