@@ -20,8 +20,8 @@
               // Supposing this JSON payload was received:
               //   {"project": {"id": 42, "html": "<div>..." }}
               // append the HTML to context object.
-              alert(data);
-              if(data == ''){
+              // alert(data);
+              if(!data){
                 alert && alert('已加载到最后一页');
               } else {
                 $('#bookList').append(data);
