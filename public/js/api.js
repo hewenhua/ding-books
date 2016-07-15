@@ -349,8 +349,10 @@ function updateTrade(url){
 }
 
 function getMore(e){
+  alert(e.target);
   var $elem = $(e.target);
   var pageNum = $elem.attr('data-next-page');
+  alert(pageNum);
   $.ajax({
     data: {
       more: 1,
