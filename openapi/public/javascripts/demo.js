@@ -225,7 +225,7 @@ dd.ready(function() {
                     if(info.errcode === 0) {
                       logger.i('book_id: ' + info.book_id);
                       logger.i('item_id: ' + info.item_id);
-                      window.location.href = "/share/detail/" + info.item_id;
+                      window.location.href = "/share/detail/" + info.item_id + "?display=1";
                     }
 
                   },

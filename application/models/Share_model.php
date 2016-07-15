@@ -18,13 +18,14 @@ class Share_model extends CI_Model{
 	// 5 - returned 
 	// 6 - lost
 
-	function createItem($book_id , $user_id , $description , $latitude = null , $longitude = null , $address = null ){
+	function createItem($book_id , $user_id , $description , $latitude = null , $longitude = null , $address = null){
 		$insert_arr = array(
 			'book_id' => $book_id ,
 			'user_id' => $user_id ,
 			'description' => $description ,
             'latitude' => $latitude,
             'longitude' => $longitude,
+            'address' => $address,
 			'status' => 1
 			);
 		$this->db->insert('item' , $insert_arr);
