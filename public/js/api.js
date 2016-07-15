@@ -347,3 +347,24 @@ function updateTrade(url){
 
   }); //end of click action
 }
+
+function getMore(e){
+  var $elem = $(e.target);
+  var pageNum = $elem.attr('data-next-page');
+  $.ajax({
+    data: {
+      more: 1,
+      page: pageNum
+    },
+    success: function(data){
+      // Supposing this JSON payload was received:
+      //   {"project": {"id": 42, "html": "<div>..." }}
+      // append the HTML to context object.
+      $('#bookList').append(data);
+      $elem.attr('data-next-page', pageNum + 1 );
+    },
+    error: function(xhr, type){
+      alert('Ajax error!');
+    }
+  });
+}
