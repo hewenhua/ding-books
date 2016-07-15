@@ -164,6 +164,7 @@ class Api extends CI_Controller {
         $this->load->model('share_model');
 		$description = isset($data['title']) ? $data['title'] : "";
         if($item_id = $this->share_model->isDuplicateItem($book_id , $user_id)){
+            $this->share_model->updateItem($book_id,array('latitude'=>$latitude,'longitude'=>$longitude,'address'=>$address));
         }else{
         	$item_id = $this->share_model->createItem( $book_id , $user_id , $description );
 		}
