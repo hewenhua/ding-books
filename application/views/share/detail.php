@@ -10,13 +10,13 @@
               <img class="book_image" src="<?php echo $item['image_url'];?>" >
               <span class="label label-success share_status">
                 <?php if($item['item_status'] == 1){
-                  echo 'sharing';
+                  echo '在漂';
                 }else if($item['item_status'] == 2){
-                  echo 'unshare';
+                  echo '收漂';
                 }else if($item['item_status'] == 3){
-                  echo 'deleted';
+                  echo '删除';
                 }else if($item['item_status'] == 4){
-                  echo 'borrowed';
+                  echo '已转';
                 }
                 ?>
               </span>

@@ -350,15 +350,23 @@ class Api extends CI_Controller {
 		$item_id = $input['item_id'];
 		$query = $this->db->query("SELECT * FROM item WHERE id = $item_id AND status = 1 ");
 		if($query->num_rows() != 1){
-			echoFail('Item is not in sharing status');
+			echoFail('书已被收漂!');
 			return FALSE;
 		}
 
 		$row = $query->first_row();
 		if($row->user_id == $user_id){
-			echoFail('Can not borrow your own book');
+			echoFail('这本书是你的了!');
 			return FALSE;
 		}
+    
+        $item_query = $this->db->query("SELECT * FROM item WHERE user_id = $user_id ");
+        $trade_query = $this->db->query("SELECT * FROM trade WHERE user_id = $user_id ");
+        if($item_query->num_rows() < $trade_query->num_rows()){
+            echoFail('先放漂一本书再来求漂吧！');
+            return FALSE;
+        }
+        
 
 		//create a new trade entry in trade table
 		$this->load->model("share_model");
