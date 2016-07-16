@@ -292,6 +292,16 @@ dd.ready(function() {
                     logger.e(errorType + ', ' + error);
                   }
                 });
+                dd.device.notification.vibrate({
+                    duration: 300,
+                    onSuccess: function() {
+                        dd.device.accelerometer.clearShake({
+                        });
+                    },
+                    onFail: function() {
+                    }
+                });
+
             },
             onFail: function(result) {
                 console.log('error', result)
