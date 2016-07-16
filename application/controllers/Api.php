@@ -420,7 +420,7 @@ class Api extends CI_Controller {
         $trade_query = $this->db->query("SELECT * FROM trade WHERE user_id = $user_id and status in (1,2)");
         $trade_num = $trade_query->num_rows();
         if($item_num < ($trade_num+1)){
-            echoFail('放漂了'.$item_num.'本，求漂了'.$trade_num.'本，先放漂一本书再来求漂吧！');
+            echoFail('你放漂了'.$item_num.'本，求漂了'.$trade_num.'本，先放漂一本书再来求漂吧！');
             return FALSE;
         }
         

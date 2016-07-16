@@ -213,7 +213,7 @@ dd.ready(function() {
                             dd.longitude = location.longitude;
                 dd.device.notification.alert({
                     title: method,
-                    message: fy(param, null, 4) + '\n' + '响应：' + JSON.stringify(result, null, 4)
+                    message: JSON.stringify(param, null, 4) + '\n' + '响应：' + JSON.stringify(result, null, 4)
                 });
                         },
                         onFail: function(err) {

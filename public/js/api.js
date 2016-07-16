@@ -277,13 +277,22 @@ function requestBorrow(url){
       data: data ,
       success: function(data){
         if(data.result == 0){
-          $("#msg-box").text(data.msg);
-          $("#msg-box").show();
+          dd.device.notification.alert({
+                    title: "闲书漂流",
+                    message: data.msg
+                }); 
+          //$("#msg-box").text(data.msg);
+          //$("#msg-box").show();
         }else if(data.result == 1){
-          $("#msg-box").removeClass("alert-error");
-          $("#msg-box").addClass("alert-success");
-          $("#msg-box").text("Request has been sent to onwer .");
-          $("#msg-box").show();
+
+          dd.device.notification.alert({
+                    title: "闲书漂流",
+                    message: '求漂成功，等待对方回复'
+          });
+          //$("#msg-box").removeClass("alert-error");
+          //$("#msg-box").addClass("alert-success");
+          //$("#msg-box").text("Request has been sent to onwer .");
+          //$("#msg-box").show();
         }else{
           $("#msg-box").text('connect error');
           $("#msg-box").show();
