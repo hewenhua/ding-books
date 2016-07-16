@@ -154,6 +154,10 @@ class Space extends CI_Controller {
 		);
 
 		list( $data['total'] , $data['items']) = $this->query_model->queryItem( $data['search_data'] , $limit , $offset );
+        if($data['total']<($page)*$limit && $page>1){
+            echo 'false';
+            return false;
+        }
 
 		foreach ($data["items"] as $key => $item) {
 			$book_id = $item['book_id'];
@@ -228,6 +232,10 @@ class Space extends CI_Controller {
 		);
 
 		list( $data['total'] , $data['trades']) = $this->query_model->queryTrade( $data['search_data'] , $limit , $offset );
+        if($data['total']<($page)*$limit && $page>1){
+            echo 'false';
+            return false;
+        }
 
 		foreach ($data['trades'] as $key => $trade) {
 			$data['trades'][$key]['trade_record'] = $this->query_model->queryTradeRecord($trade['trade_id']);
@@ -275,6 +283,10 @@ class Space extends CI_Controller {
 		);
 
 		list( $data['total'] , $data['trades']) = $this->query_model->queryTrade( $data['search_data'] , $limit , $offset );
+        if($data['total']<($page)*$limit && $page>1){
+            echo 'false';
+            return false;
+        }
 
 		foreach ($data['trades'] as $key => $trade) {
 			$data['trades'][$key]['trade_record'] = $this->query_model->queryTradeRecord($trade['trade_id']);
