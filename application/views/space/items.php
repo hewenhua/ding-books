@@ -31,24 +31,22 @@ endif;
               <div class='book-desc'><?php echo $item['description'];?></div>
               <div class='book-author'><?php foreach($item['authors'] as $key => $author){ echo $author['name'] . ' '; }?></div>
               <?php if($item['item_status'] == 1) { ?>
-                <span class="label label-success share_status space-on-status">Sharing</span>
+                <span class="label label-success share_status space-on-status">放漂中</span>
                 <?php }else if($item['item_status'] == 2){ ?>
-                <span class="label label-warning share_status space-on-status">Unsharing</span>
+                <span class="label label-warning share_status space-on-status">搜漂中</span>
                 <?php }else if($item['item_status'] == 4){ ?>
-                <span class="label label-warning share_status space-on-status">Shared</span>
+                <span class="label label-warning share_status space-on-status">已放漂</span>
               <?php } ?>
             </a>
           </div>
           <div class="space-on-actions">
               <?php if($item['item_status'] != 4){ //shared book can not edit?>
-                <a class="btn btn-primary" href="<?php echo site_url('space/item_edit/'.$item['item_id']);?>">Edit My Comment</a>
-
                 <?php if($item['item_status'] == 1) { ?>
-                <button class="btn btn-warning unshare item_status" item_id="<?php echo $item['item_id'];?>" type="button">Unshare Book</button>
+                <button class="btn btn-warning unshare item_status" item_id="<?php echo $item['item_id'];?>" type="button">收漂</button>
                 <?php }else if($item['item_status'] == 2){ ?>
-                <button class="btn btn-success share item_status" item_id="<?php echo $item['item_id'];?>" type="button">Share Book</button>
+                <button class="btn btn-success share item_status" item_id="<?php echo $item['item_id'];?>" type="button">放漂</button>
                 <?php } ?>
-                <button class="btn btn-danger delete item_status" item_id="<?php echo $item['item_id'];?>" type="button">Delete Book</button>
+                <button class="btn btn-danger delete item_status" item_id="<?php echo $item['item_id'];?>" type="button">删除</button>
               <?php }?>
           </div>
         </div>
