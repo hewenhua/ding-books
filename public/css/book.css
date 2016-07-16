@@ -108,10 +108,11 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
   max-width: 4rem;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .book-department{
-  margin: 0.2rem 0 0 0.15rem;
+  margin: 0 0 0 0.15rem;
   line-height: 0.42667rem;
   font-size:0.34667rem;
   color: #666666;
