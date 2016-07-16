@@ -1,48 +1,44 @@
 <?php if(empty($more)):?>
 <div class="row">
-  <div class="span9">
     <div class="alert alert-error hide" id="msg-box"></div>
     <?php if(empty($trades)){ ?>
     <div class="alert alert-info" id="msg-box">还没有被求漂.</div>
     <?php } ?>
-    <ul class="thumbnails">
+    <div class='book-list' id='spaceFangList'>
       <?php 
 endif;
       foreach ($trades as $key => $trade) { ?>
-      <li class="span9">
-        <div class="thumbnail">
-          <div class="row">
-            <a href="" class="span2">
-              <img class="book_image" src="<?php echo $trade['image_url'];?>" >
+        <div class="book-item">
+          <div class="book-intro">
+            <a href="" class="book-img-link">
+              <img class="book-image" src="<?php echo $trade['image_url'];?>" >
             </a>
-            <div class="span6">
+            <div class="book-info">
               <?php
-              $title_anchor = anchor_popup(site_url('item/detail/'.$trade['item_id']) , $trade['item_title'] );
-              $borrower_anchor = anchor_popup(site_url('#') , $trade['borrower_name'] );
+              $title_anchor = $trade['item_title'];
+              $borrower_anchor = $trade['borrower_name'];
               ?>
               <!-- title -->
-              <h4><?php echo $title_anchor;?></h4>
-              <!-- book owner infomation  -->
-              <!-- trade_record -->
+              <h4><?php echo $trade['item_title'];?></h4>
               <div id="trade_record">
-              <?php 
-              foreach ($trade['trade_record'] as $key => $record) {?>
-                 <p><?php echo $record['create_time'];?> : 
-                  <?php if($record['op'] == 1){
-                    echo $borrower_anchor .' 向你发起了求漂.';
-                   }else if($record['op'] == 2){ 
-                    echo '你接受了求漂 .';
-                   }else if($record['op'] == 3){ 
-                    echo '你拒绝了求漂 .'; 
-                   }else if($record['op'] == 4){ 
-                    echo '求漂者取消了请求 .'; 
-                   }else if($record['op'] == 5){ 
-                    echo '你确认了书已归还 .';
-                   }else if($record['op'] == 6){ 
-                    echo '你确认了书已丢失 .';
-                   } ?>
-                 </p>
-              <?php } ?>
+                  <?php
+                  foreach ($trade['trade_record'] as $key => $record) {?>
+                     <p><?php echo $record['create_time'];?> :
+                      <?php if($record['op'] == 1){
+                        echo $borrower_anchor .' 向你发起了求漂.';
+                       }else if($record['op'] == 2){
+                        echo '你接受了求漂 .';
+                       }else if($record['op'] == 3){
+                        echo '你拒绝了求漂 .';
+                       }else if($record['op'] == 4){
+                        echo '求漂者取消了请求 .';
+                       }else if($record['op'] == 5){
+                        echo '你确认了书已归还 .';
+                       }else if($record['op'] == 6){
+                        echo '你确认了书已丢失 .';
+                       } ?>
+                     </p>
+                  <?php } ?>
               </div>
               <!-- change book -->
               
@@ -72,41 +68,15 @@ endif;
               <?php }?>
 
             </div>
-            <div class="span1">
-
-            </div>
           </div>
         </div>
-      </li>
       <?php }
 if(empty($more)):
 ?>
-    </ul>
-    <div class="pagination">
-      <ul>
-      <?php foreach ($link_array as $key => $value) {echo $value;}?>
-      </ul>
     </div>
-    
-  </div>
 </div>
 
 <script type="text/javascript">
   var post_url = "<?php echo site_url('api/updateTrade');?>";
   updateTrade(post_url);
 </script>
-
- <style type="text/css">
-      .book_image {
-        margin-left: 5px;
-        margin-top: 5px;
-        margin-bottom: 5px;
-
-        width: 100px; 
-        height: 130px;
-      }
-      .share_status{
-        margin-left: 25px;
-      }
-</style>
-<?php endif;?>
