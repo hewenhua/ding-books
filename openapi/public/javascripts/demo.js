@@ -253,31 +253,42 @@ dd.ready(function() {
     });
 
     $('.J_shake').on('click', function() {
-
         dd.device.accelerometer.watchShake({
             sensitivity: 15, //振动幅度，加速度变化超过这个值后触发shake
-            frequency: 150, //采样间隔(毫秒)，指每隔多长时间对加速度进行一次采样， 然后对比前后变化，判断是否触发shake
+            frequency: 1500, //采样间隔(毫秒)，指每隔多长时间对加速度进行一次采样， 然后对比前后变化，判断是否触发shake
             callbackDelay: 1000,
             onSuccess: function(result) {
-                console.log('watchShake success', result);
-                dd.device.accelerometer.clearShake({
-                });
-                dd.device.notification.alert({
-                    title: "震动",
-                    message: "哈哈" 
-                });
                 dd.device.notification.vibrate({
                     duration: 300,
                     onSuccess: function() {
-                        console.log('……………………震动……………………')
-                dd.device.accelerometer.clearShake({
-                });
-
+                        dd.device.accelerometer.clearShake({
+                        });
                     },
                     onFail: function() {
-                        console.log('木有震动')
                     }
-                })
+                });
+                $.ajax({
+                  url: '/api/spaceShake',
+                  type:"POST",
+                  data: {"event":"space_shake","userId":dd.userid,"corpId":_config.corpId},
+                  dataType:'json',
+                  timeout: 900,
+                  success: function (data, status, xhr) {
+                    logger.i('data: ' + data);
+                    var info = JSON.parse(data);
+                    if(info.errcode === 0) {
+                      logger.i('book_id: ' + info.book_id);
+                      logger.i('item_id: ' + info.item_id);
+                      if(info.item_id > 0){
+                        window.location.href = "/share/detail/" + info.item_id + "?display=1&shake=1";
+                      }
+                    }
+
+                  },
+                  error: function (xhr, errorType, error) {
+                    logger.e(errorType + ', ' + error);
+                  }
+                });
             },
             onFail: function(result) {
                 console.log('error', result)

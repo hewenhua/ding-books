@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Space extends CI_Controller {
 
 	private $user_id;
-	private $limit = 4;
+	private $limit = 1;
 
 	function __construct(){
 		parent::__construct();
@@ -133,7 +133,15 @@ class Space extends CI_Controller {
 	public function items()
 	{
 		$offset = $this->input->get_post('offset');
+		$more = $this->input->get_post('more');
+        $page = $this->input->get_post('page');
 		$limit = $this->limit;
+        if(empty($page)){
+            $page = 1;
+        }
+        if($page>1){
+            $offset = ($page-1)*$limit;
+        }
 
 		$data = array();
 		$data['title'] = "Books on sharing" ;
@@ -169,11 +177,16 @@ class Space extends CI_Controller {
 			);
 		$this->load->model("pagination_model");
 		$data['link_array'] = $this->pagination_model->create_link($link_config);
+        $data['more'] = $more;
 
-		$this->load->view('include/header' , $data);
-		$this->load->view('space/nav');
-		$this->load->view('space/items');
-		$this->load->view('include/footer');
+        if(empty($more)){
+		    $this->load->view('include/header' , $data);
+		    $this->load->view('space/nav');
+        }
+		$this->load->view('space/items' , $data);
+        if(empty($more)){
+		    $this->load->view('include/footer');
+        }
 	}
 
 	public function item_edit($item_id){

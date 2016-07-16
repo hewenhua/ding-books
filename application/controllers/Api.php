@@ -138,6 +138,44 @@ class Api extends CI_Controller {
 		echoSucc();
 	}
 
+    public function spaceShake(){
+		$userid = $this->input->get_post('userId');
+        $corpId = $this->input->get_post('corpId');
+
+        $data['search_data'] = array(
+            'keyword' => $this->input->get_post('keyword'),
+            'item_status' => array(4) ,
+            'order_time' => 1,
+            'order_name' => $this->input->get_post('order_name'),
+        );
+        $limit = 1;
+        $offset = 0;
+        if($this->session->userdata('user_id')){
+            $user_id = $this->session->userdata('user_id');
+            $data['search_data']['no_user_id'] = $user_id;
+        }
+        list( $data['total'] , $data['items']) = $this->query_model->queryItem( $data['search_data'] , $limit , $offset );
+        $book_id = 0;
+        $item_id = 0;
+        $title = "";
+        
+        foreach ($data["items"] as $key => $item) {
+            $book_id = $item['book_id'];
+            $item_id = $item['item_id'];
+            $title = $item['title'];
+        }
+
+        $output = array(
+            'errcode' => 0,
+            'result' => 1,
+            'book_id' => $book_id,
+            'item_id' => $item_id,
+            'title' => $title
+            );
+        echo json_encode(json_encode($output));
+        return TRUE;
+    }
+
 	public function spaceShare(){
 		$info = $this->input->get_post('info');
 		$userid = $this->input->get_post('userId');

@@ -19,7 +19,7 @@ class Share extends CI_Controller {
 	public function book(){
 		
 		$data = array();
-		$data['title'] = "Books on sharing" ;
+		$data['title'] = "漂流图书" ;
 		$data['page'] = __FUNCTION__;
 		$data['search_data'] = array(
 			'keyword' => $this->input->get_post('keyword'),
@@ -93,6 +93,7 @@ class Share extends CI_Controller {
 		}
 
 		$display = $this->input->get_post('display');
+        $shake = $this->input->get_post('shake');
 
 		if($display == 1){
 			$sql = "SELECT * FROM item_view WHERE item_id = $item_id";

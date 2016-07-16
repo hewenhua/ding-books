@@ -1,3 +1,4 @@
+<?php if(!empty($more)):?>
 <div class="row">
    <div class="span8 alert alert-error hide" id="msg-box"></div>
    <div style='display:none' class="span6">
@@ -18,6 +19,7 @@
 
   <div class="book-list">
       <?php 
+endif;
       foreach ($items as $key => $item) { ?>
         <div class="book-item">
           <div class="book-intro">
@@ -50,7 +52,9 @@
               <?php }?>
           </div>
         </div>
-      <?php }?>
+      <?php }
+if(!empty($more)):
+?>
   </div>
 </div>
 
@@ -58,3 +62,4 @@
   var post_url = "<?php echo site_url('api/updateItem');?>";
   updateItemStatus(post_url);
 </script>
+<?php endif;?>
