@@ -2,7 +2,7 @@
 <div class="row">
     <div class="alert alert-error hide" id="msg-box"></div>
     <?php if(empty($trades)){ ?>
-    <div class="alert alert-info no-shared" id="msg-box">还没有被求漂.</div>
+    <div class="alert alert-info no-shared" id="msg-box">还没有被借的书籍~</div>
     <?php } ?>
     <div class='book-list' id='spaceFangList'>
       <?php 

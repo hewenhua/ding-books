@@ -2,7 +2,7 @@
 <div class="row">
    <div class="span8 alert alert-error hide" id="msg-box"></div>
    <?php if(empty($items)){ ?>
-      <div class="alert alert-info no-on-piao" id="msg-box">你还没有受求漂</div>
+      <div class="alert alert-info no-on-piao" id="msg-box">暂无在漂的书籍，来一本呗儿~</div>
    <?php } ?>
    <div style='display:none' class="span6">
     <ul class="nav nav-pills">

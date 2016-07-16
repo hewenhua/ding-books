@@ -2,7 +2,7 @@
 <div class="row">
     <div class="alert alert-error hide" id="msg-box"></div>
     <?php if(empty($trades)){ ?>
-    <div class="alert alert-info no-borrow" id="msg-box">你还没有受求漂</div>
+    <div class="alert alert-info no-borrow" id="msg-box">你还没有求漂，去找一本</div>
     <?php } ?>
     <div class="book-list" id='spaceQiuBookList'>
       <?php 
