@@ -201,15 +201,15 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
   color: #38adff;
 }
 
-.borrow-actions-area{
+.borrow-actions-area, .shared-actions-area{
   color: #666;
 }
 
-.space-on-actions, .borrow-actions{
+.space-on-actions, .borrow-actions, .shared-actions{
   height: 0.8rem;
 }
 
-.space-on-actions button, .borrow-action-button{
+.space-on-actions button, .borrow-action-button, .shared-action-button{
   display: block;
   outline: none;
   width: 2rem;
