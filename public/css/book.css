@@ -244,7 +244,7 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
 
 .shake-tip-area{
   width: 10rem;
-  position: absolute;
+  position: fixed;
   top: 1.2rem;
   left: 0;
   right:0;

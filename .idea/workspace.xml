@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="0155ea2f-57e8-4e0f-93b1-d326fa953cc1" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/book.css" afterPath="$PROJECT_DIR$/public/css/book.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/include/footer.php" afterPath="$PROJECT_DIR$/application/views/include/footer.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ding-books.iws" />
@@ -27,7 +28,7 @@
       <file leaf-file-name="list.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/share/list.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-1.4814814">
+            <state vertical-scroll-proportion="37.296295">
               <caret line="2" column="26" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="26" />
               <folding />
             </state>
@@ -47,8 +48,8 @@
       <file leaf-file-name="demo.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/openapi/public/javascripts/demo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-5.9259257">
-              <caret line="259" column="7" selection-start-line="259" selection-start-column="7" selection-end-line="259" selection-end-column="7" />
+            <state vertical-scroll-proportion="-4.4444447">
+              <caret line="267" column="27" selection-start-line="267" selection-start-column="27" selection-end-line="267" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -58,7 +59,7 @@
         <entry file="file://$PROJECT_DIR$/application/views/space/borrow.php">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-11.851851">
-              <caret line="21" column="69" selection-start-line="21" selection-start-column="69" selection-end-line="23" selection-end-column="84" />
+              <caret line="20" column="28" selection-start-line="21" selection-start-column="69" selection-end-line="22" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -79,6 +80,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="358" column="0" selection-start-line="358" selection-start-column="0" selection-end-line="358" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="footer.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/application/views/include/footer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.4651163">
+              <caret line="23" column="36" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
               <folding />
             </state>
           </provider>
@@ -106,21 +117,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="book.css" pinned="false" current-in-tab="true">
+      <file leaf-file-name="book.css" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/css/book.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.53488374">
-              <caret line="260" column="11" selection-start-line="260" selection-start-column="11" selection-end-line="260" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="share.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/application/views/space/share.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="34.333332">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state vertical-scroll-proportion="-6.4074073">
+              <caret line="246" column="17" selection-start-line="246" selection-start-column="17" selection-end-line="246" selection-end-column="17" />
               <folding />
             </state>
           </provider>
@@ -135,7 +136,6 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/public/js/api.js" />
-        <option value="$PROJECT_DIR$/application/views/include/footer.php" />
         <option value="$PROJECT_DIR$/application/views/share/detail.php" />
         <option value="$PROJECT_DIR$/application/views/space/nav.php" />
         <option value="$PROJECT_DIR$/application/views/space/items.php" />
@@ -145,6 +145,7 @@
         <option value="$PROJECT_DIR$/application/views/share/list.php" />
         <option value="$PROJECT_DIR$/openapi/public/javascripts/demo.js" />
         <option value="$PROJECT_DIR$/public/css/book.css" />
+        <option value="$PROJECT_DIR$/application/views/include/footer.php" />
       </list>
     </option>
   </component>
@@ -562,14 +563,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/include/footer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.592592">
-          <caret line="31" column="10" selection-start-line="8" selection-start-column="7" selection-end-line="31" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/controllers/Space.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.5185185">
@@ -613,7 +606,7 @@
     <entry file="file://$PROJECT_DIR$/application/views/space/borrow.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-11.851851">
-          <caret line="21" column="69" selection-start-line="21" selection-start-column="69" selection-end-line="23" selection-end-column="84" />
+          <caret line="20" column="28" selection-start-line="21" selection-start-column="69" selection-end-line="22" selection-end-column="15" />
           <folding />
         </state>
       </provider>
@@ -644,26 +637,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/application/views/share/list.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.4814814">
-          <caret line="2" column="26" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/openapi/public/javascripts/demo.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.9259257">
-          <caret line="259" column="7" selection-start-line="259" selection-start-column="7" selection-end-line="259" selection-end-column="7" />
+        <state vertical-scroll-proportion="-4.4444447">
+          <caret line="267" column="27" selection-start-line="267" selection-start-column="27" selection-end-line="267" selection-end-column="27" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/css/book.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.53488374">
-          <caret line="260" column="11" selection-start-line="260" selection-start-column="11" selection-end-line="260" selection-end-column="11" />
+        <state vertical-scroll-proportion="-6.4074073">
+          <caret line="246" column="17" selection-start-line="246" selection-start-column="17" selection-end-line="246" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/share/list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="37.296295">
+          <caret line="2" column="26" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="26" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/application/views/include/footer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4651163">
+          <caret line="23" column="36" selection-start-line="23" selection-start-column="36" selection-end-line="23" selection-end-column="36" />
           <folding />
         </state>
       </provider>
