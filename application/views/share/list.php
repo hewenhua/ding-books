@@ -1,5 +1,6 @@
 <?php if(empty($more)):?>
 <div class='shake-tip-area' id='J_Shake_tip'>
+    <span class='shake-tip-close' id='J_Shake_Close'>╳</span>
     <image class='shake-tip-img' src='https://gw.alicdn.com/tps/TB1MWYIKVXXXXcHXXXXXXXXXXXX-233-251.png' />
     <p class='shake-tip-text'>摇一摇，遇到命中注定的它~</p>
 </div>

@@ -252,6 +252,12 @@ dd.ready(function() {
         getMethod(method)(param);
     });
 
+    $('#J_Shake_Close').on('click',function(){
+        $('#J_Shake_tip').show();
+        dd.device.accelerometer.clearShake({
+        });
+    });
+
     $('.J_shake').on('click', function() {
         //alert(1);
         $('#J_Shake_tip').show();
