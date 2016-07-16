@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="0155ea2f-57e8-4e0f-93b1-d326fa953cc1" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/book.css" afterPath="$PROJECT_DIR$/public/css/book.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/share/detail.php" afterPath="$PROJECT_DIR$/application/views/share/detail.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ding-books.iws" />
@@ -48,8 +47,8 @@
       <file leaf-file-name="book.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/css/book.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.72">
-              <caret line="149" column="19" selection-start-line="149" selection-start-column="19" selection-end-line="149" selection-end-column="19" />
+            <state vertical-scroll-proportion="0.68">
+              <caret line="153" column="24" selection-start-line="153" selection-start-column="24" selection-end-line="153" selection-end-column="24" />
               <folding />
             </state>
           </provider>
@@ -475,8 +474,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/css/book.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.72">
-          <caret line="149" column="19" selection-start-line="149" selection-start-column="19" selection-end-line="149" selection-end-column="19" />
+        <state vertical-scroll-proportion="0.68">
+          <caret line="153" column="24" selection-start-line="153" selection-start-column="24" selection-end-line="153" selection-end-column="24" />
           <folding />
         </state>
       </provider>

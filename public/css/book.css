@@ -101,6 +101,7 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
 
 
 .more, .detail-request-button{
+  display: block;
   margin: 0.2rem;
   line-height: 1rem;
   border: 1px solid #ccc;
