@@ -36,6 +36,7 @@
     </div>
    </div>
    <button style='display:none' class="btn btn-block btn-default J_method_btn" data-method="biz.util.scan" data-param='{"type":"barCode"}' data-action="share">扫码分享</button>
+   <button class="btn btn-block btn-default J_shake" data-method="device.accelerometer.watchShake" data-param='{"sensitivity": 15, "frequency": 150, "callbackDelay": 1000}' data-action="share">摇一摇</button>
 
   <div class="book-list" id='bookList'>
     <?php endif;?>

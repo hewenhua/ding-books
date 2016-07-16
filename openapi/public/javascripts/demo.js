@@ -251,6 +251,81 @@ dd.ready(function() {
         };
         getMethod(method)(param);
     });
+
+    $('.J_shake').on('click', function() {
+
+        dd.device.accelerometer.watchShake({
+            sensitivity: 15, //振动幅度，加速度变化超过这个值后触发shake
+            frequency: 150, //采样间隔(毫秒)，指每隔多长时间对加速度进行一次采样， 然后对比前后变化，判断是否触发shake
+            callbackDelay: 1000,
+            onSuccess: function(result) {
+                console.log('watchShake success', result);
+                dd.device.accelerometer.clearShake({
+                });
+                dd.device.notification.alert({
+                    title: "震动",
+                    message: "哈哈" 
+                });
+                dd.device.notification.vibrate({
+                    duration: 300,
+                    onSuccess: function() {
+                        console.log('……………………震动……………………')
+                dd.device.accelerometer.clearShake({
+                });
+
+                    },
+                    onFail: function() {
+                        console.log('木有震动')
+                    }
+                })
+            },
+            onFail: function(result) {
+                console.log('error', result)
+            }
+        });
+    });
+
+    $('.J_method_btn').on('click', function() {
+        var $this = $(this);
+        var method = $this.data('method');
+        var action = $this.data('action');
+        var param = $this.data('param') || {};
+        if (typeof param === 'string') {
+            param = JSON.parse(param);
+        }
+        if (param.corpId) {
+            param.corpId = _config.corpId;
+            if (param.id) {
+                param.id = _config.users[0];
+            }
+            if (param.users) {
+                param.users = _config.users;
+            }
+        }
+        if (param.params && param.params.corpId) {
+            param.params.corpId = _config.corpId;
+            if (param.params.id) {
+                param.params.id = _config.users[0];
+            }
+            if (param.params.users) {
+                param.params.users = _config.users;
+            }
+        }
+
+        param.onSuccess = function(result) {
+            console.log(method, '调用成功，success', result)
+            if (action === 'alert') {
+                dd.device.notification.alert({
+                    title: method,
+                    message: '传参：' + JSON.stringify(param, null, 4) + '\n' + '响应：' + JSON.stringify(result, null, 4)
+                });
+            }
+        };
+        param.onFail = function(result) {
+            console.log(method, '调用失败，fail', result)
+        };
+        getMethod(method)(param);
+    });
 });
 
 dd.error(function(err) {
