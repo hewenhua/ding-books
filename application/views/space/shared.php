@@ -4,7 +4,7 @@
     <?php if(empty($trades)){ ?>
     <div class="alert alert-info no-shared" id="msg-box">还没有被借的书籍~</div>
     <?php } ?>
-    <div class='book-list' id='spaceFangList'>
+    <div class='book-list' id='spaceSharedBookList'>
       <?php 
 endif;
       foreach ($trades as $key => $trade) { ?>
@@ -74,11 +74,38 @@ endif;
 if(empty($more)):
 ?>
     </div>
+    <?php if(!empty($trades)){ ?>
+        <div class='more' id='J_Space_Shared_More' data-next-page='2'>加载更多</div>
+    <?php }?>
 </div>
 
 <script type="text/javascript">
   var post_url = "<?php echo site_url('api/updateTrade');?>";
   updateTrade(post_url);
+  $('#J_Space_Shared_More').on('click', function(e){
+    //alert(1);
+    var $elem = $(e.target);
+    var pageNum = parseInt($elem.attr('data-next-page'));
+    //alert(pageNum);
+    $.ajax({
+      data: {
+        more: 1,
+        page: pageNum
+      },
+      success: function(data){
+        // alert(typeof data);
+        if(data == false || data == 'false'){
+          alert && alert('已加载到最后一页');
+        } else {
+          $('#spaceSharedBookList').append(data);
+          $elem.attr('data-next-page', pageNum + 1 );
+        }
+      },
+      error: function(xhr, type){
+        //alert('Ajax error!');
+      }
+    });
+  });
 </script>
 
 <?php endif;?>
