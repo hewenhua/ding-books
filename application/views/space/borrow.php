@@ -47,7 +47,7 @@ endif;
             <?php if($trade['trade_status'] == 1){ //accept or deny?>
               <p>书籍所有者尚未回应，你可以撤销申请：</p>
               <div class='borrow-actions'>
-                <button class="btn btn-danger trade_op borrow-action-button" trade_op="cancel" trade_id="<?php echo $trade['trade_id'];?>" type="button">Cancel</button>
+                <button class="btn btn-danger trade_op borrow-action-button" trade_op="cancel" trade_id="<?php echo $trade['trade_id'];?>" type="button">取消</button>
               </div>
             <?php }else if($trade['trade_status'] == 2){?>
               <p>书籍所有者同意了你的申请，联系拥有者:</p>
