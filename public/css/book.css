@@ -201,11 +201,12 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
   color: #38adff;
 }
 
-.space-on-actions{
+.space-on-actions, .borrow-actions{
   height: 0.8rem;
 }
 
-.space-on-actions button{
+.space-on-actions button, .borrow-action-button{
+  display: block;
   outline: none;
   width: 2rem;
   border: 1px solid #999;
@@ -215,4 +216,5 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
   font-size: 0.35rem;
   margin: 0.1rem 0.2rem;
   float: right;
+  color: #666;
 }
