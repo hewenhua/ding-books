@@ -1,7 +1,7 @@
 <?php if(empty($more)):?>
 <div class="row">
    <div class="span8 alert alert-error hide" id="msg-box"></div>
-   <?php if(empty(items)){ ?>
+   <?php if(empty($items)){ ?>
       <div class="alert alert-info no-on-piao" id="msg-box">你还没有受求漂</div>
    <?php } ?>
    <div style='display:none' class="span6">
