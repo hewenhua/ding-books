@@ -2,7 +2,7 @@
 <div class="row">
     <div class="alert alert-error hide" id="msg-box"></div>
     <?php if(empty($trades)){ ?>
-    <div class="alert alert-info" id="msg-box">你还没有受求漂</div>
+    <div class="alert alert-info no-borrow" id="msg-box">你还没有受求漂</div>
     <?php } ?>
     <div class="book-list" id='spaceQiuBookList'>
       <?php 
@@ -75,8 +75,9 @@ endif;
 if(empty($more)):
 ?>
     </div>
-    <div class='more' id='J_Space_Qiu_More' data-next-page='2'>加载更多</div>
-
+    <?php if(!empty($trades)){ ?>
+        <div class='more' id='J_Space_Qiu_More' data-next-page='2'>加载更多</div>
+    <?php }?>
 </div>
 
 <script type="text/javascript">

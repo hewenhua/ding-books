@@ -228,3 +228,10 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
   font-size: 0.32rem;
   color: #666;
 }
+
+.no-shared, .no-borrow, .no-on-piao{
+  line-height: 2rem;
+  font-size: 0.45rem;
+  text-align: center;
+  color: #666666;
+}

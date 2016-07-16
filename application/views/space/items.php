@@ -1,6 +1,9 @@
 <?php if(empty($more)):?>
 <div class="row">
    <div class="span8 alert alert-error hide" id="msg-box"></div>
+   <?php if(empty(items)){ ?>
+      <div class="alert alert-info no-on-piao" id="msg-box">你还没有受求漂</div>
+   <?php } ?>
    <div style='display:none' class="span6">
     <ul class="nav nav-pills">
       <li><a href="<?php echo site_url($link_time);?>"><?php if($search_data['order_time']){echo 'Oldest';}else{echo 'Newest';}?></a></li>
@@ -54,7 +57,9 @@ endif;
 if(empty($more)):
 ?>
   </div>
-  <div class='more' id='J_Space_On_More' data-next-page='2'>加载更多</div>
+  <?php if(!empty($items)){ ?>
+    <div class='more' id='J_Space_On_More' data-next-page='2'>加载更多</div>
+  <?php }?>
 </div>
 
 <script type="text/javascript">
