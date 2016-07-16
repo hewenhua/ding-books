@@ -267,3 +267,12 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
   color: #666;
   text-align: center;
 }
+
+.shake-tip-close{
+  float:right;
+  display: block;
+  line-height: 0.6rem;
+  width:1rem;
+  text-align:center;
+  font-size: 0.45rem;
+}
