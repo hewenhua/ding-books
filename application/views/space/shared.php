@@ -20,8 +20,8 @@ endif;
               ?>
               <!-- title -->
               <h4><?php echo $trade['item_title'];?></h4>
-              <p class='book-desc'><?php echo $trade['item_description'];?></p>
-              <span class='book-owner'>拥有者：<?php echo $trade['owner_name'];?></span>
+              <!--<p class='book-desc'><?php echo $trade['item_description'];?></p>-->
+              <span class='book-owner'>求漂者：<?php echo $trade['borrower_name'];?></span>
             </div>
           </div>
           <div id="trade_record" class='trade-record'>
@@ -44,7 +44,7 @@ endif;
                </p>
             <?php } ?>
           </div>
-          <div class='shared-action-area'>
+          <div class='shared-action-area trade-record'>
 
             <?php if($trade['trade_status'] == 1){ //accept or deny?>
               <div class='shared-actions'>

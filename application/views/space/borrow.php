@@ -20,7 +20,6 @@ endif;
               ?>
               <!-- title -->
               <h4 class='book-title'><?php echo $title_anchor;?></h4>
-              <p class='book-desc'><?php echo $trade['item_description'];?></p>
               <span class='book-owner'>拥有者：<?php echo $trade['owner_name'];?></span>
             </div>
           </div>
@@ -44,7 +43,7 @@ endif;
                </p>
             <?php } ?>
           </div>
-          <div class='borrow-action-area'>
+          <div class='borrow-action-area trade-record'>
             <?php if($trade['trade_status'] == 1){ //accept or deny?>
               <p>书籍所有者尚未回应，你可以撤销申请：</p>
               <div class='borrow-actions'>
