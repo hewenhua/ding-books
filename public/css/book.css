@@ -111,7 +111,7 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
   white-space: nowrap;
 }
 
-.book-department{
+.book-department, .space-on-status{
   margin: 0 0 0 0.15rem;
   line-height: 0.42667rem;
   font-size:0.34667rem;

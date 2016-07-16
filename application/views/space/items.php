@@ -17,7 +17,7 @@
     </div>
    </div>
 
-  <div class="book-list">
+  <div class="book-list" id='spaceOnBookList'>
       <?php 
 endif;
       foreach ($items as $key => $item) { ?>
@@ -31,11 +31,11 @@ endif;
               <div class='book-desc'><?php echo $item['description'];?></div>
               <div class='book-author'><?php foreach($item['authors'] as $key => $author){ echo $author['name'] . ' '; }?></div>
               <?php if($item['item_status'] == 1) { ?>
-                <span class="label label-success share_status">Sharing</span>
+                <span class="label label-success share_status space-on-status">Sharing</span>
                 <?php }else if($item['item_status'] == 2){ ?>
-                <span class="label label-warning share_status">Unsharing</span>
+                <span class="label label-warning share_status space-on-status">Unsharing</span>
                 <?php }else if($item['item_status'] == 4){ ?>
-                <span class="label label-warning share_status">Shared</span>
+                <span class="label label-warning share_status space-on-status">Shared</span>
               <?php } ?>
             </a>
           </div>
@@ -56,10 +56,35 @@ endif;
 if(!empty($more)):
 ?>
   </div>
+  <div class='more' id='J_Space_On_More' data-next-page='2'>加载更多</div>
 </div>
 
 <script type="text/javascript">
   var post_url = "<?php echo site_url('api/updateItem');?>";
   updateItemStatus(post_url);
+  $('#J_Space_On_More').on('click', function(e){
+    alert(1);
+    var $elem = $(e.target);
+    var pageNum = parseInt($elem.attr('data-next-page'));
+    alert(pageNum);
+    $.ajax({
+      data: {
+        more: 1,
+        page: pageNum
+      },
+      success: function(data){
+        // alert(typeof data);
+        if(data == false || data == 'false'){
+          alert && alert('已加载到最后一页');
+        } else {
+          $('#spaceOnBookList').append(data);
+          $elem.attr('data-next-page', pageNum + 1 );
+        }
+      },
+      error: function(xhr, type){
+        //alert('Ajax error!');
+      }
+    });
+  });
 </script>
 <?php endif;?>
