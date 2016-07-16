@@ -20,6 +20,8 @@ endif;
               ?>
               <!-- title -->
               <h4><?php echo $trade['item_title'];?></h4>
+              <p class='book-desc'><?php echo $trade['item_description'];?></p>
+              <span class='book-owner'>拥有者：<?php echo $trade['owner_name'];?></span>
             </div>
           </div>
           <div id="trade_record" class='trade-record'>

@@ -21,7 +21,7 @@ endif;
               <!-- title -->
               <h4 class='book-title'><?php echo $title_anchor;?></h4>
               <p class='book-desc'><?php echo $trade['item_description'];?></p>
-              <span class='book-owner'>拥有者：<?php echo $owner_anchor;?></span>
+              <span class='book-owner'>拥有者：<?php echo $trade['owner_name'];?></span>
             </div>
           </div>
           <div class='trade-record' id="trade_record">
