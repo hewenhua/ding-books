@@ -27,15 +27,13 @@
   </p>
   <p>
     <?php if($this->session->userdata('user_id') == FALSE){?>
-      <p>这本书的拥有者是 <?php echo $item['username'];?> .<br> 你可以向他/她借阅这本书.</p>
-      <a class="btn btn-primary" href="<?php echo site_url('user/login');?>" type="button">申请借阅</a>
+      <p class='detail-state-info'>这本书的拥有者是 <?php echo $item['username'];?> .<br> 你可以向他/她借阅这本书.</p>
+      <a class="btn btn-primary detail-request-button" href="<?php echo site_url('user/login');?>" type="button">申请借阅</a>
     <?php }else if($item['user_id'] != $this->session->userdata('user_id') AND $item['item_status'] == 1){?>
-      <p>这本书的拥有者是 <?php echo $item['username'];?> .<br> 你可以向他/她借阅这本书.</p>
-      <button class="btn btn-primary" id="request" type="button">申请借阅 </button>
+      <p class='detail-state-info'>这本书的拥有者是 <?php echo $item['username'];?> .<br> 你可以向他/她借阅这本书.</p>
+      <button class="btn btn-primary detail-request-button" id="request" type="button">申请借阅 </button>
     <?php }else{ ?>
-      <p>本书暂时不可借阅，可能因为 :</p>
-      <p> * 你是本书的拥有者；</p>
-      <p> * 本书暂时不可借阅；</p>
+      <p class='detail-state-info'>本书暂时不可借阅，可能因为 :<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* 你是本书的拥有者；<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* 本书暂时不可借阅；</p>
     <?php } ?>
   </p>
 </div>

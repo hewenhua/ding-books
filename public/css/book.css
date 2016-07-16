@@ -100,7 +100,7 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
 }
 
 
-.more{
+.more, .detail-request-button{
   margin: 0.2rem;
   line-height: 1rem;
   border: 1px solid #ccc;
@@ -145,4 +145,11 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
   font-size: 0.34667rem;
   color: #666666;
   margin-left: 0.15rem;
+}
+
+.detail-state-info{
+  margin: 0.2rem 0 0.2rem 0.15rem;
+  line-height: 0.42667rem;
+  font-size: 0.34667rem;
+  color: #666666;
 }
