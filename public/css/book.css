@@ -183,13 +183,15 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
 .spave-nav{
   height: 1rem;
   background: #f1f1f1;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 1px solid #aaa;
 }
 .space-nav a{
+  background: #f1f1f1;
   display: inline-block;
   width: 3.3rem;
   line-height: 1rem;
   text-align: center;
   font-size: 0.4rem;
   float: left;
+  color: #666;
 }
