@@ -180,10 +180,11 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
   color: #666666;
 }
 
-.spave-nav{
+.space-nav{
   height: 1rem;
   background: #f1f1f1;
   border-bottom: 1px solid #aaa;
+  margin-bottom: 0.3rem;
 }
 .space-nav a{
   background: #f1f1f1;
@@ -192,6 +193,5 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
   line-height: 1rem;
   text-align: center;
   font-size: 0.4rem;
-  float: left;
   color: #666;
 }
