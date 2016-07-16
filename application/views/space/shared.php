@@ -1,11 +1,13 @@
+<?php if(empty($more)):?>
 <div class="row">
   <div class="span9">
     <div class="alert alert-error hide" id="msg-box"></div>
     <?php if(empty($trades)){ ?>
-    <div class="alert alert-info" id="msg-box">None of your books has been borrowed yet.</div>
+    <div class="alert alert-info" id="msg-box">还没有被求漂.</div>
     <?php } ?>
     <ul class="thumbnails">
       <?php 
+endif;
       foreach ($trades as $key => $trade) { ?>
       <li class="span9">
         <div class="thumbnail">
@@ -76,7 +78,9 @@
           </div>
         </div>
       </li>
-      <?php }?>
+      <?php }
+if(empty($more)):
+?>
     </ul>
     <div class="pagination">
       <ul>
@@ -105,3 +109,4 @@
         margin-left: 25px;
       }
 </style>
+<?php endif;?>

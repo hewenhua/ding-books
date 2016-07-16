@@ -209,7 +209,16 @@ class Space extends CI_Controller {
 
 	public function shared(){
 		$offset = $this->input->get_post('offset');
+        $more = $this->input->get_post('more');
+        $page = $this->input->get_post('page');
 		$limit = $this->limit;
+
+        if(empty($page)){
+            $page = 1;
+        }
+        if($page>1){
+            $offset = ($page-1)*$limit;
+        }
 
 		$data = array();
 		$data['title'] = "Books on sharing" ;
@@ -233,16 +242,30 @@ class Space extends CI_Controller {
 			);
 		$this->load->model("pagination_model");
 		$data['link_array'] = $this->pagination_model->create_link($link_config);
+        $data['more'] = $more;
 
-		$this->load->view('include/header' , $data);
-		$this->load->view('space/nav');
-		$this->load->view('space/shared');
-		$this->load->view('include/footer');
+        if(empty($more)){
+		    $this->load->view('include/header' , $data);
+		    $this->load->view('space/nav');
+        }
+		$this->load->view('space/shared',$data);
+        if(empty($more)){
+		    $this->load->view('include/footer');
+        }
 	}
 
 	public function borrow(){
 		$offset = $this->input->get_post('offset');
+        $more = $this->input->get_post('more');
+        $page = $this->input->get_post('page');
 		$limit = $this->limit;
+
+        if(empty($page)){
+            $page = 1;
+        }
+        if($page>1){
+            $offset = ($page-1)*$limit;
+        }
 
 		$data = array();
 		$data['title'] = "Books on sharing" ;
@@ -267,10 +290,16 @@ class Space extends CI_Controller {
 		$this->load->model("pagination_model");
 		$data['link_array'] = $this->pagination_model->create_link($link_config);
 
-		$this->load->view('include/header' , $data);
-		$this->load->view('space/nav');
-		$this->load->view('space/borrow');
-		$this->load->view('include/footer');
+        $data['more'] = $more;
+
+        if(empty($more)){
+		    $this->load->view('include/header' , $data);
+		    $this->load->view('space/nav');
+        }
+		$this->load->view('space/borrow',$data);
+        if(empty($more)){
+		    $this->load->view('include/footer');
+        }
 	}
 
 }
