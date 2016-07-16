@@ -29,47 +29,43 @@ endif;
             foreach ($trade['trade_record'] as $key => $record) {?>
                <p><?php echo $record['create_time'];?> :
                 <?php if($record['op'] == 1){
-                  echo 'You sent ' . $owner_anchor . ' a request for this book .';
+                  echo '你向 ' . $owner_anchor . ' 申请借阅该书';
                  }else if($record['op'] == 2){
-                  echo 'The onwer accepted your request .';
+                  echo '书籍所有者同意了你的申请';
                  }else if($record['op'] == 3){
-                  echo 'The onwer denied your request .';
+                  echo '书籍所有者拒绝了你的申请';
                  }else if($record['op'] == 4){
-                  echo 'You cancelled the request .';
+                  echo '你取消了申请';
                  }else if($record['op'] == 5){
-                  echo 'The onwer confirm the book is returned .';
+                  echo '书籍所有者确认该书已归还';
                  }else if($record['op'] == 6){
-                  echo 'The onwer confirm the book is lost .';
+                  echo '书籍所有者确认该书已丢失';
                  } ?>
                </p>
             <?php } ?>
           </div>
           <div>
             <?php if($trade['trade_status'] == 1){ //accept or deny?>
-              <p>The owner has not responsed yet , you can cancel the request .</p>
-              <p>
+              <p>书籍所有者尚未回应，你可以撤销申请：</p>
               <button class="btn btn-danger trade_op" trade_op="cancel" trade_id="<?php echo $trade['trade_id'];?>" type="button">Cancel</button>
-              </p>
             <?php }else if($trade['trade_status'] == 2){?>
-              <p>The owner has agreed to lend you the book.</p>
-              <p>You can contact the owner using infomation below :</p>
+              <p>书籍所有者同意了你的申请，联系拥有者:</p>
               <div class="alert alert-info">
-                <p>Cellphone : <?php echo $trade['owner_cellphone'];?></p>
-                <p>Email : <?php echo $trade['owner_email'];?></p>
+                <p>Cellphone:<?php echo $trade['owner_cellphone'];?></p>
+                <p>Mail:<?php echo $trade['owner_email'];?></p>
               </div>
             <?php }else if($trade['trade_status'] == 3){?>
-              <p>The owner has denied your request for this book.</p>
+              <p>书籍所有者拒绝了你的申请</p>
               <p>Sorry for that .</p>
             <?php }else if($trade['trade_status'] == 4){?>
-              <p>You have canceled the request for this book.</p>
+              <p>你取消了对本书的申请</p>
             <?php }else if($trade['trade_status'] == 5){?>
-              <p>The owner has confirm the book has been returned .</p>
+              <p>书籍所有者确认该书已归还</p>
               <p>Thanks for using our system.</p>
             <?php }else if($trade['trade_status'] == 6){?>
-              <p>The owner has confirm the book has been lost .</p>
-              <p>Sorry for that .</p>
+              <p>书籍所有者确认该书已丢失</p>
             <?php }else{?>
-              <p>Sytem error.</p>
+              <p>系统错误</p>
             <?php }?>
           </div>
         </div>
