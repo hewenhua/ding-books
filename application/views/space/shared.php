@@ -80,3 +80,5 @@ if(empty($more)):
   var post_url = "<?php echo site_url('api/updateTrade');?>";
   updateTrade(post_url);
 </script>
+
+<?php endif;?>
