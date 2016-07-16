@@ -101,6 +101,7 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
 }
 
 .book-author{
+  display: inline-block;
   margin: 0.2rem 0 0 0.15rem;
   line-height: 0.42667rem;
   font-size:0.34667rem;
@@ -112,7 +113,7 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
 }
 
 .book-department, .space-on-status{
-  margin: 0 0 0 0.15rem;
+  margin: 0.15rem 0 0 0.15rem;
   line-height: 0.42667rem;
   font-size:0.34667rem;
   color: #666666;

@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0155ea2f-57e8-4e0f-93b1-d326fa953cc1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/application/views/space/items.php" afterPath="$PROJECT_DIR$/application/views/space/items.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/book.css" afterPath="$PROJECT_DIR$/public/css/book.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ding-books.iws" />
@@ -34,11 +34,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="items.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="items.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/application/views/space/items.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="0" column="9" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
+            <state vertical-scroll-proportion="-0.0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -74,11 +74,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="book.css" pinned="false" current-in-tab="false">
+      <file leaf-file-name="book.css" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/css/book.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="113" column="34" selection-start-line="113" selection-start-column="34" selection-end-line="113" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.36">
+              <caret line="107" column="5" selection-start-line="107" selection-start-column="5" selection-end-line="107" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -137,8 +137,8 @@
         <option value="$PROJECT_DIR$/application/views/share/detail.php" />
         <option value="$PROJECT_DIR$/application/views/share/list.php" />
         <option value="$PROJECT_DIR$/application/views/space/nav.php" />
-        <option value="$PROJECT_DIR$/public/css/book.css" />
         <option value="$PROJECT_DIR$/application/views/space/items.php" />
+        <option value="$PROJECT_DIR$/public/css/book.css" />
       </list>
     </option>
   </component>
@@ -516,14 +516,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/book.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="113" column="34" selection-start-line="113" selection-start-column="34" selection-end-line="113" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/application/views/share/list.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-10.851851">
@@ -551,7 +543,15 @@
     <entry file="file://$PROJECT_DIR$/application/views/space/items.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="0" column="9" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/book.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36">
+          <caret line="107" column="5" selection-start-line="107" selection-start-column="5" selection-end-line="107" selection-end-column="5" />
           <folding />
         </state>
       </provider>
