@@ -1,4 +1,4 @@
-<?php if(!empty($more)):?>
+<?php if(empty($more)):?>
 <div class="row">
    <div class="span8 alert alert-error hide" id="msg-box"></div>
    <div style='display:none' class="span6">
@@ -53,7 +53,7 @@ endif;
           </div>
         </div>
       <?php }
-if(!empty($more)):
+if(empty($more)):
 ?>
   </div>
   <div class='more' id='J_Space_On_More' data-next-page='2'>加载更多</div>
