@@ -253,8 +253,9 @@ dd.ready(function() {
     });
 
     $('#J_Shake_Close').on('click',function(){
-        $('#J_Shake_tip').show();
+        $('#J_Shake_tip').hide();
         dd.device.accelerometer.clearShake({
+
         });
     });
 
