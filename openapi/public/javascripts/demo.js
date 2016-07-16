@@ -255,7 +255,7 @@ dd.ready(function() {
     $('.J_shake').on('click', function() {
         dd.device.accelerometer.watchShake({
             sensitivity: 15, //振动幅度，加速度变化超过这个值后触发shake
-            frequency: 1500, //采样间隔(毫秒)，指每隔多长时间对加速度进行一次采样， 然后对比前后变化，判断是否触发shake
+            frequency: 150, //采样间隔(毫秒)，指每隔多长时间对加速度进行一次采样， 然后对比前后变化，判断是否触发shake
             callbackDelay: 1000,
             onSuccess: function(result) {
                 dd.device.notification.vibrate({
