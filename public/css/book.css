@@ -269,6 +269,7 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
 }
 
 .shake-tip-close{
+  margin: 0.5rem;
   float:right;
   display: block;
   line-height: 0.6rem;
