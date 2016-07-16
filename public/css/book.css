@@ -196,3 +196,19 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
   font-size: 0.4rem;
   color: #666;
 }
+
+.space-on-actions{
+  height: 0.8rem;
+}
+
+.space-on-actions button{
+  outline: none;
+  width: 2rem;
+  border: 1px solid #999;
+  background: white;
+  height: 0.6rem;
+  border-radius: 0.1rem;
+  font-size: 0.35rem;
+  margin: 0.1rem 0.2rem;
+  float: right;
+}

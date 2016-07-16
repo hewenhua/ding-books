@@ -61,10 +61,10 @@ if(empty($more)):
   var post_url = "<?php echo site_url('api/updateItem');?>";
   updateItemStatus(post_url);
   $('#J_Space_On_More').on('click', function(e){
-    alert(1);
+    //alert(1);
     var $elem = $(e.target);
     var pageNum = parseInt($elem.attr('data-next-page'));
-    alert(pageNum);
+    //alert(pageNum);
     $.ajax({
       data: {
         more: 1,
