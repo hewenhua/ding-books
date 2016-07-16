@@ -50,7 +50,7 @@
             <a href="<?php echo site_url('share/detail/'. $item['item_id']); ?>" class="book-info">
               <h4 class='book-title'><?php echo $item['title'];?></h4>
               <div class='book-desc'><?php echo $item['description'];?></div>
-              <span class='book-author'><?php foreach($item['authors'] as $key => $author){ echo $author['name'] . ' '; }?></span>
+              <div class='book-author'><?php foreach($item['authors'] as $key => $author){ echo $author['name'] . ' '; }?></div>
               <?php if($item['department']==$department):?>
               <span class='book-department'><?php echo "同部门";?></span>
               <?php endif;?>

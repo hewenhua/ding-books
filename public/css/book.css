@@ -132,6 +132,10 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
   border-radius: 0.1rem;
 }
 
+.detail-request-button{
+  width: 9.5rem;
+}
+
 .detail{
 }
 
