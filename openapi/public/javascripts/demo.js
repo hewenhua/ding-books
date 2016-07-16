@@ -258,15 +258,6 @@ dd.ready(function() {
             frequency: 150, //采样间隔(毫秒)，指每隔多长时间对加速度进行一次采样， 然后对比前后变化，判断是否触发shake
             callbackDelay: 1000,
             onSuccess: function(result) {
-                dd.device.notification.vibrate({
-                    duration: 300,
-                    onSuccess: function() {
-                        dd.device.accelerometer.clearShake({
-                        });
-                    },
-                    onFail: function() {
-                    }
-                });
                 $.ajax({
                   url: '/api/spaceShake',
                   type:"POST",
@@ -289,6 +280,16 @@ dd.ready(function() {
                     logger.e(errorType + ', ' + error);
                   }
                 });
+                dd.device.notification.vibrate({
+                    duration: 300,
+                    onSuccess: function() {
+                        dd.device.accelerometer.clearShake({
+                        });
+                    },
+                    onFail: function() {
+                    }
+                });
+
             },
             onFail: function(result) {
                 console.log('error', result)

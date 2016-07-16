@@ -148,7 +148,7 @@ class Api extends CI_Controller {
             'order_time' => 1,
             'order_name' => $this->input->get_post('order_name'),
         );
-        $limit = 20;
+        $limit = 40;
         $offset = 0;
         if($this->session->userdata('user_id')){
             $user_id = $this->session->userdata('user_id');
@@ -158,7 +158,7 @@ class Api extends CI_Controller {
         $book_id = 0;
         $item_id = 0;
         $title = "";
-        $i = rand(0,$data['total']);
+        $i = rand(0,($data['total']-1));
         
         foreach ($data["items"] as $key => $item) {
             if($key == $i){
