@@ -201,7 +201,7 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
   color: #38adff;
 }
 
-.space-on-actions, .borrow-actions{
+.space-on-actions{
   height: 0.8rem;
 }
 
@@ -217,4 +217,8 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
   margin: 0.1rem 0.2rem;
   float: right;
   color: #666;
+}
+
+.borrow-actions:after{
+  clear:both;
 }
