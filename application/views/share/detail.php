@@ -33,7 +33,8 @@
       <p class='detail-state-info'>这本书的拥有者是 <?php echo $item['username'];?> .<br> 你可以向他/她借阅这本书.</p>
       <button class="btn btn-primary detail-request-button" id="request" type="button">申请借阅 </button>
     <?php }else{ ?>
-      <p class='detail-state-info'>本书暂时不可借阅，可能因为 :<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* 你是本书的拥有者；<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* 本书暂时不可借阅；</p>
+      <p class='detail-state-info'>本书暂时不可借阅，可能因为 :<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* 你是本书的拥有者；<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* 本书被其他人求漂；</p>
+      <a href="<?php echo $item['douban_url']; ?>" class="btn btn-primary detail-request-button" type="button">立即购买 </a>
     <?php } ?>
   </p>
 </div>
