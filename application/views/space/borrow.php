@@ -24,7 +24,7 @@ endif;
               <span class='book-owner'>拥有者：<?php echo $owner_anchor;?></span>
             </div>
           </div>
-          <div id="trade_record">
+          <div class='trade-record' id="trade_record">
             <?php
             foreach ($trade['trade_record'] as $key => $record) {?>
                <p><?php echo $record['create_time'];?> :

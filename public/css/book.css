@@ -201,6 +201,10 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
   color: #38adff;
 }
 
+.borrow-actions-area{
+  color: #666;
+}
+
 .space-on-actions, .borrow-actions{
   height: 0.8rem;
 }
@@ -216,5 +220,11 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
   font-size: 0.35rem;
   margin: 0.1rem 0.2rem;
   float: right;
+  color: #666;
+}
+
+.trade-record{
+  line-height: 0.43667rem;
+  font-size: 0.32rem;
   color: #666;
 }
