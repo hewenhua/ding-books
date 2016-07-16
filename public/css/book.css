@@ -179,3 +179,17 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
   font-size: 0.34667rem;
   color: #666666;
 }
+
+.spave-nav{
+  height: 1rem;
+  background: #f1f1f1;
+  border-bottom: 1px solid #ccc;
+}
+.space-nav a{
+  display: inline-block;
+  width: 3.3rem;
+  line-height: 1rem;
+  text-align: center;
+  font-size: 0.4rem;
+  float: left;
+}
