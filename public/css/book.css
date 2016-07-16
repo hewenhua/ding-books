@@ -241,3 +241,29 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
   text-align: center;
   color: #666666;
 }
+
+.shake-tip-area{
+  width: 100rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right:0;
+  bottom:0;;
+  margin:auto;
+  background: white;
+  display: none;
+}
+
+.shake-tip-img{
+  width: 3.5rem;
+  height: 4rem;
+  display: block;
+  margin: 1rem auto;
+}
+
+.shake-tip-text{
+  line-height: 1.3rem;
+  font-size: 0.4rem;
+  color: #666;
+  text-align: center;
+}
