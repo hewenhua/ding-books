@@ -33,6 +33,22 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
 .search-area{background:#9cd2f9;width:100%;}
 .search-input{height:0.85rem;width:9rem;padding:0 0.2rem;margin:0.2rem 0.3rem;outline:none;border:none;border-radius:0.1rem;}
 
+.list-share-button{
+  display: block;
+  outline: none;
+  border: none;
+  position: fixed;
+  right: 0.3rem;
+  bottom: 2rem;
+  width: 1.4rem;
+  height:1.4rem;
+  border-radius:1.4rem;
+  background: #38adff;
+  box-shadow: 1px 1px 3px #38adff;
+  text-align: center;
+  color: white;
+}
+
 .book-item{
   padding: 0.2rem 0.3rem 0.2rem 0.3rem;
   border-bottom: 1px solid #e6e6e6;
