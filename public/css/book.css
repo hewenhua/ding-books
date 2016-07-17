@@ -4,7 +4,7 @@
 }
 
 
-body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",Helvetica,Arial,'Microsoft YaHei',sans-serif;}
+body{width: 10rem;padding-bottom: 1.2rem;padding-top:1.2rem;font-family: inhert,"Helvetica Neue",Helvetica,Arial,'Microsoft YaHei',sans-serif;}
 
 .head-nav {position: fixed;bottom: 0;left: 0; width: 10rem; height: 1.2rem;}
 
@@ -27,7 +27,7 @@ body{width: 10rem;padding-bottom: 1.2rem;font-family: inhert,"Helvetica Neue",He
   line-height:0.52rem;
   font-size:0.5rem;
 }
-.app{height: 1.2rem; width:100%; background: #38adff; line-height: 1.2rem; color: white;}
+.app{position: fixed; height: 1.2rem; width:100%; background: #38adff; line-height: 1.2rem; color: white;}
 .app-name{float:left;font-size:0.45rem;font-family:iconfont;margin-left:0.45rem;}
 .app-username{float:right;margin-right: 0.2rem;font-size:0.36rem;}
 .search-area{background:#9cd2f9;width:100%;}
