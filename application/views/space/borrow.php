@@ -26,7 +26,7 @@ endif;
           <div class='trade-record' id="trade_record">
             <?php
             foreach ($trade['trade_record'] as $key => $record) {?>
-               <p><?php echo $record['create_time'];?> :
+               <p><?php echo format_date($record['create_time']);?> :
                 <?php if($record['op'] == 1){
                   echo '你向 ' . $owner_anchor . ' 申请借阅该书';
                  }else if($record['op'] == 2){

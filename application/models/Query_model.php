@@ -17,6 +17,7 @@ class Query_model extends CI_Model{
 		$author_id = isset($search_data['author_id'])?$search_data['author_id']:NULL;
 		$publisher_id = isset($search_data['publisher_id'])?$search_data['publisher_id']:NULL;
 		$book_ids = isset($search_data['book_ids'])?$search_data['book_ids']:NULL;
+		$order_score = isset($search_data['order_score'])?$search_data['order_score']:NULL;
 		$order_time = isset($search_data['order_time'])?$search_data['order_time']:NULL;
 		$order_name = isset($search_data['order_name'])?$search_data['order_name']:NULL;
 
@@ -80,7 +81,8 @@ class Query_model extends CI_Model{
 		else if($order_name == 1)
 			$sql .= " ORDER BY title DESC , create_time DESC ";
 		else
-			$sql .= " ORDER BY create_time DESC , title ASC";
+            $sql .= " ORDER BY score DESC , create_time DESC";
+		//	$sql .= " ORDER BY create_time DESC , title ASC";
 
 		$sql .= addLimit( $limit , $offset );
 

@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Space extends CI_Controller {
 
 	private $user_id;
-	private $limit = 1;
+	private $limit = 5;
 
 	function __construct(){
 		parent::__construct();
@@ -248,8 +248,8 @@ class Space extends CI_Controller {
 			'search_data' => $data['search_data'] ,
 			'pre_url' => 'space/' . __FUNCTION__  ,
 			);
-		$this->load->model("pagination_model");
-		$data['link_array'] = $this->pagination_model->create_link($link_config);
+		//$this->load->model("pagination_model");
+		//$data['link_array'] = $this->pagination_model->create_link($link_config);
         $data['more'] = $more;
 
         if(empty($more)){
