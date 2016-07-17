@@ -26,6 +26,7 @@ class Share extends CI_Controller {
 			'item_status' => array(1) , 
 			'order_time' => $this->input->get_post('order_time'),
 			'order_name' => $this->input->get_post('order_name'),
+            'order_score' => $this->input->get_post('order_score'),
 		);
 
 		$offset = $this->input->get_post('offset');
@@ -69,6 +70,8 @@ class Share extends CI_Controller {
 		$this->load->model("pagination_model");
 		$data['link_array'] = $this->pagination_model->create_link($link_config);
 
+		$data['link_score'] = url_maker( $data['search_data'] , 'share/' . __FUNCTION__  , 
+			array('name'=>'order_score','value'=>(1-$data['search_data']['order_score']) ));
 		$data['link_time'] = url_maker( $data['search_data'] , 'share/' . __FUNCTION__  , 
 			array('name'=>'order_time','value'=>(1-$data['search_data']['order_time']) ));
 		$data['link_name'] = url_maker( $data['search_data'] , 'share/' . __FUNCTION__  , 
@@ -313,6 +316,8 @@ class Share extends CI_Controller {
 		$this->load->model("pagination_model");
 		$data['link_array'] = $this->pagination_model->create_link($link_config);
 
+		$data['link_score'] = url_maker( $data['search_data'] , 'share/' . __FUNCTION__  , 
+			array('name'=>'order_score','value'=>(1-$data['search_data']['order_score']) ));
 		$data['link_time'] = url_maker( $data['search_data'] , 'share/' . __FUNCTION__  , 
 			array('name'=>'order_time','value'=>(1-$data['search_data']['order_time']) ));
 		$data['link_name'] = url_maker( $data['search_data'] , 'share/' . __FUNCTION__  , 

@@ -104,3 +104,55 @@ function getItemStatusName($statusNum){
 		);
 	return $convert_arr[$statusNum];
 }
+
+function format_date($datetime){
+        $time = strtotime($datetime);
+            if ($time < 0 ) {
+                return "";
+            }
+
+            $d = time() - intval($time);
+            if($d<60){
+                return "刚刚";
+            }
+
+            if( $d>=60 && $d< 30*60){
+                $m = intval($d / 60);
+                return "{$m}分钟前";
+            }
+
+            if( $d>= 30*60 && $d< 60*60){
+                $m = intval($d / 60);
+                return "半小时前";
+            }
+
+            if( $d>= 60*60 && $d< 2*60*60){
+                return "1小时前";
+            }
+
+            //昨天
+            $yesterday = date("Y-m-d 23:59:59",strtotime("-1 day"));
+            $yesterday = strtotime($yesterday);
+            if( $d>=2*3600 && $time > $yesterday){
+                $h = intval($d/3600);
+                return "今天 ".date("H:i",$time);
+            }
+
+            //前天
+            $byesterday = $yesterday - 86400;
+
+            if( $time>$byesterday && $time <= $yesterday){
+                return "昨天 ".date("H:i",$time);
+            }
+
+            //今年
+            $year = date("Y-01-01 00:00:00");
+            $year = strtotime($year);
+            if( $time>=$year && $time<$byesterday){
+                return date("m-d H:i",$time);
+            }
+
+            return date("Y-m-d H:i",$time);
+    }
+
+

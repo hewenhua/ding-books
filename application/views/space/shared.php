@@ -20,14 +20,16 @@ endif;
               ?>
               <!-- title -->
               <h4><?php echo $trade['item_title'];?></h4>
-              <!--<p class='book-desc'><?php echo $trade['item_description'];?></p>-->
               <span class='book-owner'>求漂者：<?php echo $trade['borrower_name'];?></span>
+              <?php if(!empty($trade['distance'])):?>
+              <p class='book-desc'>距离：<?php echo $trade['distance'];?></p>
+              <?php endif;?>
             </div>
           </div>
           <div id="trade_record" class='trade-record'>
             <?php
             foreach ($trade['trade_record'] as $key => $record) {?>
-               <p><?php echo $record['create_time'];?> :
+               <p><?php echo format_date($record['create_time']);?> :
                 <?php if($record['op'] == 1){
                   echo $borrower_anchor .' 向你发起了求漂.';
                  }else if($record['op'] == 2){

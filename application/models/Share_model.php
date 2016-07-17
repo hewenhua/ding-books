@@ -54,6 +54,7 @@ class Share_model extends CI_Model{
 		$item_view['image_url'] = $book_row->image_url;
 		$item_view['douban_url'] = $book_row->douban_url;
 		$item_view['description'] = $book_row->description;
+        $item_view['score'] = 100*$book_row->rate_score;
 		$user_query = $this->db->query("SELECT * FROM user WHERE id = $user_id");
 		if($user_query->num_rows() != 1)
                         return 0;
@@ -155,16 +156,18 @@ class Share_model extends CI_Model{
 		foreach($user_row as $key=>$row){
 			$user_array[$row['id']] = $row;
 		}
+        $distance = $this->distance($user_array[$borrower_id]['latitude'],$user_array[$borrower_id]['longitude'],$user_array[$owner_id]['latitude'],$user_array[$owner_id]['longitude']);
 		$trade_view['borrower_name'] = $user_array[$borrower_id]['username'];
 		$trade_view['borrower_cellphone'] = $user_array[$borrower_id]['cellphone'];
 		$trade_view['borrower_email'] = $user_array[$borrower_id]['email'];
 		$trade_view['owner_name'] = $user_array[$owner_id]['username'];
 		$trade_view['owner_cellphone'] = $user_array[$owner_id]['cellphone'];
 		$trade_view['owner_email'] = $user_array[$owner_id]['email'];
+        $trade_view['distance'] = $distance;
 
 		$trade_view['create_time'] = date('Y-m-d H:i:s');
 
-                return $this->db->insert('trade_view',$trade_view);
+        return $this->db->insert('trade_view',$trade_view);
 	}
 
 	function getTradeStatus($trade_id){
@@ -242,5 +245,22 @@ class Share_model extends CI_Model{
 		$this->db->where('trade_id',$trade_id);
 		return $this->db->update('trade_view',$trade_view);
 	}
+
+    public function distance($lat1, $lng1, $lat2, $lng2){
+        $earthRadius = 6367000;
+        $lat1 = ($lat1 * pi() ) / 180;
+        $lng1 = ($lng1 * pi() ) / 180;
+
+        $lat2 = ($lat2 * pi() ) / 180;
+        $lng2 = ($lng2 * pi() ) / 180;
+
+        $calcLongitude = $lng2 - $lng1;
+        $calcLatitude = $lat2 - $lat1;
+        $stepOne = pow(sin($calcLatitude / 2), 2) + cos($lat1) * cos($lat2) * pow(sin($calcLongitude / 2), 2);
+        $stepTwo = 2 * asin(min(1, sqrt($stepOne)));
+        $calculatedDistance = $earthRadius * $stepTwo;
+
+        return round($calculatedDistance);
+    }
 }
 
