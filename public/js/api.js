@@ -90,7 +90,7 @@ function shareBook(url){
       'book_id' : book_id ,
       'description' : description 
     };
-    var succ_msg = "Your book have been shared";
+    var succ_msg = "这本书已经在漂中";
     var another_one = $("#another_one").html();
 
     $.ajax({
@@ -100,24 +100,27 @@ function shareBook(url){
       data: data ,
       success: function(data){
         if(data.result == 0){
-          $("#msg-box").addClass("alert-error");
-          $("#msg-box").removeClass("alert-success");
-          $("#msg-box").text(data.msg);
-          $("#msg-box").show();
+            dd.device.notification.alert({
+                    title: "闲书漂流",
+                    message: data.msg
+                });
         }else if(data.result == 1){
-          $("#msg-box").removeClass("alert-error");
-          $("#msg-box").addClass("alert-success");
-          $("#msg-box").text(succ_msg);
-          $("#msg-box").append(another_one);
-          $("#msg-box").show();
+          dd.device.notification.alert({
+                    title: "闲书漂流",
+                    message: succ_msg
+                });
         }else{
-          $("#msg-box").text('connect error');
-          $("#msg-box").show();
+          dd.device.notification.alert({
+                    title: "连接失败",
+                    message: succ_msg
+                });
         }
       }, // end of handling succ
       error:function(e){
-        $("#msg-box").text('connect error');
-        console.log(e);
+          dd.device.notification.alert({
+                    title: "连接失败",
+                    message: succ_msg
+                });
       }
     }); //end of ajax
 
@@ -232,30 +235,45 @@ function updateItemStatus(url){
       data: data ,
       success: function(data){
         if(data.result == 0){
-          $("#msg-box").text(data.msg);
-          $("#msg-box").show();
+          dd.device.notification.alert({
+                    title: "闲书漂流",
+                    message: data.msg
+                });
         }else if(data.result == 1){
-          $("#msg-box").removeClass("alert-error");
-          $("#msg-box").addClass("alert-success");
           if(status == 1)
-            $("#msg-box").text("Share book success!");
+            dd.device.notification.alert({
+                    title: "闲书漂流",
+                    message: "放漂成功！"
+                });
           else if(status == 2)
-            $("#msg-box").text("Unshare book success!");
+            dd.device.notification.alert({
+                    title: "闲书漂流",
+                    message: "收漂成功！"
+                });
           else if(status == 3)
-            $("#msg-box").text("Delete book success!");
+            dd.device.notification.alert({
+                    title: "闲书漂流",
+                    message: "删除成功！"
+                });
           else
-            $("#msg-box").text("Operation unknown");
+            dd.device.notification.alert({
+                    title: "闲书漂流",
+                    message: "操作错误！"
+                });
 
-          $("#msg-box").show();
           setTimeout("self.location.reload();",1000);
         }else{
-          $("#msg-box").text('connect error');
-          $("#msg-box").show();
+            dd.device.notification.alert({
+                    title: "闲书漂流",
+                    message: "连接失败！"
+                });
         }
       }, // end of handling succ
       error:function(e){
-        alert("connect error");
-        console.log(e);
+        dd.device.notification.alert({
+                    title: "闲书漂流",
+                    message: "连接失败！"
+                });
       }
     }); //end of ajax
 
@@ -294,13 +312,17 @@ function requestBorrow(url){
           //$("#msg-box").text("Request has been sent to onwer .");
           //$("#msg-box").show();
         }else{
-          $("#msg-box").text('connect error');
-          $("#msg-box").show();
+            dd.device.notification.alert({
+                    title: "闲书漂流",
+                    message: "连接失败！"
+                });
         }
       }, // end of handling succ
       error:function(e){
-        alert("connect error");
-        console.log(e);
+        dd.device.notification.alert({
+                    title: "闲书漂流",
+                    message: "连接失败！"
+                });
       }
     }); //end of ajax
 
@@ -325,32 +347,49 @@ function updateTrade(url){
       data: data ,
       success: function(data){
         if(data.result == 0){
-          $("#msg-box").text(data.msg);
-          $("#msg-box").show();
+            dd.device.notification.alert({
+                    title: "闲书漂流",
+                    message: data.msg
+                });
         }else if(data.result == 1){
-          $("#msg-box").removeClass("alert-error");
-          $("#msg-box").addClass("alert-success");
           if(trade_op == 'accept')
-            $("#msg-box").text("Accept request success!");
+            dd.device.notification.alert({
+                    title: "闲书漂流",
+                    message: "你同意了求漂！"
+                });
           else if(trade_op == 'deny')
-            $("#msg-box").text("Deny request success!");
+            dd.device.notification.alert({
+                    title: "闲书漂流",
+                    message: "你拒绝了求漂！"
+                });
           else if(trade_op == 'cancel')
-            $("#msg-box").text("Cancel request success!");
+            dd.device.notification.alert({
+                    title: "闲书漂流",
+                    message: "你取消了放漂！"
+                });
           else if(trade_op == 'return')
-            $("#msg-box").text("Confirm the book is returned!");
+            dd.device.notification.alert({
+                    title: "闲书漂流",
+                    message: "确认书已归还！"
+                });
           else
-            $("#msg-box").text("Operation unknown");
-
-          $("#msg-box").show();
+            dd.device.notification.alert({
+                    title: "闲书漂流",
+                    message: "操作错误！"
+                });
           setTimeout("self.location.reload();",1000);
         }else{
-          $("#msg-box").text('connect error');
-          $("#msg-box").show();
+            dd.device.notification.alert({
+                    title: "闲书漂流",
+                    message: "连接失败！"
+                });
         }
       }, // end of handling succ
       error:function(e){
-        alert("connect error");
-        console.log(e);
+        dd.device.notification.alert({
+                    title: "闲书漂流",
+                    message: "连接失败！"
+                });
       }
     }); //end of ajax
 
