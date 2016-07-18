@@ -21,7 +21,7 @@ endif;
               <!-- title -->
               <h4 class='book-title'><?php echo $trade['item_title'];?></h4>
               <p class='book-owner'>求漂者：<?php echo $trade['borrower_name'];?></p>
-              <p class='book-distance'><?php if(!empty($trade['distance'])):?>（距离您大约 <?php echo $trade['distance'];?> km）<?php endif;?></p>
+              <p class='book-distance'><?php if(!empty($trade['distance'])):?>距离: <?php echo $trade['distance'];?> km<?php endif;?></p>
               <div id="trade_record" class='trade-record'>
                   <?php
                   foreach ($trade['trade_record'] as $key => $record) {?>

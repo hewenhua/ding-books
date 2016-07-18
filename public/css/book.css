@@ -113,6 +113,10 @@ body{width: 10rem;padding-bottom: 1.2rem;padding-top:1.2rem;font-family: inhert,
   white-space: nowrap;
 }
 
+.book-owner{
+  margin-top: 0;
+}
+
 .book-department, .space-on-status{
   margin: 0.15rem 0 0 0.15rem;
   padding: 0 0.1rem;
@@ -180,6 +184,12 @@ body{width: 10rem;padding-bottom: 1.2rem;padding-top:1.2rem;font-family: inhert,
   font-size: 0.34667rem;
   color: #666666;
   margin-left: 0.15rem;
+}
+
+.book-distance{
+  line-height: 0.46667rem;
+  font-size: 0.34667rem;
+  color: #666666;
 }
 
 .detail-state-info{
