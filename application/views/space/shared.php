@@ -19,7 +19,7 @@ endif;
               $borrower_anchor = $trade['borrower_name'];
               ?>
               <!-- title -->
-              <h4><?php echo $trade['item_title'];?></h4>
+              <h4 class='book-title'><?php echo $trade['item_title'];?></h4>
               <span class='book-owner'>求漂者：<?php echo $trade['borrower_name'];?><?php if(!empty($trade['distance'])):?>（距离您大约 <?php echo $trade['distance'];?> km）<?php endif;?></span>
               <div id="trade_record" class='trade-record'>
                   <?php
