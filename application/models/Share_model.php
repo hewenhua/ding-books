@@ -247,6 +247,9 @@ class Share_model extends CI_Model{
 	}
 
     public function distance($lat1, $lng1, $lat2, $lng2){
+        if(empty($lat1) || empty($lng1) || empty($lat2) || empty($lng2)){
+            return 0;
+        }
         $earthRadius = 6367000;
         $lat1 = ($lat1 * pi() ) / 180;
         $lng1 = ($lng1 * pi() ) / 180;
