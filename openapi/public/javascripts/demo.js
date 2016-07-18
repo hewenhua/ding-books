@@ -94,9 +94,14 @@ dd.ready(function() {
                                 dataType:'json',
                                 timeout: 900,
                                 success: function (data, status, xhr) {
-                        
-                                logger.i('user data: ' + data);
+                                    logger.i('user data: ' + data);
                                     var res = JSON.parse(data);
+                                    if(res.first_login === 1){
+                                         dd.device.notification.alert({
+                                            title: "闲书漂流",
+                                            message: "每日登录，奖励1漂流币~"
+                                         });
+                                    }
                                     if (res.process_login=== true){
                                         window.location.href = "/";
                                     }

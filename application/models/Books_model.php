@@ -228,6 +228,13 @@ class Books_model extends CI_Model{
 		return $row;
 	}
 
+    public function getBookInfo($book_id){
+        $query = $this->db->query("SELECT * FROM book WHERE id = $book_id");
+        if($query->num_rows() == 0)
+            return FALSE;
+        $row = $query->first_row();
+        return $row;
+    }
 	
 }
 

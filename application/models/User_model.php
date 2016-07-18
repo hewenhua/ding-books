@@ -50,7 +50,8 @@ class User_model extends CI_Model{
 			'name' => $row->username ,
 			'corpid' => $row->corpid ,
             'department' => $row->department,
-			'cellphone' => $row->cellphone 
+			'cellphone' => $row->cellphone,
+            'last_login_time' => time(),
 			);
 		$this->session->set_userdata($user_info);
         return true;
@@ -133,5 +134,37 @@ class User_model extends CI_Model{
 		$update_pwd = $this->db->query("UPDATE user SET password=SHA1('$npwd1') WHERE id=$user_id");
 		return 5;
 	}
+
+    public function addScore($user_id,$score){
+        $user_query = $this->db->query("SELECT * FROM user WHERE id = $user_id");
+        if($user_query->num_rows() != 1)
+                return 0;
+        $user_row = $user_query->first_row();
+        $data = array(
+            'score' => $user_row->score + intval($score),
+            );
+        $this->db->where('id', $user_id);
+        return $this->db->update('user', $data);
+    }
+
+    public function getScore($user_id){
+        $user_query = $this->db->query("SELECT * FROM user WHERE id = $user_id");
+        if($user_query->num_rows() != 1)
+                return 0;
+        $user_row = $user_query->first_row();
+        return intval($user_row->score);
+    }
+    
+    public function reduceScore($user_id,$score){
+        $user_query = $this->db->query("SELECT * FROM user WHERE id = $user_id");
+        if($user_query->num_rows() != 1)
+                return 0;
+        $user_row = $user_query->first_row();
+        $data = array(
+            'score' => $user_row->score - intval($score),
+            );
+        $this->db->where('id', $user_id);
+        return $this->db->update('user', $data);
+    }
 }
 

@@ -37,29 +37,38 @@ class Share_model extends CI_Model{
 	function afterCreateItem($item_id , $address = null){
 		$item_view = array();
 		$item_query = $this->db->query("SELECT * FROM item WHERE id = $item_id ");
-                if($item_query->num_rows() != 1)
-                        return 0;
-                $item_row = $item_query->first_row();
-		$item_view['item_id'] = $item_id;
-		$item_view['book_id'] = $book_id = $item_row->book_id;
-		$item_view['item_status'] = $item_row->status;
-		$item_view['user_id'] = $user_id =$item_row->user_id;
-		$book_query = $this->db->query("SELECT * FROM book WHERE id = $book_id ");
-		if($book_query->num_rows() != 1)
-                        return 0;
-		$book_row = $book_query->first_row();
-		$item_view['title'] = $book_row->title;
-		$item_view['publisher_id'] = $publisher_id = $book_row->publisher_id;
-		$item_view['pubdate'] = $book_row->pubdate;
-		$item_view['image_url'] = $book_row->image_url;
-		$item_view['douban_url'] = $book_row->douban_url;
-		$item_view['description'] = $book_row->description;
+        if($item_query->num_rows() != 1)
+                return 0;
+        $item_row = $item_query->first_row();
+        $item_view['item_id'] = $item_id;
+        $item_view['book_id'] = $book_id = $item_row->book_id;
+        $item_view['item_status'] = $item_row->status;
+        $item_view['user_id'] = $user_id =$item_row->user_id;
+        $book_query = $this->db->query("SELECT * FROM book WHERE id = $book_id ");
+        if($book_query->num_rows() != 1)
+                return 0;
+        $book_row = $book_query->first_row();
+        $item_view['title'] = $book_row->title;
+        $item_view['publisher_id'] = $publisher_id = $book_row->publisher_id;
+        $item_view['pubdate'] = $book_row->pubdate;
+        $item_view['image_url'] = $book_row->image_url;
+        $item_view['douban_url'] = $book_row->douban_url;
+        $item_view['description'] = $book_row->description;
         $item_view['score'] = 100*$book_row->rate_score;
-		$user_query = $this->db->query("SELECT * FROM user WHERE id = $user_id");
-		if($user_query->num_rows() != 1)
-                        return 0;
+        $price = intval($book_row->price/2);
+
+        $user_query = $this->db->query("SELECT * FROM user WHERE id = $user_id");
+        if($user_query->num_rows() != 1)
+                return 0;
 		$user_row = $user_query->first_row();
 		$item_view['username'] = $user_row->username;
+
+        $data = array(
+            'score' => $user_row->score + $price,
+            );
+        $this->db->where('id', $user_row->id);
+        $this->db->update('user', $data);
+
 		$publisher_query = $this->db->query("SELECT * FROM publisher WHERE id = $publisher_id");
                 if($publisher_query->num_rows() != 1)
                         return 0;
@@ -143,11 +152,12 @@ class Share_model extends CI_Model{
 		$trade_view['item_description'] = $item_row->description;
 		$book_id = $item_row->book_id;
 		$book_query = $this->db->query("SELECT * FROM book WHERE id = $book_id ");
-                if($book_query->num_rows() != 1)
-                        return 0;
-                $book_row = $book_query->first_row();
-                $trade_view['item_title'] = $book_row->title;
-		$trade_view['image_url'] = $book_row->image_url;
+        if($book_query->num_rows() != 1)
+                return 0;
+        $book_row = $book_query->first_row();
+        $trade_view['item_title'] = $book_row->title;
+        $trade_view['image_url'] = $book_row->image_url;
+        $trade_view['price'] = $book_row->price;
 		$user_query = $this->db->query("SELECT * FROM user WHERE id in ($borrower_id,$owner_id)");
 		if($item_query->num_rows() != 1)
                         return 0;
@@ -164,7 +174,6 @@ class Share_model extends CI_Model{
 		$trade_view['owner_cellphone'] = $user_array[$owner_id]['cellphone'];
 		$trade_view['owner_email'] = $user_array[$owner_id]['email'];
         $trade_view['distance'] = $distance;
-
 		$trade_view['create_time'] = date('Y-m-d H:i:s');
 
         return $this->db->insert('trade_view',$trade_view);

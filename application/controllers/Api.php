@@ -18,34 +18,48 @@ class Api extends CI_Controller {
         $department = $this->input->get_post('department');
         $latitude = $this->input->get_post('latitude');
         $longitude = $this->input->get_post('longitude');
+        $current_date = date('Y-m-d H:i:s');
+
 		$input = array(
 						'cellphone' => $userid,
 						'username' => $user_name,
 						'password' => $userid,
 						'userid' => $userid,
 						'corpid' => $corp_id,
-                        'latitude' => $latitude,
-                        'longitude' => $longitude,
                         'department' => json_encode($department),
+                        'login_time' => $current_date,
+                        'score' => 1,
 					  );
+
+        if(!empty($latitude)){
+            $input['latitude'] = $latitude;
+        }
+        if(!empty($longitude)){
+            $input['longitude'] = $longitude;
+        }
 
 		$query = $this->db->query("SELECT * FROM user WHERE userid = '$userid' AND corpid = '$corp_id' ");
 
 		$this->load->model('user_model');
+        $first_login = 0;
         if($query->num_rows() == 0){
 			list($result , $msg) = $this->user_model->create($input);
 	        if($result == FALSE){
 	            echoFail($msg);
 	            return FALSE;
 	        }
+            $first_login = 1;
 	
 		}else{
+            unset($input['score']);
 			$row = $query->first_row();
 			$id = $row->id;	
-            if($row->department != $department || $user_name != $row->username || $latitude != $row->latitude || $longitude != $row->longitude){
-			    unset($input['password']);
-			    $flag = $this->user_model->updateProfile($input,$id);
+            unset($input['password']);
+            if(date("Y-m-d",strtotime($row->login_time)) != date("Y-m-d",strtotime($current_date))){
+                $input['score'] = 1+intval($row->score);
+                $first_login = 1;
             }
+            $flag = $this->user_model->updateProfile($input,$id);
 		}
 
         $login_user_id = $this->session->userdata('user_id');
@@ -53,7 +67,7 @@ class Api extends CI_Controller {
         if(empty($login_user_id)){
 		    $process_login = $this->user_model->processLogin($input['cellphone']);
         }
-        echo json_encode(json_encode(array('process_login'=>$process_login)));
+        echo json_encode(json_encode(array('process_login'=>$process_login,'first_login'=>$first_login)));
         return TRUE;
 	}
 
@@ -414,32 +428,43 @@ class Api extends CI_Controller {
 			echoFail('这本书是你的了!');
 			return FALSE;
 		}
-    
-        $item_query = $this->db->query("SELECT * FROM item WHERE user_id = $user_id and status in (1,4)");
-        $item_num = $item_query->num_rows();
-        $trade_query = $this->db->query("SELECT * FROM trade WHERE user_id = $user_id and status in (1,2)");
-        $trade_num = $trade_query->num_rows();
-        if($item_num < ($trade_num+1) && $user_id!=3){
-            echoFail('你放漂了'.$item_num.'本，求漂了'.$trade_num.'本，先放漂一本书再来求漂吧！');
+
+        $user_score = $this->user_model->getScore($user_id);
+        $this->load->model('books_model');
+        $book_row = $this->books_model->getBookInfo($row->book_id);
+        $price = 0;
+        if(isset($book_row->price) && !empty($book_row->price)){
+            $price = intval($book_row->price/2);
+        }
+        if(!empty($price) && $user_score<$price){
+            echoFail('需要'.$price.'漂流币，你目前有'.$user_score.'漂流币，先放漂一本书再来求漂吧！');
             return FALSE;
+            $item_query = $this->db->query("SELECT * FROM item WHERE user_id = $user_id and status in (1,4)");
+            $item_num = $item_query->num_rows();
+            $trade_query = $this->db->query("SELECT * FROM trade WHERE user_id = $user_id and status in (1,2)");
+            $trade_num = $trade_query->num_rows();
+            if($item_num < ($trade_num+1) && $user_id!=3){
+                echoFail('你放漂了'.$item_num.'本，求漂了'.$trade_num.'本，先放漂一本书再来求漂吧！');
+                return FALSE;
+            }
         }
         
-
 		//create a new trade entry in trade table
 		$this->load->model("share_model");
 		$insert_id = $this->share_model->createTrade($user_id , $item_id);
 
-		echoSucc('你放漂了'.$item_num.'本，求漂了'.$trade_num.'本');
 		if(!empty($insert_id)){
 			$user_query = $this->db->query("SELECT * FROM user WHERE id = '$row->user_id' ");
 			if($user_query->num_rows() != 1){
 				return FALSE;
 			}
-			$user_row = $user_query->first_row();
+            $this->user_model->reduceScore($user_id,intval($price));
 
             $oa = $this->getOA($row->book_id,"ask");
-			$this->sendOAMessage($user_row->userid,$oa);
+            $user_row = $user_query->first_row();
+			$flag = $this->sendOAMessage($user_row->userid,$oa);
 		}
+        echoSucc('求漂成功~');
 		return TRUE;
 
 	}
@@ -551,7 +576,7 @@ class Api extends CI_Controller {
 			echoFail('Unknown error');
 			return FALSE;
 		}
-
+        
         $item_id = $trade_row->item_id;
         $trade_user_id = $trade_row->user_id;
         $trade_user_info = $this->user_model->getUserInfo($trade_user_id);
@@ -564,6 +589,23 @@ class Api extends CI_Controller {
         $oa = $this->getOA($row->book_id,$input['trade_op']);
         $this->sendOAMessage($trade_userid,$oa);
 
+        $score = intval($trade_row->price/2);
+        if(in_array($input['trade_op'],array('return'))){
+            $this->user_model->addScore($user_id,5);
+            echoSucc('确认书已归还！系统奖励5漂流币~');
+            return TRUE;
+        }
+        if(in_array($input['trade_op'],array('accept'))){
+            $this->user_model->addScore($user_id,$score);
+            echoSucc('你同意了求漂！系统奖励'.$score.'漂流币~');
+            return TRUE;
+        }
+        if(in_array($input['trade_op'],array('cancel'))){
+            $this->user_model->addScore($user_id,$score);
+            echoSucc('你取消了放漂！系统退还'.$score.'漂流币~');
+            return TRUE;
+        }
+        
         echoSucc('request succ');
         return TRUE;
 

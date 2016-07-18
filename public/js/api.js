@@ -355,7 +355,7 @@ function updateTrade(url){
           if(trade_op == 'accept')
             dd.device.notification.alert({
                     title: "闲书漂流",
-                    message: "你同意了求漂！"
+                    message: data.msg
                 });
           else if(trade_op == 'deny')
             dd.device.notification.alert({
@@ -365,12 +365,12 @@ function updateTrade(url){
           else if(trade_op == 'cancel')
             dd.device.notification.alert({
                     title: "闲书漂流",
-                    message: "你取消了放漂！"
+                    message: data.msg
                 });
           else if(trade_op == 'return')
             dd.device.notification.alert({
                     title: "闲书漂流",
-                    message: "确认书已归还！"
+                    message: data.msg 
                 });
           else
             dd.device.notification.alert({
