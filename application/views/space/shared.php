@@ -20,7 +20,7 @@ endif;
               ?>
               <!-- title -->
               <h4><?php echo $trade['item_title'];?></h4>
-              <span class='book-owner'>求漂者：<?php echo $trade['borrower_name'];?> <?php if(!empty($trade['distance'])):?>距离：<?php echo $trade['distance'];?><?php endif;?></span>
+              <span class='book-owner'>求漂者：<?php echo $trade['borrower_name'];?>(<?php if(!empty($trade['distance'])):?>距离您大约 <?php echo $trade['distance'];?><?php endif;?>km)</span>
             </div>
           </div>
           <div id="trade_record" class='trade-record'>
