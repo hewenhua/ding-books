@@ -63,7 +63,6 @@ endif;
               <p>求漂者取消了请求.</p>
             <?php }else if($trade['trade_status'] == 5){?>
               <p>你已确认书归还.</p>
-              <p>感谢使用闲书漂流.</p>
             <?php }else if($trade['trade_status'] == 6){?>
               <p>你已确认书丢失.</p>
               <p>非常抱歉.</p>
