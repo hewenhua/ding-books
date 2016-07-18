@@ -115,7 +115,8 @@ body{width: 10rem;padding-bottom: 1.2rem;padding-top:1.2rem;font-family: inhert,
 
 .book-department, .space-on-status{
   margin: 0.15rem 0 0 0.15rem;
-  line-height: 0.42667rem;
+  padding: 0 0.1rem;
+  line-height: 0.367rem;
   font-size:0.28rem;
   color: #999999;
   border:1px solid #e6e6e6;
