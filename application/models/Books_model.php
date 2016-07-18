@@ -55,6 +55,8 @@ class Books_model extends CI_Model{
 	private function saveBookInfoToDB($book_info){
 		$publisher = isset($book_info["publisher"]) ? $book_info["publisher"] : "";
 		$publisher_id = $this->createPublisher($publisher);
+        $book_info['price'] = str_replace("CNY","",$book_info['price']);
+        $book_info['price'] = str_replace("元","",$book_info['price']);
 		$book = array(
 			'isbn10' => $book_info['isbn10'] ,
 			'isbn13' => $book_info['isbn13'] ,

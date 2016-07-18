@@ -240,6 +240,10 @@ dd.ready(function() {
                     if(info.errcode === 0) {
                       logger.i('book_id: ' + info.book_id);
                       logger.i('item_id: ' + info.item_id);
+                        dd.device.notification.alert({
+                          title: "闲书漂流",
+                          message: "放漂成功，奖励你"+info.score+"漂流币~"
+                        });
                       window.location.href = "/share/detail/" + info.item_id + "?display=1";
                     }
 

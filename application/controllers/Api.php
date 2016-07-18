@@ -226,11 +226,17 @@ class Api extends CI_Controller {
 
         $this->load->model('share_model');
 		$description = isset($data['title']) ? $data['title'] : "";
+        //$score = intval(intval($data['price'])/2);
+        $score = 5;
         if($item_id = $this->share_model->isDuplicateItem($book_id , $user_id)){
             $data = array('latitude'=>$latitude,'longitude'=>$longitude,'location'=>$address,'status'=>1);
             $this->share_model->updateItem($item_id,$data);
         }else{
+            $this->load->model('user_model');
         	$item_id = $this->share_model->createItem( $book_id , $user_id , $description , $latitude , $longitude , $address);
+            if(!empty($item_id)){
+                $this->user_model->addScore($user_id,5);
+            }
 		}
 
         $output = array(
@@ -238,7 +244,7 @@ class Api extends CI_Controller {
 			'result' => 1,
             'book_id' => $book_id,
 			'item_id' => $item_id,
-			'description' => $description
+            'score' => $score,
             );
         echo json_encode(json_encode($output));
         return TRUE;
@@ -583,13 +589,21 @@ class Api extends CI_Controller {
         $trade_userid = $trade_user_info['userid'];
         $query = $this->db->query("SELECT * FROM item WHERE id = $item_id ");
 		if($query->num_rows() != 1){
+			echoFail('Unknown error');
 			return FALSE;
 		}
 		$row = $query->first_row();
         $oa = $this->getOA($row->book_id,$input['trade_op']);
         $this->sendOAMessage($trade_userid,$oa);
 
-        $score = intval($trade_row->price/2);
+        $book_query = $this->db->query("SELECT * FROM book WHERE id = $row->book_id ");
+        if($book_query->num_rows() != 1){
+			echoFail('Unknown error');
+            return FALSE;
+        }
+        $book_row = $book_query->first_row();
+
+        $score = intval(intval($book_row->price)/2);
         if(in_array($input['trade_op'],array('return'))){
             $this->user_model->addScore($user_id,5);
             echoSucc('确认书已归还！系统奖励5漂流币~');

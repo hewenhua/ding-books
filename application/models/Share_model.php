@@ -55,19 +55,13 @@ class Share_model extends CI_Model{
         $item_view['douban_url'] = $book_row->douban_url;
         $item_view['description'] = $book_row->description;
         $item_view['score'] = 100*$book_row->rate_score;
-        $price = intval($book_row->price/2);
+        //$price = intval($book_row->price/2);
 
         $user_query = $this->db->query("SELECT * FROM user WHERE id = $user_id");
         if($user_query->num_rows() != 1)
                 return 0;
 		$user_row = $user_query->first_row();
 		$item_view['username'] = $user_row->username;
-
-        $data = array(
-            'score' => $user_row->score + $price,
-            );
-        $this->db->where('id', $user_row->id);
-        $this->db->update('user', $data);
 
 		$publisher_query = $this->db->query("SELECT * FROM publisher WHERE id = $publisher_id");
                 if($publisher_query->num_rows() != 1)
