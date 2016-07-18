@@ -21,27 +21,27 @@ endif;
               <!-- title -->
               <h4 class='book-title'><?php echo $title_anchor;?></h4>
               <span class='book-owner'>拥有者：<?php echo $trade['owner_name'];?></span>
+              <div class='borrow-trade-record trade-record' id="trade_record">
+                <?php
+                foreach ($trade['trade_record'] as $key => $record) {?>
+                   <p><?php echo format_date($record['create_time']);?> :
+                    <?php if($record['op'] == 1){
+                      echo '你向 ' . $owner_anchor . ' 申请借阅该书';
+                     }else if($record['op'] == 2){
+                      echo '书籍所有者同意了你的申请';
+                     }else if($record['op'] == 3){
+                      echo '书籍所有者拒绝了你的申请';
+                     }else if($record['op'] == 4){
+                      echo '你取消了申请';
+                     }else if($record['op'] == 5){
+                      echo '书籍所有者确认该书已归还';
+                     }else if($record['op'] == 6){
+                      echo '书籍所有者确认该书已丢失';
+                     } ?>
+                   </p>
+                <?php } ?>
+              </div>
             </div>
-          </div>
-          <div class='trade-record' id="trade_record">
-            <?php
-            foreach ($trade['trade_record'] as $key => $record) {?>
-               <p><?php echo format_date($record['create_time']);?> :
-                <?php if($record['op'] == 1){
-                  echo '你向 ' . $owner_anchor . ' 申请借阅该书';
-                 }else if($record['op'] == 2){
-                  echo '书籍所有者同意了你的申请';
-                 }else if($record['op'] == 3){
-                  echo '书籍所有者拒绝了你的申请';
-                 }else if($record['op'] == 4){
-                  echo '你取消了申请';
-                 }else if($record['op'] == 5){
-                  echo '书籍所有者确认该书已归还';
-                 }else if($record['op'] == 6){
-                  echo '书籍所有者确认该书已丢失';
-                 } ?>
-               </p>
-            <?php } ?>
           </div>
           <div class='borrow-action-area trade-record'>
             <?php if($trade['trade_status'] == 1){ //accept or deny?>

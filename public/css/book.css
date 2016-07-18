@@ -75,12 +75,13 @@ body{width: 10rem;padding-bottom: 1.2rem;padding-top:1.2rem;font-family: inhert,
   display: inline-block;
   float: left;
   width: 6.5rem;
+  margin-left: 0.15rem;
 }
 
 .book-title{
   height: 0.6rem;
   line-height: 0.6rem;
-  margin: 0.15rem;
+  margin: 0.15rem 0.15rem 0.15rem 0rem;
   font-size: 0.45rem;
   text-overflow: ellipsis;
   overflow: hidden;
@@ -88,7 +89,7 @@ body{width: 10rem;padding-bottom: 1.2rem;padding-top:1.2rem;font-family: inhert,
 }
 
 .book-desc{
-  margin: 0.2rem 0 0.2rem 0.15rem;
+  margin: 0.2rem 0 0.2rem 0rem;
   line-height: 0.42667rem;
   font-size: 0.34667rem;
   max-height: 1.3rem;
@@ -102,7 +103,7 @@ body{width: 10rem;padding-bottom: 1.2rem;padding-top:1.2rem;font-family: inhert,
 
 .book-author, .book-owner{
   display: inline-block;
-  margin: 0.2rem 0 0 0.15rem;
+  margin: 0.2rem 0 0 0rem;
   line-height: 0.42667rem;
   font-size:0.34667rem;
   color: #666666;
