@@ -21,27 +21,27 @@ endif;
               <!-- title -->
               <h4><?php echo $trade['item_title'];?></h4>
               <span class='book-owner'>求漂者：<?php echo $trade['borrower_name'];?><?php if(!empty($trade['distance'])):?>（距离您大约 <?php echo $trade['distance'];?> km）<?php endif;?></span>
+              <div id="trade_record" class='trade-record'>
+                  <?php
+                  foreach ($trade['trade_record'] as $key => $record) {?>
+                     <p><?php echo format_date($record['create_time']);?> :
+                      <?php if($record['op'] == 1){
+                        echo $borrower_anchor .' 向你发起了求漂.';
+                       }else if($record['op'] == 2){
+                        echo '你接受了求漂 .';
+                       }else if($record['op'] == 3){
+                        echo '你拒绝了求漂 .';
+                       }else if($record['op'] == 4){
+                        echo '求漂者取消了请求 .';
+                       }else if($record['op'] == 5){
+                        echo '你确认了书已归还 .';
+                       }else if($record['op'] == 6){
+                        echo '你确认了书已丢失 .';
+                       } ?>
+                     </p>
+                  <?php } ?>
+              </div>
             </div>
-          </div>
-          <div id="trade_record" class='trade-record'>
-            <?php
-            foreach ($trade['trade_record'] as $key => $record) {?>
-               <p><?php echo format_date($record['create_time']);?> :
-                <?php if($record['op'] == 1){
-                  echo $borrower_anchor .' 向你发起了求漂.';
-                 }else if($record['op'] == 2){
-                  echo '你接受了求漂 .';
-                 }else if($record['op'] == 3){
-                  echo '你拒绝了求漂 .';
-                 }else if($record['op'] == 4){
-                  echo '求漂者取消了请求 .';
-                 }else if($record['op'] == 5){
-                  echo '你确认了书已归还 .';
-                 }else if($record['op'] == 6){
-                  echo '你确认了书已丢失 .';
-                 } ?>
-               </p>
-            <?php } ?>
           </div>
           <div class='shared-action-area trade-record'>
 
