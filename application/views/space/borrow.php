@@ -52,12 +52,11 @@ endif;
             <?php }else if($trade['trade_status'] == 2){?>
               <p>书籍所有者同意了你的申请，联系拥有者:</p>
               <div class='borrow-actions'>
-                <a class='borrow-action-button' href='tel:<?php echo $trade['owner_cellphone'];?>'><?php echo $trade['owner_cellphone'];?></a>
-                <a calss='borrow-action-button' href='mailto:<?php echo $trade['owner_email'];?>'><?php echo $trade['owner_email'];?></a>
+                <a><?php echo $trade['owner_name'];?></a>
+                <!--<a class='borrow-action-button' href='tel:<?php echo $trade['owner_cellphone'];?>'><?php echo $trade['owner_cellphone'];?></a>-->
               </div>
             <?php }else if($trade['trade_status'] == 3){?>
-              <p>书籍所有者拒绝了你的申请</p>
-              <p>Sorry for that .</p>
+              <p>很抱歉书籍所有者拒绝了你的申请</p>
             <?php }else if($trade['trade_status'] == 4){?>
               <p>你取消了对本书的申请</p>
             <?php }else if($trade['trade_status'] == 5){?>
