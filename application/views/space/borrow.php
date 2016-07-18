@@ -54,7 +54,6 @@ endif;
               <div class='borrow-actions'>
                 <a><?php echo $trade['owner_name'];?></a>
                 <!--<a class='borrow-action-button' href='tel:<?php echo $trade['owner_cellphone'];?>'><?php echo $trade['owner_cellphone'];?></a>-->
-                <!--<a class="borrow-action-button J_method_btn" data-method="biz.telephone.call" data-param='{"corpId": "dingea786bf7dcce0e0c", "users": ["26713232"]}' type="button">联系</a>-->
               </div>
             <?php }else if($trade['trade_status'] == 3){?>
               <p>很抱歉书籍所有者拒绝了你的申请</p>
