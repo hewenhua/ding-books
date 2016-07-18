@@ -41,6 +41,7 @@
       <a style='float: left; display: inline-block; width: 3.265rem; line-height: 0.8rem; font-size: 0.32rem; text-align:center; color: #38adff' href="<?php echo site_url($link_name);?>"><?php if($search_data['order_name']){echo 'Z-A';}else{echo 'A-Z';}?></a>
     </div>
    </div>
+
    <button class="btn btn-block btn-default J_shake list-share-button" data-method="device.accelerometer.watchShake" data-param='{"sensitivity": 15, "frequency": 150, "callbackDelay": 1000}' data-action="share">摇一摇</button>
 
   <div class="book-list" id='bookList'>

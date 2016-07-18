@@ -532,6 +532,12 @@ class Api extends CI_Controller {
 					return FALSE;
 				}
 				break;
+			case 'lost':
+				if($current_status != 2){
+					echoFail('Only accept status can be canceled');
+					return FALSE;
+				}
+				break;
 			default:
 				echoFail('Trade operation is unknown');
 				return FALSE;

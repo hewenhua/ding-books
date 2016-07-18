@@ -234,6 +234,10 @@ class CI_Config {
 	 */
 	public function site_url($uri = '', $protocol = NULL)
 	{
+        $corpId = isset($_SESSION['corpid']) && !empty($_SESSION['corpid']) ? $_SESSION['corpid'] : null;
+        if(empty($corpId)){
+            $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : null;
+        }
 		$base_url = $this->slash_item('base_url');
 
 		if (isset($protocol))
@@ -247,6 +251,9 @@ class CI_Config {
 		}
 
 		$uri = $this->_uri_string($uri);
+        if(!empty($corpId)){
+            $uri = $uri."?corpId=".$corpId;
+        }
 
 		if ($this->item('enable_query_strings') === FALSE)
 		{

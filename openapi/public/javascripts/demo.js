@@ -322,6 +322,7 @@ dd.ready(function() {
         var method = $this.data('method');
         var action = $this.data('action');
         var param = $this.data('param') || {};
+
         if (typeof param === 'string') {
             param = JSON.parse(param);
         }
@@ -354,6 +355,10 @@ dd.ready(function() {
             }
         };
         param.onFail = function(result) {
+                dd.device.notification.alert({
+                    title: method,
+                    message: JSON.stringify(param, null, 4) + '\n' + '响应：' + JSON.stringify(result, null, 4)
+                });
             console.log(method, '调用失败，fail', result)
         };
         getMethod(method)(param);
