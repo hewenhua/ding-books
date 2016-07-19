@@ -34,5 +34,6 @@
           });
 	   });
     </script>
+    <?php require_once 'cs.php';echo '<img src="'._cnzzTrackPageView(1259945166).'" width="0" height="0"/>';?>
   </body>
 </html>
