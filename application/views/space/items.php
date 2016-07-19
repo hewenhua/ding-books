@@ -36,7 +36,7 @@ endif;
               <?php if($item['item_status'] == 1) { ?>
                 <span class="label label-success share_status space-on-status">放漂中</span>
                 <?php }else if($item['item_status'] == 2){ ?>
-                <span class="label label-warning share_status space-on-status">搜漂中</span>
+                <span class="label label-warning share_status space-on-status">已收漂</span>
                 <?php }else if($item['item_status'] == 4){ ?>
                 <span class="label label-warning share_status space-on-status">已放漂</span>
               <?php } ?>

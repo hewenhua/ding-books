@@ -64,7 +64,7 @@ class Api extends CI_Controller {
 
         $login_user_id = $this->session->userdata('user_id');
         $process_login= false;
-        if(empty($login_user_id)){
+        if(empty($login_user_id)||$login_user_id!=$row->id){
 		    $process_login = $this->user_model->processLogin($input['cellphone']);
         }
         echo json_encode(json_encode(array('process_login'=>$process_login,'first_login'=>$first_login)));
@@ -168,6 +168,7 @@ class Api extends CI_Controller {
             $user_id = $this->session->userdata('user_id');
             $data['search_data']['no_user_id'] = $user_id;
         }
+
         list( $data['total'] , $data['items']) = $this->query_model->queryItem( $data['search_data'] , $limit , $offset );
         $book_id = 0;
         $item_id = 0;
@@ -181,13 +182,22 @@ class Api extends CI_Controller {
                 $title = $item['title'];
             }
         }
+        $msg_arr = array(
+            "漂流币可以换新书啦~满500即可兑换热门书籍",
+            "每日登陆可奖励1漂流币~连续登陆有惊喜哦",
+            "放漂(扫描书背后的条形码)即可得漂流币哦~",
+            "接受对方的求漂~可获得与书价相应的漂流币哦",
+        );
+        $k = rand(0,(count($msg_arr)-1));
+        
+        $msg = $msg_arr[$k];
 
         $output = array(
             'errcode' => 0,
             'result' => 1,
             'book_id' => $book_id,
             'item_id' => $item_id,
-            'title' => $title
+            'msg' => $msg,
             );
         echo json_encode(json_encode($output));
         return TRUE;
@@ -227,15 +237,16 @@ class Api extends CI_Controller {
         $this->load->model('share_model');
 		$description = isset($data['title']) ? $data['title'] : "";
         //$score = intval(intval($data['price'])/2);
-        $score = 5;
+        $score = 0;
         if($item_id = $this->share_model->isDuplicateItem($book_id , $user_id)){
             $data = array('latitude'=>$latitude,'longitude'=>$longitude,'location'=>$address,'status'=>1);
             $this->share_model->updateItem($item_id,$data);
         }else{
+            $score = 2;
             $this->load->model('user_model');
         	$item_id = $this->share_model->createItem( $book_id , $user_id , $description , $latitude , $longitude , $address);
             if(!empty($item_id)){
-                $this->user_model->addScore($user_id,5);
+                $this->user_model->addScore($user_id,$score);
             }
 		}
 
@@ -366,6 +377,7 @@ class Api extends CI_Controller {
 			echoFail('item_id does not exist');
 			return FALSE;
 		}
+        $row = $query->first_row();
 
 		$this->load->model('share_model');
 		$update_data = array();
@@ -380,6 +392,12 @@ class Api extends CI_Controller {
 			echoFail('Fail to update item description');
 			return FALSE;
 		}
+        if(in_array($update_data['status'],array(2,3))&&$row->status == 1){
+            $this->user_model->reduceScore($user_id,1);
+        }elseif($update_data['status']==1){
+            //$this->user_model->addScore($user_id,10);
+        }
+    
 
 		echoSucc('update succ');
 		return TRUE;

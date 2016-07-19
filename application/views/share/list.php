@@ -69,5 +69,8 @@
     <?php if($page_num*$limit < $total):?>
   <div class='more' id='J_More' data-next-page='2'>加载更多</div>
   </div>
+    <?php else:?>
+    <image class='shake-tip-img' src='https://gw.alicdn.com/tps/TB1MWYIKVXXXXcHXXXXXXXXXXXX-233-251.png' />
+    <h4 class='shake-tip-text'>点击摇一摇，查看漂流中的书~</h4>
     <?php endif;?>
 <?php endif;?>

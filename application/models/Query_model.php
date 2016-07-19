@@ -29,6 +29,9 @@ class Query_model extends CI_Model{
 		if(empty($corpid)){
 		    $corpid = $this->session->userdata('corpid');
 		}
+        if($item_status == array(4)){
+            $corpid = 0;
+        }
 
 		$sql = "SELECT * FROM item_view 
 			WHERE 1 ";

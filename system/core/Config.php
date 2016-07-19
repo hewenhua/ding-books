@@ -247,7 +247,7 @@ class CI_Config {
 
 		if (empty($uri))
 		{
-			return $base_url.$this->item('index_page');
+			return $base_url.$this->item('index_page')."?corpId=".$corpId;
 		}
 
 		$uri = $this->_uri_string($uri);
