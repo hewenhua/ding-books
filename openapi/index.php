@@ -13,7 +13,7 @@ $corpId =  $_GET['corpId'];
     <!-- 在请求新的jsticket之后，旧的ticket会失效，导致旧ticket产生的signature失效。 -->
     <script type="text/javascript">var _config = <?php echo Auth::isvConfig($corpId);?></script>
     <script type="text/javascript" src="./public/javascripts/zepto.min.js"></script>
-    <script type="text/javascript" src="https://g.alicdn.com/ilw/ding/0.9.2/scripts/dingtalk.js"></script>
+    <script type="text/javascript" src="https://g.alicdn.com/ilw/ding/0.9.9/scripts/dingtalk.js"></script>
 </head>
 <body>
 <!--<button class="btn btn-block btn-default chooseonebtn">选择朋友发消息</button>

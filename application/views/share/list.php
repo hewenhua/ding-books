@@ -66,6 +66,8 @@
       <?php }?>
 <?php if(empty($more)):?>
   </div>
+    <?php if($page_num*$limit < $total):?>
   <div class='more' id='J_More' data-next-page='2'>加载更多</div>
   </div>
+    <?php endif;?>
 <?php endif;?>

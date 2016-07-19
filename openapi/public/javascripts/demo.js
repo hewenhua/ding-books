@@ -23,7 +23,7 @@ logger.i(location.href);
  * _config comes from server-side template. see views/index.jade
  */
 dd.config({
-    agentId: _config.agentId,
+    agentId: 35109252,
     corpId: _config.corpId,
     timeStamp: _config.timeStamp,
     nonceStr: _config.nonceStr,

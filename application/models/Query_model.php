@@ -25,9 +25,9 @@ class Query_model extends CI_Model{
 
 		$start_time = isset($search_data['start_time'])?$search_data['start_time']:NULL;
 		$end_time = isset($search_data['end_time'])?$search_data['end_time']:NULL;
-		$corpid = $this->session->userdata('corpid');
+        $corpid = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 0;
 		if(empty($corpid)){
-			$corpid = isset($_GET['corpId']) && !empty($_GET['corpId']) ? intval($_GET['corpId']) : 0;
+		    $corpid = $this->session->userdata('corpid');
 		}
 
 		$sql = "SELECT * FROM item_view 

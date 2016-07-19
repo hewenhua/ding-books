@@ -32,13 +32,14 @@ class Share extends CI_Controller {
 		$offset = $this->input->get_post('offset');
         $page = $this->input->get_post('page');
         $more = $this->input->get_post('more');
-		$limit = $this->limit;
+		$data['limit'] = $limit = $this->limit;
         if(empty($page)){
             $page = 1;
         }
         if($page>1){
             $offset = ($page-1)*$limit;
         }
+        $data['page_num'] = $page;
 
 		if($this->session->userdata('user_id')){
 			$user_id = $this->session->userdata('user_id');
