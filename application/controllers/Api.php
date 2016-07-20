@@ -65,7 +65,7 @@ class Api extends CI_Controller {
         $login_user_id = $this->session->userdata('user_id');
         $process_login= false;
         if(empty($login_user_id)||$login_user_id!=$row->id){
-		    $process_login = $this->user_model->processLogin($input['cellphone']);
+		    $process_login = $this->user_model->processLogin($input['cellphone'],$input['corpid']);
         }
         echo json_encode(json_encode(array('process_login'=>$process_login,'first_login'=>$first_login)));
         return TRUE;
@@ -183,9 +183,9 @@ class Api extends CI_Controller {
             }
         }
         $msg_arr = array(
-            "漂流币可以换新书啦~满500即可兑换热门书籍",
+            "漂流币可以当钱花啦~1漂流币等于1毛钱",
             "每日登陆可奖励1漂流币~连续登陆有惊喜哦",
-            "放漂(扫描书背后的条形码)即可得漂流币哦~",
+            "放漂(扫描书背后的条形码)即可获得漂流币哦~",
             "接受对方的求漂~可获得与书价相应的漂流币哦",
         );
         $k = rand(0,(count($msg_arr)-1));

@@ -103,7 +103,7 @@ dd.ready(function() {
                                          });
                                     }
                                     if (res.process_login=== true){
-                                        window.location.href = "/";
+                                        //window.location.href = "/";
                                     }
                                 },
                                 error: function (xhr, errorType, error) {
@@ -183,6 +183,10 @@ dd.ready(function() {
     });
 
     $('#J_Share_Button').on('click', function() {
+                dd.device.notification.alert({
+                    title: "闲书漂流",
+                    message: "扫描书背后的条形码，分享可得漂流币"
+                });
         var $this = $(this);
         var method = $this.data('method');
         var action = $this.data('action');

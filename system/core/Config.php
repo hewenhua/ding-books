@@ -234,9 +234,9 @@ class CI_Config {
 	 */
 	public function site_url($uri = '', $protocol = NULL)
 	{
-        $corpId = isset($_SESSION['corpid']) && !empty($_SESSION['corpid']) ? $_SESSION['corpid'] : null;
+        $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : null;
         if(empty($corpId)){
-            $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : null;
+            $corpId = isset($_SESSION['corpid']) && !empty($_SESSION['corpid']) ? $_SESSION['corpid'] : null;
         }
 		$base_url = $this->slash_item('base_url');
 

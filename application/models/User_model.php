@@ -39,8 +39,13 @@ class User_model extends CI_Model{
 	}
 
 
-	public function processLogin($cellphone){
-		$query = $this->db->query("SELECT * FROM user WHERE cellphone = '$cellphone'");
+	public function processLogin($cellphone,$corpid = 0){
+        if(empty($corpid)){
+		    $query = $this->db->query("SELECT * FROM user WHERE cellphone = '$cellphone'");
+        }else{
+            $query = $this->db->query("SELECT * FROM user WHERE cellphone = '$cellphone' and corpid = '$corpid'");
+        }
+
         if($query->num_rows() == 0){
             return false;
         }
