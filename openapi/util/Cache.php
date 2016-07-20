@@ -165,7 +165,7 @@ class FileCache
             $item['expire_time'] = 0;
             $item['create_time'] = time();
             $data["$key"] = $item;
-            $this->set_file("filecache.php",json_encode($data));
+            $this->set_file(DIR_ROOT ."filecache.php",json_encode($data));
         }
     }
 
@@ -185,7 +185,7 @@ class FileCache
             $item['expire_time'] = $time;
             $item['create_time'] = time();
             $data["$key"] = $item;
-            $this->set_file("filecache.php",json_encode($data));
+            $this->set_file(DIR_ROOT ."filecache.php",json_encode($data));
         }
 	}
 

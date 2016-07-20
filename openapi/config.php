@@ -1,5 +1,5 @@
 <?php
-define('DIR_ROOT', dirname(__FILE__).'/');
+define('DIR_ROOT', '/home/admin/web/htdocs/ding-books/');
 define("OAPI_HOST", "https://oapi.dingtalk.com");
 //Suite
 define("CREATE_SUITE_KEY", "suite4xxxxxxxxxxxxxxx");

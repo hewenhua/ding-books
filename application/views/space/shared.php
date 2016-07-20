@@ -56,7 +56,7 @@ endif;
               <div class='shared-actions'>
                 <button class="btn btn-primary trade_op shared-action-button" trade_op="return" trade_id="<?php echo $trade['trade_id'];?>" type="button">已归还</button>
                 <button class="btn btn-danger trade_op shared-action-button" trade_op="lost" trade_id="<?php echo $trade['trade_id'];?>" type="button">已丢失</button>
-                <button class="btn btn-block btn-default J_method_btn shared-action-button" data-method="biz.ding.post" data-param='{"corpId": "dingd662bc6b3242e637", "users": ["1"], "type": 0}'>钉一下</button> 
+                <button class="btn btn-block btn-default J_method_btn shared-action-button" data-method="biz.ding.post" data-param='{"corpId": "dinga32b47c555b27032", "users": ["1"], "type": 0}'>钉一下</button> 
               </div>
             <?php }else if($trade['trade_status'] == 3){?>
               <p>你拒绝了 <?php echo $borrower_anchor;?> 的求漂.</p>

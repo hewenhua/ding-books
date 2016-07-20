@@ -16,6 +16,8 @@ class Api extends CI_Controller {
 		$user_name = $this->input->get_post('userName');
 		$corp_id = $this->input->get_post('corpId');
         $department = $this->input->get_post('department');
+        $jobnumber = $this->input->get_post('jobnumber');
+        $dingid = $this->input->get_post('dingid');
         $latitude = $this->input->get_post('latitude');
         $longitude = $this->input->get_post('longitude');
         $current_date = date('Y-m-d H:i:s');
@@ -27,6 +29,8 @@ class Api extends CI_Controller {
 						'userid' => $userid,
 						'corpid' => $corp_id,
                         'department' => json_encode($department),
+                        'jobnumber' => $jobnumber,
+                        'dingid' => $dingid,
                         'login_time' => $current_date,
                         'score' => 20,
 					  );

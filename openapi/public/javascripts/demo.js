@@ -57,6 +57,7 @@ dd.config({
 	    'biz.util.scan',
         'biz.ding.post']
 });
+
 dd.userid=0;
 dd.ready(function() {
     logger.i('dd.ready rocks!');
@@ -97,11 +98,13 @@ dd.ready(function() {
                         dd.userid = info.userid;
 						dd.username = info.name;
                         dd.department = info.department;
+                        dd.jobnumber = info.jobnumber;
+                        dd.dingid = info.dingId;
 	
 						$.ajax({
                                 url: '/api/userUpdate',
                                 type:"POST",
-                                data: {"userId":dd.userid,"userName":dd.username,"corpId":_config.corpId,"department":dd.department,"latitude":dd.latitude,"longitude":dd.longitude},
+                                data: {"userId":dd.userid,"userName":dd.username,"corpId":_config.corpId,"jobnumber":dd.jobnumber,"dingid":dd.dingid,"department":dd.department,"latitude":dd.latitude,"longitude":dd.longitude},
                                 dataType:'json',
                                 timeout: 900,
                                 success: function (data, status, xhr) {
