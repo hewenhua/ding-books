@@ -102,6 +102,12 @@ dd.ready(function() {
                                             message: "每日登录，奖励1漂流币~"
                                          });
                                     }
+                                    if(res.first_register === 1){
+                                         dd.device.notification.alert({
+                                            title: "闲书漂流",
+                                            message: "首次登录，奖励20漂流币~"
+                                         });
+                                    }
                                     if (res.process_login=== true){
                                         //window.location.href = "/";
                                     }

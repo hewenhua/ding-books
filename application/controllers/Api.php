@@ -28,7 +28,7 @@ class Api extends CI_Controller {
 						'corpid' => $corp_id,
                         'department' => json_encode($department),
                         'login_time' => $current_date,
-                        'score' => 1,
+                        'score' => 20,
 					  );
 
         if(!empty($latitude)){
@@ -42,14 +42,14 @@ class Api extends CI_Controller {
 
 		$this->load->model('user_model');
         $first_login = 0;
+        $first_register = 0;
         if($query->num_rows() == 0){
 			list($result , $msg) = $this->user_model->create($input);
 	        if($result == FALSE){
 	            echoFail($msg);
 	            return FALSE;
 	        }
-            $first_login = 1;
-	
+            $first_register = 1;
 		}else{
             unset($input['score']);
 			$row = $query->first_row();
@@ -67,7 +67,7 @@ class Api extends CI_Controller {
         if(empty($login_user_id)||$login_user_id!=$row->id){
 		    $process_login = $this->user_model->processLogin($input['cellphone'],$input['corpid']);
         }
-        echo json_encode(json_encode(array('process_login'=>$process_login,'first_login'=>$first_login)));
+        echo json_encode(json_encode(array('process_login'=>$process_login,'first_login'=>$first_login,'first_register'=>$first_register)));
         return TRUE;
 	}
 

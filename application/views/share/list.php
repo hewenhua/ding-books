@@ -57,7 +57,9 @@
               <h4 class='book-title'><?php echo $item['title'];?></h4>
               <div class='book-desc'><?php echo $item['description'];?></div>
               <div class='book-author'><?php foreach($item['authors'] as $key => $author){ echo $author['name'] . ' '; }?></div>
-              <?php if($item['department']==$department):?>
+              <?php if(!empty($item['price'])){?>
+              <span class='book-department'><?php echo intval(intval($item['price'])/2)."漂流币";?></span>
+              <?php }  if($item['department']==$department):?>
               <span class='book-department'><?php echo "同部门";?></span>
               <?php endif;?>
             </a>
