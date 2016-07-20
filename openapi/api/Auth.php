@@ -50,7 +50,9 @@ class Auth
     {
         $corpInfo = ISVClass::getCorpInfo($corpId);
 	    Log::i("[corpinfo-->]".json_encode($corpInfo));
+        //error_log(APPID);
         $agentId = Service::getCurAgentId(APPID);
+        //error_log($agentId);
         $corpId = $corpInfo['corp_id'];
         $nonceStr = 'abcdefg';
         $timeStamp = time();
