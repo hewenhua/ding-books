@@ -15,6 +15,16 @@ var getMethod = function(method, ns) {
     }
 };
 
+var sleep = function(numberMillis) { 
+    var now = new Date(); 
+    var exitTime = now.getTime() + numberMillis; 
+    while (true) { 
+        now = new Date(); 
+        if (now.getTime() > exitTime) 
+        return; 
+    } 
+}
+
 logger.i('Here we go...');
 
 logger.i(location.href);
@@ -189,10 +199,6 @@ dd.ready(function() {
     });
 
     $('#J_Share_Button').on('click', function() {
-                dd.device.notification.alert({
-                    title: "闲书漂流",
-                    message: "扫描书背后的条形码，分享可得漂流币"
-                });
         var $this = $(this);
         var method = $this.data('method');
         var action = $this.data('action');
@@ -219,7 +225,13 @@ dd.ready(function() {
                 param.params.users = _config.users;
             }
         }
-		    param.onSuccess = function(result) {
+                dd.device.notification.alert({
+                    title: "闲书漂流",
+                    message: "扫描书背后的条形码，分享可得漂流币"
+                });
+        sleep(1200);
+		param.onSuccess = function(result) {
+
             if (action === 'alert') {
                 dd.device.geolocation.get({
                         onSuccess: function(location) {
