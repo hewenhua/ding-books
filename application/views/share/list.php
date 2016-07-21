@@ -73,7 +73,7 @@
   <div class='more' id='J_More' data-next-page='2'>加载更多</div>
   </div>
     <?php elseif(empty($items)):?>
-    <image class='shake-tip-img' src='https://gw.alicdn.com/tps/TB1MWYIKVXXXXcHXXXXXXXXXXXX-233-251.png' />
+    <image class='shake-tip-img J_shake' data-method="device.accelerometer.watchShake" data-param='{"sensitivity": 15, "frequency": 150, "callbackDelay": 1000}' data-action="share" src='https://gw.alicdn.com/tps/TB1MWYIKVXXXXcHXXXXXXXXXXXX-233-251.png' />
     <h4 class='shake-tip-text'>点击摇一摇，查看漂流中的书~</h4>
     <?php endif;?>
 <?php endif;?>
