@@ -32,6 +32,11 @@ class Query_model extends CI_Model{
         if($item_status == array(4)){
             $corpid = 0;
         }
+        
+        $department = NULL;
+        if(isset($search_data['order_name'])){
+            $department = !empty($this->session->userdata('department')) ? $this->session->userdata('department') : NULL;
+        }
 
 		$sql = "SELECT * FROM item_view 
 			WHERE 1 ";
@@ -50,6 +55,15 @@ class Query_model extends CI_Model{
 			$sql .= "AND item_view.corpid = '$corpid' ";
 		}
 
+        if(isset($search_data['order_name'])){
+            if($department == NULL){
+                $sql .= "AND item_view.department is NULL";
+            }else{
+                $sql .= "AND item_view.department = '$department'";
+            }
+        }
+
+
 		if($keyword != NULL)
 			$sql .= "AND item_view.title LIKE '%$keyword%' ";
 
@@ -62,7 +76,7 @@ class Query_model extends CI_Model{
 		if($user_id != NULL)
 			$sql .= "AND item_view.user_id = $user_id ";
 
-		if($no_user_id != NULL)
+		if($no_user_id != NULL && $order_name === NULL)
 			$sql .= "AND item_view.user_id != $no_user_id ";
 
 		if($publisher_id != NULL)

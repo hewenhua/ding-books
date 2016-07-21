@@ -252,7 +252,11 @@ class CI_Config {
 
 		$uri = $this->_uri_string($uri);
         if(!empty($corpId)){
-            $uri = $uri."?corpId=".$corpId;
+            if(strstr($uri,"?")===false){
+                $uri = $uri."?corpId=".$corpId;
+            }else{
+                $uri = $uri."&corpId=".$corpId;
+            }
         }
 
 		if ($this->item('enable_query_strings') === FALSE)
