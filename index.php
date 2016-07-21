@@ -287,6 +287,7 @@ require_once(__DIR__ . "/openapi/util/Http.php");
 require_once(__DIR__ . "/openapi/api/Auth.php");
 require_once(__DIR__ . "/openapi/api/ISVClass.php");
 require_once(__DIR__ . "/openapi/api/Message.php");
+error_reporting(0);
 /*
  * --------------------------------------------------------------------
  * LOAD THE BOOTSTRAP FILE

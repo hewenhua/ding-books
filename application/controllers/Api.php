@@ -411,8 +411,8 @@ class Api extends CI_Controller {
 		if(empty($this->corpId)||empty($oa)){return false;}
 		$corpInfo = ISVClass::getCorpInfo($this->corpId);
 		$suiteTicket = Cache::getSuiteTicket();
-		$suiteAccessToken = Service::getSuiteAccessToken($suiteTicket);
-		$authInfo = Service::getAuthInfo($suiteAccessToken, $corpInfo['corp_id'], $corpInfo['permanent_code']);
+		$suiteAccessToken = ISVService::getSuiteAccessToken($suiteTicket);
+		$authInfo = ISVService::getAuthInfo($suiteAccessToken, $corpInfo['corp_id'], $corpInfo['permanent_code']);
 		$agentid = isset($authInfo->agent[0]->agentid) && !empty($authInfo->agent[0]->agentid) ? $authInfo->agent[0]->agentid : 0;
 		$accessToken = $corpInfo['corpAccessToken'];
 
@@ -462,7 +462,7 @@ class Api extends CI_Controller {
         $book_row = $this->books_model->getBookInfo($row->book_id);
         $price = 0;
         if(isset($book_row->price) && !empty($book_row->price)){
-            $price = intval($book_row->price/2);
+            $price = intval(intval($book_row->price)/2);
         }
         if(!empty($price) && $user_score<$price){
             echoFail('需要'.$price.'漂流币，你目前有'.$user_score.'漂流币，先放漂一本书再来求漂吧！');

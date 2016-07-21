@@ -43,7 +43,7 @@ class Share extends CI_Controller {
 
 		if($this->session->userdata('user_id')){
 			$user_id = $this->session->userdata('user_id');
-			$data['search_data']['no_user_id'] = $user_id;
+			//$data['search_data']['no_user_id'] = $user_id;
 		}
 		
 		list( $data['total'] , $data['items']) = $this->query_model->queryItem( $data['search_data'] , $limit , $offset );

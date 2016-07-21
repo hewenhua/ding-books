@@ -91,8 +91,8 @@ class Query_model extends CI_Model{
 		}
 		$query_total = $this->db->query($sql);
 		$total = $query_total->num_rows();
-		if($order_time == 1 AND $order_name == 1)
-			$sql .= " ORDER BY create_time ASC , title DESC";
+		if($order_score == 1 AND $order_name == 1)
+			$sql .= " ORDER BY score ASC , title DESC";
 		else if($order_time == 1)
 			$sql .= " ORDER BY create_time ASC , title ASC";
 		else if($order_name == 1)
