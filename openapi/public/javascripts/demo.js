@@ -108,8 +108,8 @@ dd.ready(function() {
                                 dataType:'json',
                                 timeout: 900,
                                 success: function (data, status, xhr) {
-                                    logger.i('user data: ' + data);
                                     var res = JSON.parse(data);
+                                    logger.i('user data: ' + res);
                                     if(res.first_login === 1){
                                          dd.device.notification.alert({
                                             title: "闲书漂流",
