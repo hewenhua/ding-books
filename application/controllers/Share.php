@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Share extends CI_Controller {
 
-	private $limit = 10;
+	private $limit = 4;
 
 	function __construct(){
 		parent::__construct();

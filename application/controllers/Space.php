@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Space extends CI_Controller {
 
 	private $user_id;
-	private $limit = 5;
+	private $limit = 4;
 
 	function __construct(){
 		parent::__construct();
