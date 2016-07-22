@@ -122,6 +122,9 @@ dd.ready(function() {
                                             message: "首次登录，奖励20漂流币~"
                                          });
                                     }
+                                    if (res.user_score > 0){
+                                        document.getElementById("user-score").innerHTML = res.user_score;
+                                    }
                                     if (res.process_login=== true){
                                         //window.location.href = "/";
                                     }

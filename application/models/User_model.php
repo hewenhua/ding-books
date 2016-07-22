@@ -57,6 +57,7 @@ class User_model extends CI_Model{
             'department' => $row->department,
 			'cellphone' => $row->cellphone,
             'last_login_time' => time(),
+            'score' => $row->score,
 			);
 		$this->session->set_userdata($user_info);
         return true;

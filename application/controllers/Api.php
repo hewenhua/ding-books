@@ -47,6 +47,7 @@ class Api extends CI_Controller {
 		$this->load->model('user_model');
         $first_login = 0;
         $first_register = 0;
+        $user_score = 20;
         if($query->num_rows() == 0){
 			list($result , $msg) = $this->user_model->create($input);
 	        if($result == FALSE){
@@ -58,6 +59,7 @@ class Api extends CI_Controller {
             unset($input['score']);
 			$row = $query->first_row();
 			$id = $row->id;	
+            $user_score = $row->score;
             unset($input['password']);
             if(date("Y-m-d",strtotime($row->login_time)) != date("Y-m-d",strtotime($current_date))){
                 $input['score'] = 1+intval($row->score);
@@ -71,7 +73,7 @@ class Api extends CI_Controller {
         if(empty($login_user_id)||$login_user_id!=$row->id){
 		    $process_login = $this->user_model->processLogin($input['cellphone'],$input['corpid']);
         }
-        echo json_encode(json_encode(array('process_login'=>$process_login,'first_login'=>$first_login,'first_register'=>$first_register)));
+        echo json_encode(json_encode(array('process_login'=>$process_login,'first_login'=>$first_login,'first_register'=>$first_register,'user_score'=>$user_score)));
         return TRUE;
 	}
 

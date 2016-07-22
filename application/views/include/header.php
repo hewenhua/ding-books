@@ -71,7 +71,7 @@ $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 
     <div class="container-narrow">
       <div class="app">
         <span class='app-name'>&#xe600; 闲书</span>
-        <span class='app-username'><?php echo $this->session->userdata('name');?></span>
+        <span class='app-username'><?php echo $this->session->userdata('name');?> <img src='https://gw.alicdn.com/tps/TB1ReMTKVXXXXaiXFXXXXXXXXXX-16-16.png' style="width:10px;height:10px;"><span style="font-size:0.25rem;" id="user-score"><?php echo $this->session->userdata('score');?></span></span>
       </div>
       <div class="masthead">
         <div class="head-nav">
