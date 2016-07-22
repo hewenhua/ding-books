@@ -9,7 +9,7 @@ class Space extends CI_Controller {
 	function __construct(){
 		parent::__construct();
 		if(isLogin() == FALSE){
-			redirect('user/login');
+			redirect('/');
 		}
 
 		$this->user_id = $this->session->userdata('user_id');
