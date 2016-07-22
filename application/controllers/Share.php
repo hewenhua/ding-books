@@ -119,6 +119,11 @@ class Share extends CI_Controller {
 		$data['item']['translators'] = $this->query_model->queryBookTranslators($book_id);
 		$data['corpId'] = $this->corpId;
 
+        $this->load->model("user_model");
+        $user_id = $this->session->userdata('user_id'); 
+        $user_info = $this->user_model->getUserInfo($user_id);
+        $data['user_score'] = $user_info['score'];
+
 		$this->load->view('include/header' , $data);
 		$this->load->view('share/detail');
 		$this->load->view('include/footer');
