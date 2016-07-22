@@ -197,6 +197,7 @@ class Api extends CI_Controller {
         $k = rand(0,(count($msg_arr)-1));
         
         $msg = $msg_arr[$k];
+        $msg = "";
 
         $output = array(
             'errcode' => 0,

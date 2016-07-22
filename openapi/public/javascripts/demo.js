@@ -332,10 +332,12 @@ dd.ready(function() {
                     if(info.errcode === 0) {
                       logger.i('book_id: ' + info.book_id);
                       logger.i('item_id: ' + info.item_id);
+                    if(info.msg != ""){
                       dd.device.notification.alert({
                         title: "温馨提示",
                         message: info.msg
                       });
+                    }
                       if(info.item_id > 0){
                         window.location.href = "/share/detail/" + info.item_id + "?display=1&shake=1";
                       }
