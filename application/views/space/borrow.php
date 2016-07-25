@@ -77,7 +77,7 @@ if(empty($more)):
         <div class='more' id='J_Space_Qiu_More' data-next-page='2'>加载更多</div>
     <?php }?>
 </div>
-
+<div id='commentTipText' class='comment-tip-text'>意见<br />反馈</div>
 <script type="text/javascript">
   var post_url = "<?php echo site_url('api/updateTrade');?>";
   updateTrade(post_url);

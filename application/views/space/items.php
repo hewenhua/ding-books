@@ -61,7 +61,8 @@ if(empty($more)):
     <div class='more' id='J_Space_On_More' data-next-page='2'>加载更多</div>
   <?php }?>
 </div>
-
+</div>
+<div id='commentTipText' class='comment-tip-text'>意见<br />反馈</div>
 <script type="text/javascript">
   var post_url = "<?php echo site_url('api/updateItem');?>";
   updateItemStatus(post_url);
