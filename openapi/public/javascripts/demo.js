@@ -119,7 +119,7 @@ dd.ready(function() {
                                     if(res.first_register === 1){
                                          dd.device.notification.alert({
                                             title: "闲书漂流",
-                                            message: "首次登录，奖励20漂流币~"
+                                            message: "首次登录，奖励30漂流币~"
                                          });
                                     }
                                     if (res.user_score > 0){
@@ -232,10 +232,9 @@ dd.ready(function() {
                 param.params.users = _config.users;
             }
         }
-                dd.device.notification.alert({
-                    title: "闲书漂流",
-                    message: "扫描书背后的条形码，分享可得漂流币"
-                });
+        dd.device.notification.toast({
+            "global": true, "text": "扫描书背后的条形码，分享可得漂流币", "duration": 2, "delay": 0
+        })
         sleep(1200);
 		param.onSuccess = function(result) {
 
@@ -273,11 +272,10 @@ dd.ready(function() {
                         if(info.score > 0){
                             score_info += "奖励你"+info.score+"漂流币~";
                         }
-                        dd.device.notification.alert({
-                          title: "闲书漂流",
-                          message: "放漂成功！" + score_info
-                        });
-                      window.location.href = "/share/detail/" + info.item_id + "?display=1";
+                        dd.device.notification.toast({                                                  
+                            "global": true, "text": "放漂成功！" + score_info, "duration": 2, "delay": 0
+                        })  
+                      window.location.href = "/space/items?order_time=0";//"/share/detail/" + info.item_id + "?display=1";
                     }
 
                   },

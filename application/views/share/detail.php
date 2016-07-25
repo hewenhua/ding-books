@@ -34,7 +34,11 @@
       <button class="btn btn-primary detail-request-button" id="request" type="button">申请借阅 </button>
     <?php }else{ ?>
       <p class='detail-state-info'>本书暂时不可借阅，可能因为 :<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* 你是本书的拥有者；<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* 本书被其他人求漂；</p>
+    <?php if($item['user_id'] != $this->session->userdata('user_id')) :?>
       <a href="<?php echo $item['douban_url']; ?>#!/ckDefault!/buyinfoCard" class="btn btn-primary detail-request-button" type="button">立即购买 </a>
+    <?php else:?>
+      <a href="<?php echo $item['douban_url']; ?>" class="btn btn-primary detail-request-button" type="button">查看书评 </a>
+    <?php endif;?>
     <?php } ?>
   </p>
 </div>

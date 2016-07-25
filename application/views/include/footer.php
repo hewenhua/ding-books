@@ -19,10 +19,9 @@
             success: function(data){
               // alert(typeof data);
               if(data == false || data == 'false'){
-                dd.device.notification.alert({
-                    title: "闲书漂流",
-                    message: '已到最后一页'
-                });
+                dd.device.notification.toast({
+                            "global": true, "text": "已到最后一页", "duration": 2, "delay": 0
+                        });
               } else {
                 $('#bookList').append(data);
                 $elem.attr('data-next-page', pageNum + 1 );

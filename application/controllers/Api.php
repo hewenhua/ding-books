@@ -32,7 +32,7 @@ class Api extends CI_Controller {
                         'jobnumber' => $jobnumber,
                         'dingid' => $dingid,
                         'login_time' => $current_date,
-                        'score' => 20,
+                        'score' => 30,
 					  );
 
         if(!empty($latitude)){
@@ -47,7 +47,7 @@ class Api extends CI_Controller {
 		$this->load->model('user_model');
         $first_login = 0;
         $first_register = 0;
-        $user_score = 20;
+        $user_score = 30;
         if($query->num_rows() == 0){
 			list($result , $msg) = $this->user_model->create($input);
 	        if($result == FALSE){

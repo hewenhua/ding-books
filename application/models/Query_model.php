@@ -97,9 +97,10 @@ class Query_model extends CI_Model{
 			$sql .= " ORDER BY create_time ASC , title ASC";
 		else if($order_name == 1)
 			$sql .= " ORDER BY title DESC , create_time DESC ";
+        else if($order_time === 0)
+			$sql .= " ORDER BY create_time DESC , title ASC";
 		else
             $sql .= " ORDER BY score DESC , create_time DESC";
-		//	$sql .= " ORDER BY create_time DESC , title ASC";
 
 		$sql .= addLimit( $limit , $offset );
 

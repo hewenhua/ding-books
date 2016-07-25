@@ -73,7 +73,7 @@ class User_model extends CI_Model{
 		$corpid = isset($input['corpid']) && !empty($input['corpid']) ? $input['corpid'] : null;
 		$userid = isset($input['userid']) && !empty($input['userid']) ? $input['userid'] : null;
         $department = isset($input['department']) && !empty($input['department']) ? $input['department'] : null;
-        $score = isset($input['score']) && !empty($input['score']) ? $input['score'] : 20;
+        $score = isset($input['score']) && !empty($input['score']) ? $input['score'] : 30;
 		$create_time = date('Y-m-d H:i:s');
 		$query = $this->db->query("INSERT INTO user(username,cellphone,password,userid,corpid,department,create_time,score) VALUE ( '$username' , '$cellphone' , SHA1('$password') , '$userid' , '$corpid' , '$department' , '$create_time' , '$score' )");
 		return array(TRUE , 'register success');

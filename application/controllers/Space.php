@@ -145,11 +145,16 @@ class Space extends CI_Controller {
 
 		$data = array();
 		$data['title'] = "Books on sharing" ;
+        $order_time = $this->input->get_post('order_time');
+        if(empty($order_time)){
+            $order_time = 0;
+        }
+
 		$data['search_data'] = array(
 			'keyword' => $this->input->get_post('keyword'),
 			'item_status' => array(1,2) ,
 			'user_id' => $this->session->userdata['user_id'] ,
-			'order_time' => $this->input->get_post('order_time'),
+			'order_time' => $order_time,
 			'order_name' => $this->input->get_post('order_name'),
 		);
 

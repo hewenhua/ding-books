@@ -43,7 +43,7 @@
     </div>
    </div>
 
-   <button class="btn btn-block btn-default J_shake list-share-button" data-method="device.accelerometer.watchShake" data-param='{"sensitivity": 15, "frequency": 150, "callbackDelay": 1000}' data-action="share">摇一摇</button>
+   <!--<button class="btn btn-block btn-default J_shake list-share-button" data-method="device.accelerometer.watchShake" data-param='{"sensitivity": 15, "frequency": 150, "callbackDelay": 1000}' data-action="share">摇一摇</button>-->
 
   <div class="book-list" id='bookList'>
     <?php endif;?>
