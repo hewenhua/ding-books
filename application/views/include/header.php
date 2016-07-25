@@ -70,8 +70,8 @@ $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 
   <body>
     <div class="container-narrow">
       <div class="app">
-        <span class='app-name'>&#xe600; 闲书</span>
-        <span class='app-username'><?php echo $this->session->userdata('name');?>&nbsp;&nbsp;<span style="font-size:0.4rem;font-family:iconfont" id="user-score"><?php echo isset($user_score)?$user_score:$this->session->userdata('score');?></span>&#xe604;</span>
+        <span class='app-name'>&#xe600; 闲书 &#xe605;</span>
+        <span class='app-username'><?php echo $this->session->userdata('name');?>&nbsp;&nbsp;<span style="font-size:0.4rem;font-family:iconfont" id="user-score"><?php echo isset($user_score)?$user_score:$this->session->userdata('score');?>&#xe604;</span></span>
       </div>
       <div class="masthead">
         <div class="head-nav">
