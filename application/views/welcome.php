@@ -1,9 +1,10 @@
-<div class="">
-  <h4>闲书，闲置图书共享平台</h4>
+<style>
+.span6 {padding:15px;color:#666666;}
+h4 {margin-bottom:5px;}
+</style>
+<div class="span6">
+  <h2 style='font-size:0.4rem'>闲书，闲置图书共享平台</h2>
 </div>
-  <p>
-    闲书，一个基于企业内部闲置图书共享及管理平台。
-  </p>
 <div class="row-fluid">
   <div class="span6">
 
@@ -45,5 +46,10 @@
       </p>
 
   </div>
+
+    <div class="span6">
+    <p><img src="http://img01.taobaocdn.com/tfscom/TB1HVh0LXXXXXXBXFXXXXXXXXXX_250x250.jpg"></p>
+    欢迎交流，任何问题可以用钉钉扫描(长按识别)上面的二维码和我们联系~
+    </div>
 
 </div>
