@@ -9,6 +9,13 @@ class Share extends CI_Controller {
 		parent::__construct();
 		$this->load->model("share_model");
 	}
+
+    public function help()
+    {
+        $this->load->view('include/header');
+        $this->load->view('welcome');
+        $this->load->view('include/footer');
+    }
 	
 	public function index()
 	{

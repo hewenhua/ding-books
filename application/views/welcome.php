@@ -1,36 +1,49 @@
-<div class="jumbotron">
-  <h1>Share Your Books with Your Friends!</h1>
-  <p class="lead">
-  This website is a platform for you to share your books with others or borrow books from others.
-  People love same books always have common interests .
-  Hope you enjoying yourself !
-  </p>
-  <a class="btn btn-large btn-success" href="<?php echo site_url('user/register');?>">Sign up today</a>
+<div class="">
+  <h4>闲书，闲置图书共享平台</h4>
 </div>
-
-<hr>
-
-<div class="row-fluid marketing">
+  <p>
+    闲书，一个基于企业内部闲置图书共享及管理平台。
+  </p>
+<div class="row-fluid">
   <div class="span6">
 
-     <h4><i class="icon-search"></i> Search</h4>
-    <p>All the books are classified by author , publisher and owner with search box on each page . 
-      Every book available is easy to find .</p>
-
-    <h4><i class="icon-upload"></i> Upload</h4>
-    <p>Upload your idle books fast, do not need to fill all the details about the book ,
-     only ISBN is needed .</p>
+     <h4>图书共享，我们做的不一样</h4>
+    <p> 1.闲书漂流，没有借书证，不需付押金，也没有借阅期限，这种闲书共享方式，让“知识因传播而美丽”
+      </p>
+    <p> 2.部门书籍，团队内部小组图书管理，图书状态可跟踪
+      </p>
+    <p> 3.图书漂流，直接扫描书后面的条形码即可共享（放漂）书籍，书籍只有公司内部同事可见
+      </p>
+    <p> 4.漂流币，闲书平台推出的虚拟货币，用户需要共享书籍获取，漂流币可用于借阅图书、兑换新书等服务。
+      </p>
 
    
   </div>
+    <div class="span6">
 
-  <div class="span6">
-    <h4><i class="icon-eye-open"></i> Management</h4>
-    <p>Friendly interface for you to manage your uploaded books . Errors and wrong operations are handled 
-      elegantly with notice.</p>
-
-    <h4><i class="icon-shopping-cart"></i> Borrow</h4>
-    <p>Simple process to borrow and return books . Easy to manage contact infomation between owner and borrower.</p>
+     <h4>如何获取漂流币？</h4>
+    <p> 1.每日登陆可奖励1漂流币，连续登陆会有惊喜哦
+      </p>
+    <p> 2.放漂(扫描书背后的条形码)一本书，即可获得2漂流币
+      </p>
+    <p> 3.接受对方的求漂，可获得与书价相应的漂流币
+      </p>
 
   </div>
+    <div class="span6">
+
+     <h4>产品术语</h4> 
+   <p> 1.放漂：把一本书漂流出去,这个放漂可以是首漂，也可以是转漂
+      </p>
+    <p> 2.求漂：用户可以对任何一本图书发出漂流（阅读）请求，当这本图书对应漂流书的当时持有者看到您的请求时，很可能会把漂流书传递给你。只有求漂才能让别的漂友知道你想要阅读的图书。首漂或者转漂的漂友才有漂流目标
+      </p>
+    <p> 3.受漂：收到别的漂友传递给你书的整个事件过程
+      </p>
+    <p> 4.收漂：也就是结束漂流活动
+      </p>
+    <p> 5.在漂：一本漂流书处于漂流期间叫做在漂
+      </p>
+
+  </div>
+
 </div>
