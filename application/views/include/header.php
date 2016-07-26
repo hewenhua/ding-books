@@ -15,7 +15,7 @@ $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 
     <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
     <script src="//g.alicdn.com/kg/m-base/2.0.3/index.js"></script>
     <link href="//g.alicdn.com/kg/m-base/2.0.3/reset.css" rel="styleSheet" type="text/css"/>
-    <script src="/public/js/jquery.min.js"></script>
+
     <link href="/public/css/book.css" rel='stylesheet' />
     <script src="/public/js/api.js"></script>
     <script type="text/javascript" src="/openapi/public/javascripts/zepto.min.js"></script>
@@ -28,42 +28,14 @@ $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 
 	<?php endif;?>
 
     <style type="text/css">
-      body {
-        //padding-top: 20px;
-        //padding-bottom: 40px;
-        width: 10rem;
-      }
-
-      /* Custom container */
-      .container-narrow {
-        margin: 0 auto;
-        max-width: 700px;
-      }
-      .container-narrow > hr {
-        margin: 30px 0;
-      }
-
-      /* Main marketing message and sign up button */
-      .jumbotron {
-        margin: 60px 0;
-        text-align: center;
-      }
-      .jumbotron h1 {
-        font-size: 72px;
-        line-height: 1;
-      }
-      .jumbotron .btn {
-        font-size: 21px;
-        padding: 14px 24px;
-      }
-
-      /* Supporting marketing content */
-      .marketing {
-        margin: 60px 0;
-      }
-      .marketing p + h4 {
-        margin-top: 28px;
-      }
+      body {width: 10rem;}
+      .container-narrow {margin: 0 auto;max-width: 700px;}
+      .container-narrow > hr { margin: 30px 0;}
+      .jumbotron { margin: 60px 0; text-align: center;}
+      .jumbotron h1 {font-size: 72px;line-height: 1;}
+      .jumbotron .btn {font-size: 21px;padding: 14px 24px;}
+      .marketing { margin: 60px 0;}
+      .marketing p + h4 {margin-top: 28px;}
     </style>
   </head>
 
