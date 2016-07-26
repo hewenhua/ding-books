@@ -71,7 +71,7 @@ $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 
     <div class="container-narrow">
       <div class="app">
         <span class='app-name'>&#xe600; 闲书  </span>
-        <a href="<?php echo site_url('share/help')?>"> <span style="margin-left:0.1rem;font-family:iconfont;font-size:0.36rem;color:#fff;">&#xe605; </span></a>
+        <a href="<?php echo site_url('share/help')?>"> <span style="margin-left:0.1rem;font-family:iconfont;font-size:0.32rem;color:#fff;">&#xe605; </span></a>
         <span class='app-username'><?php echo $this->session->userdata('name');?>&nbsp;&nbsp;<span style="font-size:0.32rem;font-family:iconfont" id="user-score"><?php echo isset($user_score)?$user_score:intval($this->session->userdata('score'));?></span><span style="font-size:0.36rem;"><?php if(!empty($this->session->userdata('name'))){echo "&#xe604; ";}?></span></span>
       </div>
       <div class="masthead">
