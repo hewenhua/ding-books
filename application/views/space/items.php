@@ -19,6 +19,12 @@
       </form>
     </div>
    </div>
+<div class='shake-tip-area' id='J_Shake_tip'>
+    <span class='shake-tip-close' style="color:#666;" id='J_Shake_Close'>╳</span>
+    <image class='shake-tip-img' src='https://gw.alicdn.com/tps/TB1MWYIKVXXXXcHXXXXXXXXXXXX-233-251.png' />
+    <p class='shake-tip-text'>摇一摇，遇到命中注定的它~</p>
+</div>
+<button class="btn btn-block btn-default J_shake list-share-button" data-method="device.accelerometer.watchShake" data-param='{"sensitivity": 15, "frequency": 150, "callbackDelay": 1000}' data-action="share">摇一摇</button>
 
   <div class="book-list" id='spaceOnBookList'>
       <?php 
@@ -79,10 +85,9 @@ if(empty($more)):
         // alert(typeof data);
         if(data == false || data == 'false'){
           // 提示
-            dd.device.notification.alert({
-                title: "闲书漂流",
-                message: '已到最后一页'
-            });
+            dd.device.notification.toast({
+                    "global": true, "text": "已到最后一页", "duration": 1, "delay": 0
+                    });
         } else {
           $('#spaceOnBookList').append(data);
           $elem.attr('data-next-page', pageNum + 1 );

@@ -122,7 +122,7 @@ dd.ready(function() {
                     message: "首次登录，奖励30漂流币~"
                   });
                 }
-                if (res.user_score > 0){
+                if (res.user_score > 0 && res.first_login === 0){
                   document.getElementById("user-score").innerHTML = res.user_score;
                 }
                 if (res.process_login=== true){
@@ -275,7 +275,7 @@ dd.ready(function() {
               dd.device.notification.toast({
                 "global": true, "text": "放漂成功！" + score_info, "duration": 2, "delay": 0
               })
-              window.location.href = "/space/items?order_time=0";//"/share/detail/" + info.item_id + "?display=1";
+              window.location.href = "/share/detail/" + info.item_id + "?display=1";//"/space/items?order_time=0";
             }
 
           },
@@ -294,16 +294,13 @@ dd.ready(function() {
 
   $('#J_Shake_Close').on('click',function(){
     $('#J_Shake_tip').hide();
-    dd.device.accelerometer.clearShake({
-
-    });
   });
 
   $('.J_shake').on('click', function() {
     //alert(1);
     $('#J_Shake_tip').show();
     dd.device.accelerometer.watchShake({
-      sensitivity: 10, //振动幅度，加速度变化超过这个值后触发shake
+      sensitivity: 12, //振动幅度，加速度变化超过这个值后触发shake
       frequency: 100, //采样间隔(毫秒)，指每隔多长时间对加速度进行一次采样， 然后对比前后变化，判断是否触发shake
       callbackDelay: 150,
       onSuccess: function(result) {
@@ -311,8 +308,6 @@ dd.ready(function() {
         dd.device.notification.vibrate({
           duration: 300,
           onSuccess: function() {
-            dd.device.accelerometer.clearShake({
-            });
           },
           onFail: function() {
           }

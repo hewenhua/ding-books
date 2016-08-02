@@ -5,6 +5,7 @@
     <div class='detail-book-basicinfo'>
       <h3 class='book-title'><?php echo $item['title']; ?></h3>
       <span class='book-info-item'>作者：<?php foreach($item['authors'] as $key => $author){ echo $author['name'] . ' '; }?></span><br/>
+      <span class='book-info-item'>拥有者：<?php echo $item['username'];?></span><br/>
       <?php if(!empty($item['publisher_name'])):?><span class='book-info-item'>出版社：<?php echo $item['publisher_name'];?></span><br/><?php endif;?>
       <span class='book-info-item'>出版日期：<?php echo $item['pubdate'];?></span><br/>
       <span class="label label-success share_status detail-share-state book-info-item">书籍状态：

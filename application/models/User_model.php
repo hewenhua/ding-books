@@ -104,6 +104,7 @@ class User_model extends CI_Model{
 
 
 	public function getUserInfo($user_id){
+        $user_id = intval($user_id);
 		$query = $this->db->query("SELECT * FROM user WHERE id = $user_id");
 		$row = $query->first_row('array');
 		return $row;
