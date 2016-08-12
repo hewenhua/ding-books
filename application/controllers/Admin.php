@@ -5,6 +5,8 @@ class Admin extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
+        echo "后台功能升级中，请稍后~";
+        exit;
 
 		$this->load->model("query_model");
 	}

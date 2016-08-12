@@ -5,7 +5,9 @@
     <div class='detail-book-basicinfo'>
       <h3 class='book-title'><?php echo $item['title']; ?></h3>
       <span class='book-info-item'>作者：<?php foreach($item['authors'] as $key => $author){ echo $author['name'] . ' '; }?></span><br/>
-      <span class='book-info-item'>拥有者：<?php echo $item['username'];?></span><br/>
+      <?php if($user_corpid == $item["corpid"] && empty($_GET['shake'])):?>
+      <span class='book-info-item'>拥有者：<a href="javascript:;" class="J_profile_btn" style="color:#38adff;" data-method="biz.util.open" data-param='{"id":"<?php echo $item["userid"];?>","corpId":"<?php echo $item["corpid"];?>"}' data-action=""><?php echo $item['username'];?></a></span><br/>
+      <?php endif;?>
       <?php if(!empty($item['publisher_name'])):?><span class='book-info-item'>出版社：<?php echo $item['publisher_name'];?></span><br/><?php endif;?>
       <span class='book-info-item'>出版日期：<?php echo $item['pubdate'];?></span><br/>
       <span class="label label-success share_status detail-share-state book-info-item">书籍状态：
@@ -28,11 +30,14 @@
   </p>
   <p>
     <?php if($this->session->userdata('user_id') == FALSE){?>
-      <p class='detail-state-info'>这本书的拥有者是 <?php echo $item['username'];?> .<br> 你可以<?php if(!empty($item['price'])):?>花<span class='book-info-item'><?php echo intval(intval($item['price'])/2)?>漂流币</span> <?php endif;?>向他/她借阅这本书.</p>
-      <a class="btn btn-primary detail-request-button" href="<?php echo site_url('user/login');?>" type="button">申请借阅</a>
+      <a href="<?php echo $item['douban_url']; ?>" class="btn btn-primary detail-request-button" type="button">查看书评 </a>
     <?php }else if($item['user_id'] != $this->session->userdata('user_id') AND $item['item_status'] == 1){?>
-      <p class='detail-state-info'>这本书的拥有者是 <?php echo $item['username'];?> .<br> 你可以<?php if(!empty($item['price'])):?>花<span class='book-info-item'><?php echo intval(intval($item['price'])/2)?>漂流币</span> <?php endif;?>向他/她借阅这本书.</p>
+      <?php if($user_corpid == $item["corpid"]):?>
+      <p class='detail-state-info'>这本书的拥有者是 <a href="javascript:;" class="J_profile_btn" style="color:#38adff;" data-method="biz.util.open" data-param='{"id":"<?php echo $item["userid"];?>","corpId":"<?php echo $item["corpid"];?>"}' data-action=""><?php echo $item['username'];?></a> .<br> 你可以<?php if(!empty($item['price'])):?>花<span class='book-info-item'><?php echo intval(intval($item['price'])/2)?>漂流币</span> <?php endif;?>向他/她借阅这本书.</p>
       <button class="btn btn-primary detail-request-button" id="request" type="button">申请借阅 </button>
+      <?php else:?>
+      <a href="<?php echo $item['douban_url']; ?>#!/ckDefault!/buyinfoCard" class="btn btn-primary detail-request-button" type="button">立即购买 </a>
+      <?php endif?>
     <?php }else{ ?>
       <p class='detail-state-info'>本书暂时不可借阅，可能因为 :<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* 你是本书的拥有者；<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;* 本书被其他人求漂；</p>
     <?php if($item['user_id'] != $this->session->userdata('user_id')) :?>

@@ -20,7 +20,8 @@ endif;
               ?>
               <!-- title -->
               <h4 class='book-title'><?php echo $title_anchor;?></h4>
-              <span class='book-owner'>拥有者：<?php echo $trade['owner_name'];?></span>
+              <span class='book-owner'>拥有者：<a href="javascript:;" class="J_profile_btn" style="color:#38adff;" data-method="biz.util.open" data-param='{"id":"<?php echo $trade["owner_userid"];?>","corpId":"<?php echo $trade["owner_corpid"];?>"}' data-action=""><?php echo $trade['owner_name'];?></a>
+              </span>
               <div class='borrow-trade-record trade-record' id="trade_record">
                 <?php
                 foreach ($trade['trade_record'] as $key => $record) {?>
@@ -37,6 +38,8 @@ endif;
                       echo '书籍所有者确认该书已归还';
                      }else if($record['op'] == 6){
                       echo '书籍所有者确认该书已丢失';
+                     }else if($record['op'] == 7){
+                      echo '书籍所有者确认该书已借出';
                      } ?>
                    </p>
                 <?php } ?>
@@ -45,14 +48,17 @@ endif;
           </div>
           <div class='borrow-action-area trade-record'>
             <?php if($trade['trade_status'] == 1){ //accept or deny?>
-              <p>书籍所有者尚未回应，你可以撤销申请：</p>
+              <p>书籍所有者尚未回应，你可以联系拥有者或撤销申请：</p>
               <div class='borrow-actions'>
                 <button class="btn btn-danger trade_op borrow-action-button" trade_op="cancel" trade_id="<?php echo $trade['trade_id'];?>" type="button">取消</button>
+                <button class="btn btn-danger borrow-action-button J_profile_btn" data-method="biz.util.open" data-param='{"id":"<?php echo $trade["owner_userid"];?>","corpId":"<?php echo $trade["owner_corpid"];?>"}' data-action="" type="button">联系</button>
               </div>
             <?php }else if($trade['trade_status'] == 2){?>
-              <p>书籍所有者同意了你的申请，联系拥有者：<?php echo $trade['owner_name'];?></p>
+              <p>书籍所有者同意了你的申请，扫一下此书即可完成借阅<br/> 联系拥有者：<a href="javascript:;" class="J_profile_btn" style="color:#38adff;" data-method="biz.util.open" data-param='{"id":"<?php echo $trade["owner_userid"];?>","corpId":"<?php echo $trade["owner_corpid"];?>"}' data-action=""><?php echo $trade['owner_name'];?></a></p>
               <div class='borrow-actions'>
+                <button class="btn btn-block btn-default J_method_btn shared-action-button" data-method="biz.util.scan" data-param='{"type":"barCode"}' data-action="borrow">扫一下</button>
                 <button class="btn btn-block btn-default J_method_btn shared-action-button" data-method="biz.ding.post" data-param='{"corpId": "dingd662bc6b3242e637", "users": ["1"], "type": 0}'>钉一下</button>
+                <button class="btn btn-danger trade_op borrow-action-button" trade_op="cancel" trade_id="<?php echo $trade['trade_id'];?>" type="button">取消</button>
                 <!--<a class='borrow-action-button' href='tel:<?php echo $trade['owner_cellphone'];?>'><?php echo $trade['owner_cellphone'];?></a>-->
               </div>
             <?php }else if($trade['trade_status'] == 3){?>
@@ -61,9 +67,11 @@ endif;
               <p>你取消了对本书的申请</p>
             <?php }else if($trade['trade_status'] == 5){?>
               <p>书籍所有者确认该书已归还</p>
-              <p>Thanks for using our system.</p>
+              <p>感谢使用闲书.</p>
             <?php }else if($trade['trade_status'] == 6){?>
               <p>书籍所有者确认该书已丢失</p>
+            <?php }else if($trade['trade_status'] == 7){?>
+              <p>书籍所有者确认该书已借出</p>
             <?php }else{?>
               <p>系统错误</p>
             <?php }?>

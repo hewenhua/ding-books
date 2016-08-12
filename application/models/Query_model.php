@@ -34,7 +34,7 @@ class Query_model extends CI_Model{
         }
         
         $department = NULL;
-        if(isset($search_data['order_name'])){
+        if(isset($search_data['order_dep']) && !empty($search_data['order_dep'])){
             $department = !empty($this->session->userdata('department')) ? $this->session->userdata('department') : NULL;
         }
 
@@ -55,7 +55,7 @@ class Query_model extends CI_Model{
 			$sql .= "AND item_view.corpid = '$corpid' ";
 		}
 
-        if(isset($search_data['order_name'])){
+        if(isset($search_data['order_dep']) && !empty($search_data['order_dep'])){
             if($department == NULL){
                 $sql .= "AND item_view.department is NULL";
             }else{
@@ -94,12 +94,14 @@ class Query_model extends CI_Model{
 		if($order_score == 1 AND $order_name == 1)
 			$sql .= " ORDER BY score ASC , title DESC";
 		else if($order_time == 1)
-			$sql .= " ORDER BY create_time ASC , title ASC";
+			$sql .= " ORDER BY create_time DESC , score DESC";
 		else if($order_name == 1)
 			$sql .= " ORDER BY title DESC , create_time DESC ";
-        else if($order_time === 0)
-			$sql .= " ORDER BY create_time DESC , title ASC";
-		else
+        else if($order_score === 1)
+            $sql .= " ORDER BY score DESC , create_time DESC";
+        else if($order_time == 0)
+			$sql .= " ORDER BY create_time ASC , title ASC";
+        else
             $sql .= " ORDER BY score DESC , create_time DESC";
 
 		$sql .= addLimit( $limit , $offset );

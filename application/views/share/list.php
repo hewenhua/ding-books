@@ -39,9 +39,13 @@
       <a style="float: left; display: inline-block; width: 3.265rem; border-right: 1px solid #999; line-height: 0.8rem; font-size: 0.32rem; text-align:center; color: #38adff" href="<?php echo site_url("/");?>">热门书籍</a>
       <!--<a style='float: left; display: inline-block; width: 3.365rem; border-right: 1px solid #999; line-height: 0.8rem; font-size: 0.32rem; text-align:center; color: #38adff' href="<?php echo site_url($link_name);?>">部门书籍</a>-->
       <a style='float: left; display: inline-block; width: 3.265rem; border-right: 1px solid #999; line-height: 0.8rem; font-size: 0.32rem; text-align:center; color: #38adff' href="<?php echo site_url($link_time);?>"><?php if($search_data['order_time']){echo '时间升序';}else{echo '时间降序';}?></a>
-      <a style='float: left; display: inline-block; width: 3.265rem; line-height: 0.8rem; font-size: 0.32rem; text-align:center; color: #38adff' href="<?php echo site_url($link_name);?>"><?php if($search_data['order_name']){echo 'Z-A';}else{echo 'A-Z';}?></a>
+      <a style='float: left; display: inline-block; width: 3.265rem; line-height: 0.8rem; font-size: 0.32rem; text-align:center; color: #38adff' href="<?php echo site_url("/?order_dep=1");?>">同部门</a>
     </div>
    </div>
+
+    <?php $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 0; if(!empty($corpId) && $corpId == "dingd8e1123006514592"): ?>
+   <button onclick="window.location.href='http://www.aliway.com/read.php?fid=20&tid=331749'" class="btn btn-block btn-default list-share-button">参与<br/>活动</button>
+    <?php endif;?>
 
    <!--<button class="btn btn-block btn-default J_shake list-share-button" data-method="device.accelerometer.watchShake" data-param='{"sensitivity": 15, "frequency": 150, "callbackDelay": 1000}' data-action="share">摇一摇</button>-->
 
@@ -54,7 +58,7 @@
             <a href="<?php echo $item['douban_url']; ?>" class="book-img-link">
                 <img class="book-image" src="<?php echo $item['image_url'];?>" >
             </a>
-            <a href="<?php echo site_url('share/detail/'. $item['item_id']); ?>" class="book-info">
+            <a target="_blank" href="<?php echo site_url('share/detail/'. $item['item_id']); ?>" class="book-info">
               <h4 class='book-title'><?php echo $item['title'];?></h4>
               <div class='book-desc'><?php echo $item['description'];?></div>
               <div class='book-author'><?php foreach($item['authors'] as $key => $author){ echo $author['name'] . ' '; }?></div>

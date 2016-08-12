@@ -20,7 +20,7 @@ endif;
               ?>
               <!-- title -->
               <h4 class='book-title'><?php echo $trade['item_title'];?></h4>
-              <p class='book-owner'>求漂者：<?php echo $trade['borrower_name'];?></p>
+              <p class='book-owner'>求漂者：<a href="javascript:;" class="J_profile_btn" style="color:#38adff;" data-method="biz.util.open" data-param='{"id":"<?php echo $trade["borrower_userid"];?>","corpId":"<?php echo $trade["borrower_corpid"];?>"}' data-action=""><?php echo $trade['borrower_name'];?></a></p>
               <p class='book-distance'><?php if(!empty($trade['distance'])):?>距离你: < <?php echo 1+intval($trade['distance']/1000);?> km<?php endif;?></p>
               <div id="trade_record" class='trade-record'>
                   <?php
@@ -34,6 +34,8 @@ endif;
                         echo '你拒绝了求漂 .';
                        }else if($record['op'] == 4){
                         echo '求漂者取消了请求 .';
+                       }else if($record['op'] == 7){
+                        echo '你确认了书已借出 .';
                        }else if($record['op'] == 5){
                         echo '你确认了书已归还 .';
                        }else if($record['op'] == 6){
@@ -48,22 +50,29 @@ endif;
 
             <?php if($trade['trade_status'] == 1){ //accept or deny?>
               <div class='shared-actions'>
+                <button class="btn btn-success shared-action-button J_profile_btn" data-method="biz.util.open" data-param='{"id":"<?php echo $trade["borrower_userid"];?>","corpId":"<?php echo $trade["borrower_corpid"];?>"}' data-action="" type="button">联系</button>
                 <button class="btn btn-success trade_op shared-action-button" trade_op="accept" trade_id="<?php echo $trade['trade_id'];?>" type="button">同意</button>
                 <button class="btn btn-danger trade_op shared-action-button" trade_op="deny" trade_id="<?php echo $trade['trade_id'];?>" type="button">拒绝</button>
               </div>
             <?php }else if($trade['trade_status'] == 2){?>
               <p>你接受了 <?php echo $borrower_anchor;?> 的求漂.</p>
               <div class='shared-actions'>
-                <button class="btn btn-primary trade_op shared-action-button" trade_op="return" trade_id="<?php echo $trade['trade_id'];?>" type="button">已归还</button>
-                <button class="btn btn-danger trade_op shared-action-button" trade_op="lost" trade_id="<?php echo $trade['trade_id'];?>" type="button">已丢失</button>
-                <button class="btn btn-block btn-default J_method_btn shared-action-button" data-method="biz.ding.post" data-param='{"corpId": "dinga32b47c555b27032", "users": ["1"], "type": 0}'>钉一下</button> 
+                <button class="btn btn-block btn-default J_method_btn shared-action-button" data-method="biz.ding.post" data-param='{"corpId": "dingd8e1123006514592", "users": ["051734"], "type": 0}'>钉一下</button> 
+                <button class="btn btn-success shared-action-button J_profile_btn" data-method="biz.util.open" data-param='{"id":"<?php echo $trade["borrower_userid"];?>","corpId":"<?php echo $trade["borrower_corpid"];?>"}' data-action="" type="button">联系</button>
               </div>
             <?php }else if($trade['trade_status'] == 3){?>
               <p>你拒绝了 <?php echo $borrower_anchor;?> 的求漂.</p>
             <?php }else if($trade['trade_status'] == 4){?>
               <p>求漂者取消了请求.</p>
+            <?php }else if($trade['trade_status'] == 7){?>
+              <p>你已确认书借出.</p>
+              <div class='shared-actions'>
+                <button class="btn btn-primary trade_op shared-action-button" trade_op="return" trade_id="<?php echo $trade['trade_id'];?>" type="button">已归还</button>
+                <button class="btn btn-danger trade_op shared-action-button" trade_op="lost" trade_id="<?php echo $trade['trade_id'];?>" type="button">已丢失</button>
+              </div>
             <?php }else if($trade['trade_status'] == 5){?>
-              <p>你已确认书归还.</p>
+                <br/>
+              <p>感谢使用闲书.</p>
             <?php }else if($trade['trade_status'] == 6){?>
               <p>你已确认书丢失，非常抱歉.</p>
             <?php }else{?>

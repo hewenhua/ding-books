@@ -199,7 +199,8 @@ class Share_model extends CI_Model{
 			'deny' => 3 ,
 			'cancel' => 4 ,
 			'return' => 5 ,
-			'lost' => 6
+			'lost' => 6 ,
+            'borrowed' => 7,
 			);
 		$data = array(
 			'status' => $target_transfer[$trade_op]

@@ -235,7 +235,6 @@ dd.ready(function() {
     dd.device.notification.toast({
       "global": true, "text": "扫描书背后的条形码，分享可得漂流币", "duration": 2, "delay": 0
     })
-    sleep(1200);
     param.onSuccess = function(result) {
 
       if (action === 'alert') {
@@ -269,13 +268,15 @@ dd.ready(function() {
               logger.i('book_id: ' + info.book_id);
               logger.i('item_id: ' + info.item_id);
               var score_info = "";
-              if(info.score > 0){
-                score_info += "奖励你"+info.score+"漂流币~";
+              if(info.action_type == "share"){
+                if(info.score > 0){
+                  score_info += "奖励你"+info.score+"漂流币~";
+                }
+                dd.device.notification.toast({
+                  "global": true, "text": "放漂成功！" + score_info, "duration": 2, "delay": 0
+                })
+                window.location.href = "/share/detail/" + info.item_id + "?display=1";//"/space/items?order_time=0";
               }
-              dd.device.notification.toast({
-                "global": true, "text": "放漂成功！" + score_info, "duration": 2, "delay": 0
-              })
-              window.location.href = "/share/detail/" + info.item_id + "?display=1";//"/space/items?order_time=0";
             }
 
           },
@@ -358,6 +359,23 @@ dd.ready(function() {
     });
   });
 
+ $('.J_profile_btn').on('click', function() {
+    var $this = $(this);
+    var method = $this.data('method');
+    var action = $this.data('action');
+    var param = $this.data('param') || {};
+
+    dd.biz.util.open({name:'profile',
+    params: eval('(' + param + ')'),
+    onSuccess : function() {
+        /**/
+    },
+    onFail : function(err) {alert(JSON.stringify(err));}});
+
+  });
+
+
+
   $('.J_method_btn').on('click', function() {
     var $this = $(this);
     var method = $this.data('method');
@@ -392,6 +410,34 @@ dd.ready(function() {
         dd.device.notification.alert({
           title: method,
           message: '传参：' + JSON.stringify(param, null, 4) + '\n' + '响应：' + JSON.stringify(result, null, 4)
+        });
+      } else if(action === 'borrow'){
+        info = JSON.stringify(result);
+        $.ajax({
+          url: '/api/spaceBorrow',
+          type:"POST",
+          data: {"event":"space_share","userId":dd.userid,"corpId":_config.corpId,"info":info,"address":dd.address,"latitude":dd.latitude,"longitude":dd.longitude},
+          dataType:'json',
+          timeout: 900,
+          success: function (data, status, xhr) {
+            logger.i('data: ' + data);
+            var info = JSON.parse(data);
+            if(info.errcode === 0) {
+              logger.i('book_id: ' + info.book_id);
+              var score_info = "";
+              if(info.score > 0){
+                score_info += "奖励你"+info.score+"漂流币~";
+              }
+              dd.device.notification.toast({
+                "global": true, "text": "借阅成功！" + score_info, "duration": 2, "delay": 0
+              })
+              //window.location.href = "/share/detail/" + info.item_id + "?display=1";//"/space/items?order_time=0";
+            }
+
+          },
+          error: function (xhr, errorType, error) {
+            logger.e(errorType + ', ' + error);
+          }
         });
       }
     };

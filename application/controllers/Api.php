@@ -168,7 +168,7 @@ class Api extends CI_Controller {
             'order_time' => 1,
             'order_name' => $this->input->get_post('order_name'),
         );
-        $limit = 40;
+        $limit = 1000;
         $offset = 0;
         if($this->session->userdata('user_id')){
             $user_id = $this->session->userdata('user_id');
@@ -179,7 +179,11 @@ class Api extends CI_Controller {
         $book_id = 0;
         $item_id = 0;
         $title = "";
-        $i = rand(0,($data['total']-1));
+        if($limit>$data['total']){
+            $i = rand(0,($data['total']-1));
+        }else{
+            $i = rand(0,($limit-1));
+        }
         
         foreach ($data["items"] as $key => $item) {
             if($key == $i){
@@ -205,6 +209,64 @@ class Api extends CI_Controller {
             'book_id' => $book_id,
             'item_id' => $item_id,
             'msg' => $msg,
+            );
+        echo json_encode(json_encode($output));
+        return TRUE;
+    }
+
+    public function spaceBorrow(){
+        $info = $this->input->get_post('info');
+        $userid = $this->input->get_post('userId');
+        $username = $this->input->get_post('userName');
+        $address = $this->input->get_post('address');
+        $latitude = $this->input->get_post('latitude');
+        $longitude = $this->input->get_post('longitude');
+
+        $info = json_decode($info,true);
+        $isbn = $info['text'];
+
+        $book_id = 0;
+        if(!empty($isbn)){
+            $isbn = trim($isbn);
+            $this->load->model('books_model');
+            $data = $this->books_model->getBookInfoByISBN($isbn);
+            if($data == FALSE)
+                $data['msg'] = 2;
+            else
+                $data['msg'] = 1;
+
+            $data['isbn'] = $isbn;
+            $book_id = isset($data['id']) ? $data['id'] : 0;
+        }
+
+        if(isLogin() == FALSE){
+            echoFail('Have not logined yet ');
+            return FALSE;
+        }
+        $user_id = $this->session->userdata('user_id');
+
+        $this->load->model('share_model');
+        $this->load->model('user_model');
+        $description = isset($data['title']) ? $data['title'] : "";
+        $trade_query = $this->db->query("SELECT * FROM trade_view WHERE borrower_id=$user_id and trade_status = 2");
+        $book_name = array();
+        $trade_arr = $trade_query->result_array();
+        $borrower_score = 0;
+        foreach($trade_arr as $key=>$arr){
+            if(!empty($arr['item_description']) &&  $arr['item_description'] == $description){
+                $score = intval(intval($data['price'])/2);
+                $this->user_model->addScore($arr['owner_id'],$score);
+                $borrower_score = 2;
+                $this->user_model->addScore($arr['borrower_id'],2);
+                $this->share_model->updateTrade($arr['trade_id'] , "borrowed");
+            }
+        }
+
+        $output = array(
+            'errcode' => 0,
+            'result' => 1,
+            'book_id' => $book_id,
+            'score' => $borrower_score,
             );
         echo json_encode(json_encode($output));
         return TRUE;
@@ -242,8 +304,23 @@ class Api extends CI_Controller {
         $user_id = $this->session->userdata('user_id');
 
         $this->load->model('share_model');
+        $this->load->model('user_model');
 		$description = isset($data['title']) ? $data['title'] : "";
-        //$score = intval(intval($data['price'])/2);
+        $action_type = "share";
+       /* $trade_query = $this->db->query("SELECT * FROM trade_view WHERE borrower_id=$user_id and trade_status = 2");
+        $book_name = array();
+        $trade_arr = $trade_query->result_array();
+        foreach($trade_arr as $key=>$arr){
+            if(!empty($arr['item_description']) &&  $arr['item_description'] == $description){
+                $score = intval(intval($data['price'])/2);
+                $this->user_model->addScore($arr['owner_id'],$score);
+                $this->user_model->addScore($arr['borrower_id'],2);
+                $this->share_model->updateTrade($arr['trade_id'] , "borrowed");
+                $action_type = "borrow";
+            }
+        }
+        */
+        
         $score = 0;
         if($item_id = $this->share_model->isDuplicateItem($book_id , $user_id)){
             $data = array('latitude'=>$latitude,'longitude'=>$longitude,'location'=>$address,'status'=>1);
@@ -263,6 +340,7 @@ class Api extends CI_Controller {
             'book_id' => $book_id,
 			'item_id' => $item_id,
             'score' => $score,
+            'action_type' => $action_type,
             );
         echo json_encode(json_encode($output));
         return TRUE;
@@ -500,6 +578,54 @@ class Api extends CI_Controller {
 
 	}
 
+    public function testMes(){
+$user_id = 36;
+        $trade_query = $this->db->query("SELECT * FROM trade_view WHERE borrower_id=$user_id and trade_status = 2");
+        $book_name = array();
+        $trade_arr = $trade_query->result_array();
+        foreach($trade_arr as $key=>$arr){
+            $book_name[] = $arr['item_description'];
+        }
+        
+var_dump($trade_arr);
+exit;
+        $item_id = $this->input->get_post('item_id'); 
+        $query = $this->db->query("SELECT * FROM item WHERE id = $item_id AND status = 1 ");
+        if($query->num_rows() != 1){
+            echoFail('书已被收漂!');
+            return FALSE;
+        }
+
+        $row = $query->first_row();
+
+        $book_query = $this->db->query("SELECT * FROM book WHERE id = ".$row->book_id );
+        if($book_query->num_rows() != 1){
+            return FALSE;
+        }
+    
+        $book_row = $book_query->first_row();
+        $book_title = $book_row->title;
+        $oa['message_url']  = "http://120.26.118.14/share/detail/".$item_id."?corpId=dingd8e1123006514592";
+        $oa['head'] = array(
+                        "bgcolor" => "38adff",
+                        "text" => "闲书漂流"
+                        );
+        $oa['body'] = array(
+                        "title" => '新书上架啦~！',
+                        "content" => "《".$book_row->title."》",
+                        "image" => $book_row->image_url,
+                        );
+        $oa['body']['author'] = "闲书漂流";
+var_dump($oa);exit;
+        $user_query = $this->db->query("SELECT * FROM user WHERE corpid='dingd8e1123006514592'");
+        $user_array = $user_query->result_array();
+        foreach($user_array as $key=>$arr){
+            //var_dump($arr['userid']);
+        //    $flag = $this->sendOAMessage($arr['userid'],$oa);
+        }
+        //var_dump($flag);
+    }
+
     protected function getOA($book_id,$op='ask'){
         $op_text = array(
             'ask' => '向你发起了求漂',
@@ -577,19 +703,19 @@ class Api extends CI_Controller {
 				}
 				break;
 			case 'cancel':
-				if($current_status != 1){
+				if($current_status != 1 && $current_status != 2){
 					echoFail('Only inital status can be canceled');
 					return FALSE;
 				}
 				break;
 			case 'return':
-				if($current_status != 2){
+				if($current_status != 2 && $current_status != 7){
 					echoFail('Only accept status can be canceled');
 					return FALSE;
 				}
 				break;
 			case 'lost':
-				if($current_status != 2){
+				if($current_status != 2 && $current_status != 7){
 					echoFail('Only accept status can be canceled');
 					return FALSE;
 				}
@@ -630,18 +756,23 @@ class Api extends CI_Controller {
 
         $score = intval(intval($book_row->price)/2);
         if(in_array($input['trade_op'],array('return'))){
-            $this->user_model->addScore($user_id,5);
-            echoSucc('确认书已归还！系统奖励5漂流币~');
+            $this->user_model->addScore($user_id,2);
+            echoSucc('确认书已归还！系统奖励2漂流币~');
             return TRUE;
         }
         if(in_array($input['trade_op'],array('accept'))){
-            $this->user_model->addScore($user_id,$score);
-            echoSucc('你同意了求漂！系统奖励'.$score.'漂流币~');
+            $this->user_model->addScore($user_id,2);
+            echoSucc('你同意了求漂！系统奖励2漂流币~对方扫描后可再得'.$score.'漂流币');
             return TRUE;
         }
         if(in_array($input['trade_op'],array('cancel'))){
             $this->user_model->addScore($user_id,$score);
             echoSucc('你取消了放漂！系统退还'.$score.'漂流币~');
+            return TRUE;
+        }
+        if(in_array($input['trade_op'],array('deny'))){
+            $this->user_model->addScore($trade_user_id,$score);
+            echoSucc('你拒绝了求漂！系统退还'.$score.'漂流币~');
             return TRUE;
         }
         

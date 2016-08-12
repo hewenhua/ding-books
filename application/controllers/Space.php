@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Space extends CI_Controller {
 
 	private $user_id;
-	private $limit = 4;
+	private $limit = 20;
 
 	function __construct(){
 		parent::__construct();
@@ -243,6 +243,10 @@ class Space extends CI_Controller {
         }
 
 		foreach ($data['trades'] as $key => $trade) {
+            $borrower_id = $trade['borrower_id'];
+            $user_info = $this->user_model->getUserInfo($borrower_id);
+            $data['trades'][$key]['borrower_corpid'] = $user_info['corpid'];
+            $data['trades'][$key]['borrower_userid'] = $user_info['userid'];
 			$data['trades'][$key]['trade_record'] = $this->query_model->queryTradeRecord($trade['trade_id']);
 		}
 
@@ -294,6 +298,11 @@ class Space extends CI_Controller {
         }
 
 		foreach ($data['trades'] as $key => $trade) {
+            $owner_id = $trade['owner_id'];
+            $user_info = $this->user_model->getUserInfo($owner_id);
+            $data['trades'][$key]['owner_corpid'] = $user_info['corpid'];
+            $data['trades'][$key]['owner_userid'] = $user_info['userid'];
+            
 			$data['trades'][$key]['trade_record'] = $this->query_model->queryTradeRecord($trade['trade_id']);
 		}
 

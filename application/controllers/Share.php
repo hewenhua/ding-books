@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Share extends CI_Controller {
 
-	private $limit = 4;
+	private $limit = 10;
 
 	function __construct(){
 		parent::__construct();
@@ -34,7 +34,16 @@ class Share extends CI_Controller {
 			'order_time' => $this->input->get_post('order_time'),
 			'order_name' => $this->input->get_post('order_name'),
             'order_score' => $this->input->get_post('order_score'),
+            'order_dep' => $this->input->get_post('order_dep'),
 		);
+        if(!isset($_GET['order_score']) && !isset($_GET['order_time']) && !isset($_GET['order_name'])){
+            $data['search_data']['order_score'] = 1;
+        }else{
+            $data['search_data']['order_dep'] = 0;
+        }
+        if(isset($_GET['order_time'])){
+            $data['search_data']['order_score'] = 0;
+        }
 
 		$offset = $this->input->get_post('offset');
         $page = $this->input->get_post('page');
@@ -106,11 +115,14 @@ class Share extends CI_Controller {
 		$display = $this->input->get_post('display');
         $shake = $this->input->get_post('shake');
 
+        $this->load->model("user_model");
 		if($display == 1){
 			$sql = "SELECT * FROM item_view WHERE item_id = $item_id";
 		}else{
 			$sql = "SELECT * FROM item_view WHERE item_id = $item_id AND item_status = 1 ";
 		}
+        $data['display'] = $display;
+        $data['shake'] = $shake;
 
 		$query = $this->db->query($sql);
 		if($query->num_rows() == 0){
@@ -122,14 +134,19 @@ class Share extends CI_Controller {
 		$data['item'] = $row;
 		
 		$book_id = $data['item']['book_id'];
+        $item_user_id = $data['item']['user_id'];
+        $item_user_info = $this->user_model->getUserInfo($item_user_id);
+        $data['item']['corpid'] = $item_user_info['corpid'];
+        $data['item']['userid'] = $item_user_info['userid'];
+        
 		$data['item']['authors'] = $this->query_model->queryBookAuthors($book_id);
 		$data['item']['translators'] = $this->query_model->queryBookTranslators($book_id);
 		$data['corpId'] = $this->corpId;
 
-        $this->load->model("user_model");
         $user_id = $this->session->userdata('user_id'); 
         $user_info = $this->user_model->getUserInfo($user_id);
         $data['user_score'] = $user_info['score'];
+        $data['user_corpid'] = $user_info['corpid'];
 
 		$this->load->view('include/header' , $data);
 		$this->load->view('share/detail');
@@ -261,8 +278,8 @@ class Share extends CI_Controller {
 			'search_data' => $data['search_data'] ,
 			'pre_url' => 'share/' . __FUNCTION__  ,
 			);
-		$this->load->model("pagination_model");
-		$data['link_array'] = $this->pagination_model->create_link($link_config);
+//		$this->load->model("pagination_model");
+//		$data['link_array'] = $this->pagination_model->create_link($link_config);
 
 		$data['link_time'] = url_maker( $data['search_data'] , 'share/' . __FUNCTION__  , 
 			array('name'=>'order_time','value'=>(1-$data['search_data']['order_time']) ));
