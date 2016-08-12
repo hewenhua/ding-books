@@ -57,6 +57,7 @@ class Share_model extends CI_Model{
         $item_view['score'] = 100*$book_row->rate_score;
         $price = str_replace("CNY","",$book_row->price);
         $price = str_replace("元","",$price);
+        $price = str_replace("USD","",$price);
         $item_view['price'] = $price;
         //$price = intval($book_row->price/2);
 

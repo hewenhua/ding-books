@@ -1,7 +1,7 @@
     </div>
     <script src="//g.alicdn.com/ilw/ding/0.6.2/scripts/dingtalk.js"></script>
     <script type="text/javascript" src="/openapi/public/javascripts/logger.js"></script>
-    <script type="text/javascript" src="/openapi/public/javascripts/demo_bk.js"></script>
+    <script type="text/javascript" src="/openapi/public/javascripts/demo.js"></script>
     <script type="text/javascript">
 	   $('#J_More').on('click', function(e){
 	      //alert(1);

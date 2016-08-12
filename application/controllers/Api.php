@@ -754,7 +754,10 @@ var_dump($oa);exit;
         }
         $book_row = $book_query->first_row();
 
-        $score = intval(intval($book_row->price)/2);
+        $price = str_replace("CNY","",$book_row->price);
+        $price = str_replace("元","",$price);
+        $price = str_replace("USD","",$price);
+        $score = intval(intval($price)/2);
         if(in_array($input['trade_op'],array('return'))){
             $this->user_model->addScore($user_id,2);
             echoSucc('确认书已归还！系统奖励2漂流币~');

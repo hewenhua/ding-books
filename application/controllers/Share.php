@@ -30,7 +30,7 @@ class Share extends CI_Controller {
 		$data['page'] = __FUNCTION__;
 		$data['search_data'] = array(
 			'keyword' => $this->input->get_post('keyword'),
-			'item_status' => array(1) , 
+			'item_status' => array(1,4) , 
 			'order_time' => $this->input->get_post('order_time'),
 			'order_name' => $this->input->get_post('order_name'),
             'order_score' => $this->input->get_post('order_score'),
@@ -119,7 +119,7 @@ class Share extends CI_Controller {
 		if($display == 1){
 			$sql = "SELECT * FROM item_view WHERE item_id = $item_id";
 		}else{
-			$sql = "SELECT * FROM item_view WHERE item_id = $item_id AND item_status = 1 ";
+			$sql = "SELECT * FROM item_view WHERE item_id = $item_id AND item_status IN ( 1,4) ";
 		}
         $data['display'] = $display;
         $data['shake'] = $shake;
