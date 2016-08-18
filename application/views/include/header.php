@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php
 $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 0;
+$corpId = htmlspecialchars($corpId);
 ?>
 <html lang="en">
   <head>

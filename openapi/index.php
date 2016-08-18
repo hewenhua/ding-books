@@ -4,6 +4,7 @@ require_once(__DIR__ . "/config.php");
 require_once(__DIR__ . "/util/Http.php");
 require_once(__DIR__ . "/api/Auth.php");
 $corpId =  $_GET['corpId'];
+$corpId = htmlspecialchars($corpId);
 ?>
 <html>
 <head>
