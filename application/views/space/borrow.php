@@ -27,7 +27,7 @@ endif;
                 foreach ($trade['trade_record'] as $key => $record) {?>
                    <p><?php echo format_date($record['create_time']);?> :
                     <?php if($record['op'] == 1){
-                      echo '你向 ' . $owner_anchor . ' 申请借阅该书';
+                      echo '你向 ' . $owner_anchor . ' 申请借阅该书，消耗'.$trade['score'].'漂流币';
                      }else if($record['op'] == 2){
                       echo '书籍所有者同意了你的申请';
                      }else if($record['op'] == 3){
@@ -39,13 +39,14 @@ endif;
                      }else if($record['op'] == 6){
                       echo '书籍所有者确认该书已丢失';
                      }else if($record['op'] == 7){
-                      echo '书籍所有者确认该书已借出';
+                      echo '你确认已借到此书，奖励2漂流币';
                      } ?>
                    </p>
                 <?php } ?>
               </div>
             </div>
           </div>
+          <br/>
           <div class='borrow-action-area trade-record'>
             <?php if($trade['trade_status'] == 1){ //accept or deny?>
               <p>书籍所有者尚未回应，你可以联系拥有者或撤销申请：</p>
@@ -54,10 +55,12 @@ endif;
                 <button class="btn btn-danger borrow-action-button J_profile_btn" data-method="biz.util.open" data-param='{"id":"<?php echo $trade["owner_userid"];?>","corpId":"<?php echo $trade["owner_corpid"];?>"}' data-action="" type="button">联系</button>
               </div>
             <?php }else if($trade['trade_status'] == 2){?>
-              <p>书籍所有者同意了你的申请，扫一下此书即可完成借阅<br/> 联系拥有者：<a href="javascript:;" class="J_profile_btn" style="color:#38adff;" data-method="biz.util.open" data-param='{"id":"<?php echo $trade["owner_userid"];?>","corpId":"<?php echo $trade["owner_corpid"];?>"}' data-action=""><?php echo $trade['owner_name'];?></a></p>
+              <p>书籍所有者同意了你的申请，确认已借到后奖励2漂流币<br/> 联系拥有者：<a href="javascript:;" class="J_profile_btn" style="color:#38adff;" data-method="biz.util.open" data-param='{"id":"<?php echo $trade["owner_userid"];?>","corpId":"<?php echo $trade["owner_corpid"];?>"}' data-action=""><?php echo $trade['owner_name'];?></a></p>
               <div class='borrow-actions'>
-                <button class="btn btn-block btn-default J_method_btn shared-action-button" data-method="biz.util.scan" data-param='{"type":"barCode"}' data-action="borrow">扫一下</button>
-                <button class="btn btn-block btn-default J_method_btn shared-action-button" data-method="biz.ding.post" data-param='{"corpId": "dingd662bc6b3242e637", "users": ["1"], "type": 0}'>钉一下</button>
+                <!--<button class="btn btn-block btn-default J_method_btn shared-action-button" data-method="biz.util.scan" data-param='{"type":"barCode"}' data-action="borrow">扫一下</button>-->
+                <button class="btn btn-danger trade_op borrow-action-button" trade_op="borrowed" trade_id="<?php echo $trade['trade_id'];?>" type="button">已借到</button>
+                <!--<button class="btn btn-block btn-default J_method_btn shared-action-button" data-method="biz.ding.post" data-param='{"corpId": "dingd662bc6b3242e637", "users": ["1"], "type": 0}'>钉一下</button>-->
+                <button class="btn btn-danger borrow-action-button J_profile_btn" data-method="biz.util.open" data-param='{"id":"<?php echo $trade["owner_userid"];?>","corpId":"<?php echo $trade["owner_corpid"];?>"}' data-action="" type="button">联系</button>
                 <button class="btn btn-danger trade_op borrow-action-button" trade_op="cancel" trade_id="<?php echo $trade['trade_id'];?>" type="button">取消</button>
                 <!--<a class='borrow-action-button' href='tel:<?php echo $trade['owner_cellphone'];?>'><?php echo $trade['owner_cellphone'];?></a>-->
               </div>

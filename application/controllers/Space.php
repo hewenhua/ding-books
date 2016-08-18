@@ -248,6 +248,11 @@ class Space extends CI_Controller {
             $data['trades'][$key]['borrower_corpid'] = $user_info['corpid'];
             $data['trades'][$key]['borrower_userid'] = $user_info['userid'];
 			$data['trades'][$key]['trade_record'] = $this->query_model->queryTradeRecord($trade['trade_id']);
+            $price = str_replace("CNY","",$trade['price']);
+            $price = str_replace("元","",$price);
+            $price = str_replace("USD","",$price);
+            $score = intval(intval($price)/2);
+            $data['trades'][$key]['score'] = $score;
 		}
 
 		$link_config = array(
@@ -304,6 +309,11 @@ class Space extends CI_Controller {
             $data['trades'][$key]['owner_userid'] = $user_info['userid'];
             
 			$data['trades'][$key]['trade_record'] = $this->query_model->queryTradeRecord($trade['trade_id']);
+            $price = str_replace("CNY","",$trade['price']);
+            $price = str_replace("元","",$price);
+            $price = str_replace("USD","",$price);
+            $score = intval(intval($price)/2);
+            $data['trades'][$key]['score'] = $score;
 		}
 
 		$link_config = array(

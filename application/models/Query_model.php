@@ -52,7 +52,7 @@ class Query_model extends CI_Model{
 		}
 
 		if($corpid != NULL){
-			$sql .= "AND item_view.corpid = '$corpid' ";
+			$sql .= "AND item_view.corpid = '".addslashes($corpid)."' ";
 		}
 
         if(isset($search_data['order_dep']) && !empty($search_data['order_dep'])){
@@ -65,10 +65,10 @@ class Query_model extends CI_Model{
 
 
 		if($keyword != NULL)
-			$sql .= "AND item_view.title LIKE '%$keyword%' ";
+			$sql .= "AND item_view.title LIKE '%".addslashes($keyword)."%' ";
 
 		if($username != NULL)
-			$sql .= "AND item_view.username LIKE '%$username%' ";
+			$sql .= "AND item_view.username LIKE '%".addslashes($username)."%' ";
 		
 		if($item_id != NULL)
 			$sql .= "AND item_view.item_id = $item_id ";
@@ -98,7 +98,7 @@ class Query_model extends CI_Model{
 		else if($order_name == 1)
 			$sql .= " ORDER BY title DESC , create_time DESC ";
         else if($order_score === 1)
-            $sql .= " ORDER BY top DESC , score DESC";
+            $sql .= " ORDER BY top DESC , hot DESC , score DESC";
         else if($order_time == 0)
 			$sql .= " ORDER BY create_time ASC , title ASC";
         else

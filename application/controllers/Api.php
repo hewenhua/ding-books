@@ -708,6 +708,12 @@ var_dump($oa);exit;
 					return FALSE;
 				}
 				break;
+			case 'borrowed':
+				if($current_status != 2 && $current_status != 7){
+					echoFail('Only accept status can be canceled');
+					return FALSE;
+				}
+				break;
 			case 'return':
 				if($current_status != 2 && $current_status != 7){
 					echoFail('Only accept status can be canceled');
@@ -765,7 +771,7 @@ var_dump($oa);exit;
         }
         if(in_array($input['trade_op'],array('accept'))){
             $this->user_model->addScore($user_id,2);
-            echoSucc('你同意了求漂！系统奖励2漂流币~对方扫描后可再得'.$score.'漂流币');
+            echoSucc('你同意了求漂！系统奖励2漂流币~对方确认后可再得'.$score.'漂流币');
             return TRUE;
         }
         if(in_array($input['trade_op'],array('cancel'))){
@@ -776,6 +782,13 @@ var_dump($oa);exit;
         if(in_array($input['trade_op'],array('deny'))){
             $this->user_model->addScore($trade_user_id,$score);
             echoSucc('你拒绝了求漂！系统退还'.$score.'漂流币~');
+            return TRUE;
+        }
+        if(in_array($input['trade_op'],array('borrowed'))){
+            $this->user_model->addScore($row->user_id,$score);
+            $this->user_model->addScore($trade_user_id,2);
+
+            echoSucc('你确认书已借到！系统奖励2漂流币~');
             return TRUE;
         }
         

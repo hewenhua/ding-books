@@ -89,6 +89,11 @@ class Share_model extends CI_Model{
 		return TRUE;
 	}
 
+    function updateItemView($item_id,$item_view){
+        $this->db->where('item_id',$item_id);
+        return $this->db->update('item_view',$item_view);
+    }
+
 	function afterUpdateItem($item_id){
 		$item_view = array();
                 $item_query = $this->db->query("SELECT * FROM item WHERE id = $item_id ");

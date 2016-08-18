@@ -147,6 +147,10 @@ class Share extends CI_Controller {
         $user_info = $this->user_model->getUserInfo($user_id);
         $data['user_score'] = $user_info['score'];
         $data['user_corpid'] = $user_info['corpid'];
+        
+        //按照点击热度排序
+        $item_view['hot'] = time();
+        $this->share_model->updateItemView($item_id,$item_view);
 
 		$this->load->view('include/header' , $data);
 		$this->load->view('share/detail');

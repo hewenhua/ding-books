@@ -362,6 +362,11 @@ function updateTrade(url){
               title: "闲书漂流",
               message: "你拒绝了求漂！"
             });
+          else if(trade_op == 'borrowed')
+            dd.device.notification.alert({
+              title: "闲书漂流",
+              message: data.msg
+            });
           else if(trade_op == 'cancel')
             dd.device.notification.alert({
               title: "闲书漂流",
