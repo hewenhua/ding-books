@@ -28,6 +28,7 @@ var sleep = function(numberMillis) {
 logger.i('Here we go...');
 
 logger.i(location.href);
+logger.i(_config.corpId);
 
 /**
  * _config comes from server-side template. see views/index.jade
@@ -86,8 +87,8 @@ dd.ready(function() {
     onSuccess: function (info) {
       logger.i('authcode: ' + info.code);
       $.ajax({
-        url: '/openapi/sendMsg.php',
-        type:"POST",
+        url: '/user/getUserInfo',
+        type:"GET",
         data: {"event":"get_userinfo","code":info.code,"corpId":_config.corpId},
         dataType:'json',
         timeout: 900,

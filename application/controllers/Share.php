@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Share extends CI_Controller {
 
-	private $limit = 10;
+	private $limit = 20;
 
 	function __construct(){
 		parent::__construct();
@@ -99,6 +99,7 @@ class Share extends CI_Controller {
         if(empty($more)){
 		    $this->load->view('include/header' , $data);
         }
+
 		$this->load->view('share/list',$data);
         if(empty($more)){
 		    $this->load->view('include/footer');

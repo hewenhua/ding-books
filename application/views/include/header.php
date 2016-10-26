@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <?php
 $corpId = isset($_GET['corpId']) && !empty($_GET['corpId']) ? $_GET['corpId'] : 0;
+if(empty($corpId)){
+    $corpId = isset($_GET['corpid']) && !empty($_GET['corpid']) ? $_GET['corpid'] : 0;
+}
+if(empty($corpId)){
+    $corpId = isset($_GET['corp']) && !empty($_GET['corp']) ? $_GET['corp'] : 0;
+}
 $corpId = htmlspecialchars($corpId);
+$curUrl = Auth::curPageURL();
 ?>
 <html lang="en">
   <head>

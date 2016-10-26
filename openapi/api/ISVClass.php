@@ -1,5 +1,5 @@
 <?php
-
+require_once(__DIR__ . "/../util/Log.php");
 require_once(__DIR__ . "/../config.php");
 require_once(__DIR__ . "/../util/Http.php");
 require_once(__DIR__ . "/../util/Cache.php");
