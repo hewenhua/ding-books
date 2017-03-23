@@ -11,7 +11,7 @@ endif;
         <div class="book-item">
           <div class="book-intro">
             <a href="" class="book-img-link">
-              <img class="book-image" src="<?php echo $trade['image_url'];?>" >
+              <img class="book-image" src="<?php echo $trade['image_url'];?>" onerror="this.src='http://log.mmstat.com/m.gif'">
             </a>
             <div class="book-info">
               <?php

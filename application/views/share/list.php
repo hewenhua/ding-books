@@ -56,7 +56,7 @@
         <div class="book-item">
           <div class='book-intro'>
             <a href="<?php echo $item['douban_url']; ?>" class="book-img-link">
-                <img class="book-image" src="<?php echo $item['image_url'];?>" >
+                <img class="book-image" src="<?php echo $item['image_url'];?>" onerror="this.src='http://log.mmstat.com/m.gif'">
             </a>
             <a target="_blank" href="<?php echo site_url('share/detail/'. $item['item_id']); ?>" class="book-info">
               <h4 class='book-title'><?php echo $item['title'];?></h4>

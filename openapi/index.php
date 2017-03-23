@@ -5,6 +5,9 @@ require_once(__DIR__ . "/util/Http.php");
 require_once(__DIR__ . "/api/Auth.php");
 $corpId =  $_GET['corpId'];
 $corpId = htmlspecialchars($corpId);
+$corpList = json_decode(Cache::getCorpInfo(),true);
+error_log('ssssss');
+error_log(var_export($corpList,true));
 ?>
 <html>
 <head>

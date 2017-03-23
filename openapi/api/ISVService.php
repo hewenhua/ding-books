@@ -3,8 +3,6 @@
 require_once(__DIR__ . "/../util/Log.php");
 require_once(__DIR__ . "/../util/Http.php");
 require_once(__DIR__ . "/../util/Cache.php");
-require_once(__DIR__ . "/../../system/core/Model.php");
-require_once(__DIR__ . "/../../application/models/Corp_model.php");
 
 /**
  * ISV授权方法类
@@ -44,11 +42,13 @@ class ISVService
             }
         }
 
-        $corp_model = new Corp_model();
         if(empty($corpInfo)){
+            require_once(__DIR__ . "/../../system/core/Model.php");
+            require_once(__DIR__ . "/../../application/models/Corp_model.php");
+            $corp_model = new Corp_model();
             $corpInfo = $corp_model->getCorpInfoById($corpId);
         }else{
-            $corp_model->saveCorpInfo($corpInfo);
+            //$corp_model->saveCorpInfo($corpInfo);
         }
         return $corpInfo;
     }

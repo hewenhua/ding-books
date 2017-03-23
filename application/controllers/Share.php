@@ -23,8 +23,34 @@ class Share extends CI_Controller {
 		$this->load->view('welcome_message');
 	}
 
+    private function getCorpInfoByCorId($corpId){
+        $corpList = json_decode(Cache::getCorpInfo(),true);
+        if(!is_array($corpList)){
+            return false;
+        }
+
+        error_log($corpId);
+        $corpInfo = array();
+        foreach($corpList as $corp){
+            if($corp['corp_id']==$corpId){
+                $corpInfo = $corp;
+                break;
+            }
+        }
+
+        //$corp_info = $corp_model->getCorpInfoById($corpId);
+            //error_log(var_export($corpInfo2,true));
+        if(!empty($corpInfo)){
+            error_log('update corpInfo');
+            $this->load->model('corp_model');
+            $this->corp_model->saveCorpInfo($corpInfo);
+        }
+        return $corpInfo;
+    }
+
 	public function book(){
-		
+        $corpInfo = $this->getCorpInfoByCorId(htmlspecialchars($_GET['corpId']));
+error_log(var_export($corpInfo,true));
 		$data = array();
 		$data['title'] = "漂流图书" ;
 		$data['page'] = __FUNCTION__;
